@@ -19,7 +19,9 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public Nullable<int> veiculoid { get; set; }
         public Nullable<int> carroceriaid { get; set; }
         public System.DateTime datahoraanalise { get; set; }
-        public Nullable<int> situacaoid { get; set; }
+        public Nullable<int> situacaocadastroid { get; set; }
         public string observacao { get; set; }
+    
+        public virtual situacaocadastro situacaocadastro { get; set; }
     }
 }

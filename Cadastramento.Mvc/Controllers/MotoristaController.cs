@@ -8,6 +8,7 @@ using Cadastramento.Util.DataTables;
 using Cadastramento.Util.DataTables.DataTables.AspNet.Core;
 using Cadastramento.Util.DataTables.DataTables.AspNet.Mvc5;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -37,7 +38,12 @@ namespace Cadastramento.Mvc.Controllers
 
                 model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;
                 model.datahorainclusao = DateTime.Now;
-                model.situacaocadastroid = 1;
+                if(model.situacaocadastroid != 2)
+                {
+                    model.situacaocadastroid = 1;
+                }                
+                model.datavalidadecnh = DateTime.Now;
+                model.dataemissaocnh = DateTime.Now;
 
                 srv.Incluir(model);
                 srv.Salvar(SessaoUsuario.Sessao.login);
@@ -128,11 +134,12 @@ namespace Cadastramento.Mvc.Controllers
             }
         }
       
-        public ActionResult ObterDetran(string cpf, string cnh)
+        public JsonResult ObterDetran(string cpf, string cnh)
         {
             var srv = new detranService();
             var obj = srv.GetDadosCNH(cpf, cnh);
-            return View(obj);
+
+            return Json(new { Result = "OK", Record = obj }, JsonRequestBehavior.AllowGet);
         }
 
        

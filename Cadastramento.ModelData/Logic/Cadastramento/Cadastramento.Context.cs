@@ -55,5 +55,6 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public virtual DbSet<tipoveiculo> tipoveiculo { get; set; }
         public virtual DbSet<veiculo> veiculo { get; set; }
         public virtual DbSet<motorista> motorista { get; set; }
+        public virtual DbSet<analise> analise { get; set; }
     }
 }

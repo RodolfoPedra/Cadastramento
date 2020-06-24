@@ -96,6 +96,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\Cadastramento\analise.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
     <Compile Include="Logic\Cadastramento\auditlog.cs">
       <DependentUpon>Cadastramento.tt</DependentUpon>
     </Compile>

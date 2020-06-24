@@ -64,6 +64,8 @@
         <AssociationConnector Association="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" />
         <EntityTypeShape EntityType="CadastramentoModel.motorista" Width="1.5" PointX="17.625" PointY="42" />
         <AssociationConnector Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" />
+        <EntityTypeShape EntityType="CadastramentoModel.analise" Width="1.5" PointX="17.625" PointY="54.125" />
+        <AssociationConnector Association="CadastramentoModel.FK_analise_situacaocadastro" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

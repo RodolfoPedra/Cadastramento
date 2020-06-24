@@ -162,7 +162,7 @@
                     { name: 'cpf', data: 'cpf', title: "CPF", sortable: true, searchable: true, autoWidth: true },
                     { name: 'cnh', data: 'cnh', title: "CNH", sortable: true, searchable: true, autoWidth: true },
                     { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
-                    { name: 'situacao', data: 'situacao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
+                    { name: 'descricao', data: 'descricao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
                 ],
                 columnDefs: [
                     { targets: -1, className: 'dt-body-center' }
@@ -201,7 +201,7 @@
                     { name: 'placa', data: 'placa', title: "Placa", sortable: true, searchable: true, autoWidth: true },
                     { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },                    
                     { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
-                    { name: 'situacao', data: 'situacao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
+                    { name: 'descricao', data: 'descricao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
                 ],
                 columnDefs: [
                     { targets: -1, className: 'dt-body-center' }
@@ -240,7 +240,7 @@
                     { name: 'placa', data: 'placa', title: "Placa", sortable: true, searchable: true, autoWidth: true },
                     { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },                    
                     { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
-                    { name: 'situacao', data: 'situacao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
+                    { name: 'descricao', data: 'descricao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
                 ],
                 columnDefs: [
                     { targets: -1, className: 'dt-body-center' }
@@ -258,6 +258,13 @@
                 }
             } );
         });
+
+        function Filtrar_Click() {
+            tableMotorista.ajax.reload();
+            tableVeiculo.ajax.reload();
+            tableCarroceria.ajax.reload();
+            
+        }
 
         function AnalisarMotorista_Click() {
             var row = tableMotorista.row('.selected').data();

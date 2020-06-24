@@ -45,7 +45,7 @@ namespace Cadastramento.Mvc.Controllers
                             if (!string.IsNullOrEmpty(datahorainclusao))
                                 filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
                             break;
-                        case "situacaocadastroid":
+                        case "situacao":
                             var situacaocadastroid = request.Get<int>(filter.Key);
                             if (situacaocadastroid != 0)
                                 filteredData = filteredData.Where(x => x.situacaocadastroid == situacaocadastroid);
@@ -75,7 +75,7 @@ namespace Cadastramento.Mvc.Controllers
                 u.cpf,
                 u.cnh,
                 u.datahorainclusao,
-                situacao = u.situacaocadastroid == 1 ? "Em Analise" : "Ativo"
+                u.situacaocadastro.descricao                
             });
 
             var response = DataTablesResponse.Create(request, data.Count(), filteredData.Count(), lista);
@@ -104,7 +104,7 @@ namespace Cadastramento.Mvc.Controllers
                             if (!string.IsNullOrEmpty(datahorainclusao))
                                 filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
                             break;
-                        case "situacaocadastroid":
+                        case "situacao":
                             var situacaocadastroid = request.Get<int>(filter.Key);
                             if (situacaocadastroid != 0)
                                 filteredData = filteredData.Where(x => x.situacaocadastroid == situacaocadastroid);
@@ -133,7 +133,7 @@ namespace Cadastramento.Mvc.Controllers
                 u.placa,
                 u.renavam,                
                 u.datahorainclusao,
-                situacao = u.situacaocadastroid == 1 ? "Em Analise" : "Ativo"
+                u.situacaocadastro.descricao
             });
 
             var response = DataTablesResponse.Create(request, data.Count(), filteredData.Count(), lista);
@@ -143,7 +143,7 @@ namespace Cadastramento.Mvc.Controllers
         public JsonResult IndexGridCarroceria(IDataTablesRequest request)
         {
             var srv = new BaseService<carroceria>();
-            var data = srv.ObterTodos();
+            var data = srv.ObterTodos().Where(e=> e.situacaocadastroid == 1);
 
             var sortColumn = request.Columns.FirstOrDefault(x => x.Sort != null);
 
@@ -162,7 +162,7 @@ namespace Cadastramento.Mvc.Controllers
                             if (!string.IsNullOrEmpty(datahorainclusao))
                                 filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
                             break;
-                        case "situacaocadastroid":
+                        case "situacao":
                             var situacaocadastroid = request.Get<int>(filter.Key);
                             if (situacaocadastroid != 0)
                                 filteredData = filteredData.Where(x => x.situacaocadastroid == situacaocadastroid);
@@ -191,7 +191,7 @@ namespace Cadastramento.Mvc.Controllers
                 u.placa,
                 u.renavam,
                 u.datahorainclusao,
-                situacao = u.situacaocadastroid == 1 ? "Em Analise" : "Ativo"
+                u.situacaocadastro.descricao
             });
 
             var response = DataTablesResponse.Create(request, data.Count(), filteredData.Count(), lista);

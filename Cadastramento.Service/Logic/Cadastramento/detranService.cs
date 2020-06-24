@@ -49,7 +49,8 @@ namespace Cadastramento.Service.Logic.Cadastramento
                     motorista.cep = node[0]["endCep"].InnerText.Trim();
                     motorista.logradouro = node[0]["endRua"].InnerText.Trim();
                     motorista.bairro = node[0]["endBairro"].InnerText.Trim();
-                    motorista.uf = node[0]["endUf"].InnerText.Trim();
+                    motorista.uf = node[0]["endUf"].InnerText.Trim();                    
+                    motorista.situacaocadastroid = 2;
                     return motorista;
 
                 }
