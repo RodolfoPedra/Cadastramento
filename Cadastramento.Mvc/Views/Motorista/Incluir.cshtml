@@ -25,7 +25,7 @@
         </li>
     </ul>
 
-    @using (Html.BeginForm("Incluir", "Motorista", FormMethod.Post, new { @class = "kt-form", @id = "form" }))
+    @using (Html.BeginForm("Incluir", "Motorista", FormMethod.Post, new { @class = "kt-form", @id = "form", @enctype = "multipart/form-data" }))
     {
         @Html.HiddenFor(model => model.situacaocadastroid)
         <div class="section-form">
@@ -41,9 +41,8 @@
                     </div>
                 </div>
                 <hr />
-                <div class="col-md-12 section-buttons">
-                    <button type="button" class="btn btn-danger">Cancelar</button>
-                    <button type="button" class="btn btn-success" onclick="Obter_Dados_Click();">
+                <div class="col-md-12 section-buttons">                    
+                    <button type="button" class="btn btn-success" data-next="btnNext" onclick="Obter_Dados_Click();">
                         Proximo <span class="glyphicon glyphicon-arrow-right"></span>
                     </button>
                 </div>
@@ -82,8 +81,8 @@
                 </div>
                 <hr />
                 <div class="col-md-12 section-buttons">
-                    <button type="button" class="btn btn-danger">Cancelar</button>
-                    <button type="button" class="btn btn-success">Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
+                    <button type="button" class="btn btn-danger" data-back="btnBack">Voltar</button>
+                    <button type="button" class="btn btn-success" data-next="btnNext">Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
                 </div>
             </section>
 
@@ -128,8 +127,8 @@
                 <hr />
                 <div class="row">
                     <div class="col-md-12 section-buttons">
-                        <button type="button" class="btn btn-danger">Cancelar</button>
-                        <button type="button" class="btn btn-success">Proximo</button>
+                        <button type="button" class="btn btn-danger" data-back="btnBack"> Voltar</button>
+                        <button type="button" class="btn btn-success" data-next="btnNext">Proximo</button>
                     </div>
                 </div>
             </section>
@@ -141,48 +140,41 @@
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 @Html.Label("datavalidadecnh", "Validade CNH")
-                                @Html.TextBoxFor(model => model.datavalidadecnh, new { @class = "form-control", @placeholder = "Validade CNH" })
+                                @Html.TextBoxFor(model => model.datavalidadecnh, new { @class = "form-control", @placeholder = "Validade" })
                             </div>
                             <div class="form-group col-md-5">
                                 @Html.Label("dataemissaocnh", "Emissão CNH")
-                                @Html.TextBoxFor(model => model.dataemissaocnh, new { @class = "form-control", @placeholder = "Emissão CNH" })
+                                @Html.TextBoxFor(model => model.dataemissaocnh, new { @class = "form-control", @placeholder = "Emissão" })
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 @Html.Label("categoriacnh", "Categoria CNH")
-                                @Html.TextBoxFor(model => model.categoriacnh, new { @class = "form-control", @placeholder = "Categoria CNH" })
+                                @Html.TextBoxFor(model => model.categoriacnh, new { @class = "form-control", @placeholder = "Categoria" })
                             </div>
                             <div class="form-group col-md-5">
                                 @Html.Label("ufcnh", "UF CNH")
                                 @Html.TextBoxFor(model => model.ufcnh, new { @class = "form-control", @placeholder = "UF CNH" })
                             </div>
                         </div>
-                        <div class="form-row" style="text-align: right;">
-                            <div class="form-group col-md-10">
-                                <button class="btn btn-success">
-                                    Anexar Documento
-                                </button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Arquivo</label>
+                                    <div></div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="file" name="file" data-max-size="15728640">
+                                        <label class="custom-file-label" for="file">Escolha um arquivo...</label>
+                                    </div>
+                                    @*<span style="color: red; font-size: 12px;">São aceitos somente arquivos no formato PDF ou Word e tamanho máximo de 15 MB</span>*@
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-row">
-                            <div class="form-group col-md-10">
-                                <input type="file" name="file" class="form-control" />
-                                Imagem é obrigatório.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card profile-card-2" style="width: 410px; height: 535px;">
-                        <div class="card-img-block">
-                            <img [src]="documentoURL" [style.width.px]="imagemLargura" [style.margin.px]="imagemMargem" class="img-fluid" style="cursor: pointer;">
-                        </div>
-                    </div>
+                    </div>                                   
                 </div>
                 <div class="form-row">
                     <div class="col-md-12 section-buttons">
-                        <button type="button" class="btn btn-danger" onclick="window.location='@Url.Content("~/Motorista/Incluir")'; return false;"> Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-back="btnBack"> Voltar</button>
                         <button type="button" class="btn btn-success" onclick="Salvar_Click();" style="margin-left: 5px;">Salvar</button>
                     </div>
                 </div>
@@ -213,7 +205,7 @@
 
             $.post('@Url.Action("ObterDetran", "Motorista")', { "cpf": cpf, "cnh": cnh },
                 function (data) {
-                    if (data.Record.length != 0) {
+                    if (data.Result == "OK" && data.Record.length != 0) {
                         $("#cpf").val(data.Record.cpf);
                         $("#cnh").val(data.Record.cnh);
                         $("#nome").val(data.Record.nome);
@@ -239,8 +231,7 @@
 
                         $("#cpf").val(cpf);
                         $("#cnh").val(cnh);
-                        mensagemAviso("Favor preencher todos dados manualmente.");                       
-                        return;
+                        mensagemAviso("Favor preencher todos dados manualmente.");                                               
                     }
                 });
         }

@@ -2,6 +2,9 @@ export default function descriptionAnimal() {
     const tabMenu = document.querySelectorAll('.js-tab li');
     const boxWizard = document.querySelectorAll('.box-wizard');
     const tabConteudo = document.querySelectorAll('[data-anime]');
+    const btnNext = document.querySelectorAll('[data-next]');
+    const btnBack = document.querySelectorAll('[data-back]');
+
     tabConteudo[0].classList.add('ativo');
 
     function actionTab(index){
@@ -31,12 +34,21 @@ export default function descriptionAnimal() {
         }
     }
     
-    tabMenu.forEach((li, index) => {
-        li.addEventListener('click', () => {
-            actionTab(index);
-            removeTab(index);   
+    btnNext.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            actionTab(index + 1);
+            removeTab(index + 1);
         })
     });
+
+    btnBack.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            actionTab(index);
+            removeTab(index);
+        })
+    });
+
+
 }
 
 descriptionAnimal();

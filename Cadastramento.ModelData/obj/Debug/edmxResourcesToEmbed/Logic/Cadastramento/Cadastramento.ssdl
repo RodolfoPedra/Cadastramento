@@ -266,6 +266,9 @@
     <Property Name="datahoraalteracao" Type="datetime" />
     <Property Name="usuarioidinclusao" Type="int" />
     <Property Name="datahorainclusao" Type="datetime" />
+    <Property Name="arquivo" Type="varbinary(max)" />
+    <Property Name="nomearquivo" Type="varchar" MaxLength="250" />
+    <Property Name="contenttype" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="municipio">
     <Key>

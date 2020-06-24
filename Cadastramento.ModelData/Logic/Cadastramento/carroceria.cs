@@ -58,6 +58,9 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public Nullable<System.DateTime> datahoraalteracao { get; set; }
         public Nullable<int> usuarioidinclusao { get; set; }
         public System.DateTime datahorainclusao { get; set; }
+        public byte[] arquivo { get; set; }
+        public string nomearquivo { get; set; }
+        public string contenttype { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<carroceria> carroceria1 { get; set; }

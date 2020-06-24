@@ -48,13 +48,13 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public virtual DbSet<usuariomenuacaoperfilpermissao> usuariomenuacaoperfilpermissao { get; set; }
         public virtual DbSet<usuariomenuperfilpermissao> usuariomenuperfilpermissao { get; set; }
         public virtual DbSet<usuarioperfil> usuarioperfil { get; set; }
-        public virtual DbSet<carroceria> carroceria { get; set; }
         public virtual DbSet<situacaocadastro> situacaocadastro { get; set; }
         public virtual DbSet<tipocarga> tipocarga { get; set; }
         public virtual DbSet<tipocarroceria> tipocarroceria { get; set; }
         public virtual DbSet<tipoveiculo> tipoveiculo { get; set; }
-        public virtual DbSet<veiculo> veiculo { get; set; }
         public virtual DbSet<motorista> motorista { get; set; }
         public virtual DbSet<analise> analise { get; set; }
+        public virtual DbSet<carroceria> carroceria { get; set; }
+        public virtual DbSet<veiculo> veiculo { get; set; }
     }
 }

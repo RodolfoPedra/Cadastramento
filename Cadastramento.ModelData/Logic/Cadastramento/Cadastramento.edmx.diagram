@@ -48,12 +48,16 @@
         <AssociationConnector Association="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_usuariomenu" ManuallyRouted="false" />
         <AssociationConnector Association="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" ManuallyRouted="false" />
         <AssociationConnector Association="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="CadastramentoModel.carroceria" Width="1.5" PointX="20.625" PointY="40.625" />
         <EntityTypeShape EntityType="CadastramentoModel.situacaocadastro" Width="1.5" PointX="15.375" PointY="43.875" />
         <EntityTypeShape EntityType="CadastramentoModel.tipocarga" Width="1.5" PointX="18.375" PointY="37.625" />
         <EntityTypeShape EntityType="CadastramentoModel.tipocarroceria" Width="1.5" PointX="18.375" PointY="50.125" />
         <EntityTypeShape EntityType="CadastramentoModel.tipoveiculo" Width="1.5" PointX="21.375" PointY="37" />
-        <EntityTypeShape EntityType="CadastramentoModel.veiculo" Width="1.5" PointX="23.625" PointY="41.125" />
+        <EntityTypeShape EntityType="CadastramentoModel.motorista" Width="1.5" PointX="17.625" PointY="42" />
+        <AssociationConnector Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" />
+        <EntityTypeShape EntityType="CadastramentoModel.analise" Width="1.5" PointX="17.625" PointY="54.125" />
+        <AssociationConnector Association="CadastramentoModel.FK_analise_situacaocadastro" />
+        <EntityTypeShape EntityType="CadastramentoModel.carroceria" Width="1.5" PointX="25.875" PointY="40" />
+        <EntityTypeShape EntityType="CadastramentoModel.veiculo" Width="1.5" PointX="23.625" PointY="37.5" />
         <AssociationConnector Association="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId" />
         <AssociationConnector Association="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" />
         <AssociationConnector Association="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" />
@@ -62,10 +66,6 @@
         <AssociationConnector Association="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" />
         <AssociationConnector Association="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" />
         <AssociationConnector Association="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" />
-        <EntityTypeShape EntityType="CadastramentoModel.motorista" Width="1.5" PointX="17.625" PointY="42" />
-        <AssociationConnector Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" />
-        <EntityTypeShape EntityType="CadastramentoModel.analise" Width="1.5" PointX="17.625" PointY="54.125" />
-        <AssociationConnector Association="CadastramentoModel.FK_analise_situacaocadastro" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -570,6 +570,9 @@
     <EntitySetMapping Name="motorista">
       <EntityTypeMapping TypeName="CadastramentoModel.motorista">
         <MappingFragment StoreEntitySet="motorista">
+          <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+          <ScalarProperty Name="nomearquivo" ColumnName="nomearquivo" />
+          <ScalarProperty Name="arquivo" ColumnName="arquivo" />
           <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
           <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
           <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />

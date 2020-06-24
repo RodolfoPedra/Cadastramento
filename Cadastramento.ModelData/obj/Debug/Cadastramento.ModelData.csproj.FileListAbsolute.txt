@@ -112,6 +112,7 @@ C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\bin\Debug\pt-br\
 C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\bin\Debug\pt-br\System.Web.WebPages.resources.dll
 C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\bin\Debug\pt-br\System.Web.WebPages.Deployment.resources.dll
 C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\bin\Debug\pt-br\System.Web.WebPages.Razor.resources.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\obj\Debug\Cadastramento.ModelData.csprojAssemblyReference.cache
 C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\obj\Debug\Cadastramento.ModelData.csproj.CoreCompileInputs.cache
 C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\obj\Debug\Cadastramento.ModelData.csproj.CopyComplete
 C:\Projetos\Cadastramento\Cadastramento\Cadastramento.ModelData\obj\Debug\Cadastramento.ModelData.dll

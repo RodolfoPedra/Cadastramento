@@ -34,6 +34,11 @@ namespace Cadastramento.Service.Logic.Cadastramento
 
                     XmlNodeList node = doc.GetElementsByTagName("dados");
 
+                    if(doc.InnerText.Contains("NAO ENCONTRADO")) 
+                    {
+                        return null;
+                    }
+
                     string dataemissao = node[0]["dtEmissao"].InnerText;
                     string datavalidadecnh = node[0]["dtVal"].InnerText;
                     var motorista = new motorista();

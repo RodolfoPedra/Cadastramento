@@ -1125,6 +1125,9 @@
     <Property Name="usuarioidinclusao" Type="Int32" />
     <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
     <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="motorista" ToRole="situacaocadastro" />
+    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId">
     <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">

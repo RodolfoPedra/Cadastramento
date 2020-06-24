@@ -9,7 +9,9 @@ using Cadastramento.Util.DataTables.DataTables.AspNet.Core;
 using Cadastramento.Util.DataTables.DataTables.AspNet.Mvc5;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Cadastramento.Mvc.Controllers
@@ -30,11 +32,16 @@ namespace Cadastramento.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Incluir(motorista model)
+        public ActionResult Incluir(motorista model, HttpPostedFileBase file)
         {
             try
             {
                 var srv = new BaseService<motorista>();
+
+                var b = new BinaryReader(file.InputStream);
+                model.arquivo = b.ReadBytes(file.ContentLength);
+                model.contenttype = file.ContentType;
+                model.nomearquivo = file.FileName;
 
                 model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;
                 model.datahorainclusao = DateTime.Now;
@@ -48,9 +55,13 @@ namespace Cadastramento.Mvc.Controllers
                 srv.Incluir(model);
                 srv.Salvar(SessaoUsuario.Sessao.login);
 
-                EnviarMensagem("Operação realizada com sucesso.", TipoMensagem.Verde);
+                model.protocolo = model.motoristaid + '/' + DateTime.Now.Year.ToString();
+                
+                srv.Salvar(SessaoUsuario.Sessao.login);
 
-                return RedirectToAction("Index");
+                EnviarMensagem("Operação realizada com sucesso. Protocolo Nº: "+ model.protocolo, TipoMensagem.Verde);
+
+                return RedirectToAction("Incluir");
             }
             catch (Exception ex)
             {
@@ -138,6 +149,10 @@ namespace Cadastramento.Mvc.Controllers
         {
             var srv = new detranService();
             var obj = srv.GetDadosCNH(cpf, cnh);
+
+            if(obj == null) {
+                return Json(new { Result = "Error"}, JsonRequestBehavior.AllowGet);
+            }
 
             return Json(new { Result = "OK", Record = obj }, JsonRequestBehavior.AllowGet);
         }

@@ -234,6 +234,22 @@ namespace Cadastramento.Mvc.Controllers
             return View(obj);
         }
 
+        public FileResult DownloadArquivoMotorista(int id)
+        {
+            var arq = new BaseService<motorista>().Obter(id);
+            return File(arq.arquivo, arq.contenttype.ToLower(), arq.nomearquivo.ToLower());
+        }
+        public FileResult DownloadArquivoVeiculo(int id)
+        {
+            var arq = new BaseService<motorista>().Obter(id);
+            return File(arq.arquivo, arq.contenttype.ToLower(), arq.nomearquivo.ToLower());
+        }
+        public FileResult DownloadArquivoCarroceria(int id)
+        {
+            var arq = new BaseService<motorista>().Obter(id);
+            return File(arq.arquivo, arq.contenttype.ToLower(), arq.nomearquivo.ToLower());
+        }
+        
 
     }
 }

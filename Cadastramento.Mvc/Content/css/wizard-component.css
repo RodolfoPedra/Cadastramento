@@ -206,8 +206,7 @@ body {
     color: #000;
   }
 
-.js-tab li {
-    cursor: pointer;
+.js-tab li {    
     display: inline-block;
 }
 

@@ -42,6 +42,9 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public Nullable<System.DateTime> datahoraalteracao { get; set; }
         public Nullable<int> usuarioidinclusao { get; set; }
         public Nullable<System.DateTime> datahorainclusao { get; set; }
+        public byte[] arquivo { get; set; }
+        public string nomearquivo { get; set; }
+        public string contenttype { get; set; }
     
         public virtual situacaocadastro situacaocadastro { get; set; }
     }

@@ -55,7 +55,7 @@
                     @Html.TextBoxFor(model => model.cnh, new { @class = "form-control", @placeholder = "CNH" })
                 </div>
             </div>
-        </div>       
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-      
+
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -96,7 +96,7 @@
                     @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "E-mail" })
                 </div>
             </div>
-        </div>       
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -124,7 +124,7 @@
                     @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
                 </div>
             </div>
-        </div>       
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
@@ -133,6 +133,14 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" onclick="Download();"><i class="fa fa-save"></i> Visualizar Documento</button>        
+                </div>
+            </div>
+        </div>
+        
     </div>
             <div class="kt-portlet__foot">
                 <div class="kt-form__actions">
@@ -148,6 +156,12 @@
 
 @section Scripts{
     <script>
+
+        function Download() {
+
+            window.location.href = content + "Analise/DownloadArquivoMotorista?id=" + $("#motoristaid").val();
+        }
+
         function Salvar_Click() {
             if (!verificaValor($("#descricao").val())) {
                 mensagemAviso("O campo Descrição é obrigatório");
