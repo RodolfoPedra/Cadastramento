@@ -1,0 +1,67 @@
+﻿<div class="modal fade" id="modalMedia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-dark" id="btnSalvarModalMedia">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalGrande" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-dark" id="btnSalvarModalGrande">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEscolhaFormato" tabindex="-1" role="dialog" aria-labelledby="modalEscolhaFormatoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="modalEscolhaFormatoLabel">Escolha o formato do arquivo:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <figure style="text-align:center">
+                            <a href="#" onclick="Imprimir('pdf')" class="abutton">
+                                <image src="@Url.Content("~/Content/img/TipoRelatorio/pdf-download-icon.jpg")" style="width:50%;"></image>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="col-6">
+                        <figure style="text-align:center">
+                            <a href="#" onclick="Imprimir('xls')" class="abutton">
+                                <image src="@Url.Content("~/Content/img/TipoRelatorio/excel-download-icon.jpg")" style="width:50%;"></image>
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

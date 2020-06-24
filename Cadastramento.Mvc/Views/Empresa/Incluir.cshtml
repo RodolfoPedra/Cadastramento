@@ -1,0 +1,196 @@
+﻿@model Cadastramento.ModelData.Logic.Cadastramento.empresa
+@{
+    ViewBag.Title = "..:: Cadastramento | Empresa - Incluir ::..";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- begin:: Subheader -->
+<div class="kt-subheader kt-grid__item" id="kt_subheader">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-head__title">
+                Empresa
+            </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+        </div>
+    </div>
+</div>
+<!-- end:: Subheader -->
+
+<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    Incluir
+                </h3>
+            </div>
+        </div>
+        <!--begin::Form-->
+        @using (Html.BeginForm("Incluir", "Empresa", FormMethod.Post, new { @class = "kt-form", @id = "form" }))
+        {
+            <div class="kt-portlet__body">
+                <ul class="nav nav-tabs  nav-tabs-line nav-tabs-line-brand" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#tabCadastro" role="tab"><i class="fa fa-building"></i> Cadastro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabContato" role="tab"><i class="fa fa-user"></i> Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tabProjetos" role="tab"><i class="fa fa-file"></i> Projetos</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tabCadastro" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("cnpj", "CNPJ")
+                                    @Html.EditorFor(model => model.cnpj, "CNPJ", new { htmlAttributes = new { @placeholder = "CNPJ" } })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("inscricaoestadual", "Inscrição Estadual")
+                                    @Html.EditorFor(model => model.inscricaoestadual, "IE", new { htmlAttributes = new { @placeholder = "Inscrição Estadual" } })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("dataconstituicao", "Data Constituição")
+                                    @Html.EditorFor(model => model.dataconstituicao, "Data", new { htmlAttributes = new { @placeholder = "Data Constituição" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.Label("razaosocial", "Razão Social")
+                                    @Html.TextBoxFor(model => model.razaosocial, new { @class = "form-control", @placeholder = "Razão Social" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("telefone", "Telefone")
+                                    @Html.EditorFor(model => model.telefone, "Telefone9Digitos", new { htmlAttributes = new { @placeholder = "Telefone" } })
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    @Html.Label("email", "E-mail")
+                                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "E-mail" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Endereço</h5>
+                                <hr />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("cep", "CEP")
+                                    @Html.EditorFor(model => model.cep, "CEP", new { htmlAttributes = new { @placeholder = "CEP" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    @Html.Label("logradouro", "Logradouro")
+                                    @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control", @placeholder = "Logradouro" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.Label("bairro", "Bairro")
+                                    @Html.TextBoxFor(model => model.bairro, new { @class = "form-control", @placeholder = "Bairro" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    @Html.Label("uf", "UF")
+                                    @Html.DropDownListFor(model => model.uf, ViewBag.UfLista as SelectList, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    @Html.Label("municipioid", "Município")
+                                    @Html.DropDownListFor(model => model.municipioid, new SelectList(Enumerable.Empty<object>()), new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.Label("objetivosocial", "Objetivo Social")
+                                    @Html.TextAreaFor(model => model.objetivosocial, new { @class = "form-control", @rows = "3", @placeholder = "Objetivo Social" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.Label("ramoatividade", "Ramo de Atividade")
+                                    @Html.TextAreaFor(model => model.ramoatividade, new { @class = "form-control", @rows = "3", @placeholder = "Ramo de Atividade" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.Label("principaisprodutos", "Principais Produtos")
+                                    @Html.TextAreaFor(model => model.principaisprodutos, new { @class = "form-control", @rows = "3", @placeholder = "Principais Produtos" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabContato" role="tabpanel">
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently.
+                    </div>
+                    <div class="tab-pane" id="tabProjetos" role="tabpanel">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </div>
+                </div>
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <button type="button" class="btn btn-dark" onclick="Salvar_Click();"><i class="fa fa-save"></i> Salvar</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='@Url.Content("~/Empresa/")'; return false;"><i class="fa fa-arrow-left"></i> Voltar</button>
+                </div>
+            </div>
+        }
+        <!--end::Form-->
+    </div>
+    <!--end::Portlet-->
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#cnpj").focus();
+        });
+
+        function Salvar_Click() {
+            if (!verificaValor($("#descricao").val())) {
+                mensagemAviso("O campo Descrição é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#situacao").val())) {
+                mensagemAviso("O campo Situação é obrigatório");
+                return;
+            }
+
+            $("#form").submit();
+        }
+    </script>
+}

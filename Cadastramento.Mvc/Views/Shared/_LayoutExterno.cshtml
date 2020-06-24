@@ -1,0 +1,97 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="@Url.Content("~/Scripts/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/fontawesome/css/all.min.css")" rel="stylesheet" type="text/css" />    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link href="@Url.Content("~/Content/css/layout_iagro.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="agrupaTopo">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggler navbar-toggler-right" data-target="#navCollapse" data-toggle="collapse"
+                            type="button">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-bar"></span><span class="icon-bar">
+                        </span><span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navCollapse">
+                    <ul class="navbar-nav ml-auto nav">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="motorista">Motorista</a>
+                        </li>
+                        <li class="divider">/</li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="veiculo">Veículo</a>
+                        </li>
+                        <li class="divider">/</li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="carroceria">Carroceria</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container" style="position: relative;">
+            @RenderBody()
+            @Html.Partial("_WizardComponet")
+        </div>
+        <div class="jumbotron">
+            <div class="container">
+                <div class="iconeTopo">
+                </div>
+                <div class="descricaoTopo">
+                    <h1 class="display-3">Serviços Públicos</h1>
+                    <p>Agência Estadual de Defesa Sanitária Animal e Vegetal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <div class="container clear">
+                <div class="logos">
+                    <a href="http://www.iagro.ms.gov.br/" style="margin-right: 40px" target="_blank">
+                        <img imagepathdirective="" src="~/Content/img/logo-iagro-rodape.png">
+                    </a>
+                    <a href="http://www.ms.gov.br/" target="_blank">
+                        <img imagepathdirective="" src="~/Content/img/logo-governo.png">
+                    </a>
+                </div>
+                <div class="contato">
+                    <p>
+                        <strong>Contato</strong>
+                        <i aria-hidden="true" class="fa fa-envelope"></i>E-mail: suporte-iagro@iagro.ms.gov.br<br>
+                        <i aria-hidden="true" class="fa fa-phone"></i> Telefone: 0800 647 6713<br>
+                        <a class="termoUso" href="http://www.iagro.ms.gov.br/politica-de-privacidade-sistemas-e-banco-de-dados/" target="_blank">Política de privacidade</a><br>
+                        <a class="termoUso" href="http://www.iagro.ms.gov.br/termos-e-condicoes-de-uso-sistemas-servicos-e-aplicativos-da-iagro/" target="_blank">Termos e condições de uso</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container clear">
+                <div class="logos sgi">
+                    <a href="http://www.sgi.ms.gov.br/" target="_blank">
+                        <img imagepathdirective="" src="~/Content/img/logo-ucqi.png">
+                    </a>
+                    <a href="http://www.sgi.ms.gov.br/" target="_blank">
+                        <img imagepathdirective="" src="~/Content/img/logo-sgi.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+

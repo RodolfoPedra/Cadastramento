@@ -1,0 +1,23 @@
+﻿@model decimal?
+@{
+    Layout = "";
+
+    string id = ViewData.TemplateInfo.HtmlFieldPrefix;
+
+    object valor = ViewData.TemplateInfo.FormattedModelValue == ViewData.ModelMetadata.Model
+        ? string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:0.00}", ViewData.ModelMetadata.Model)
+        : ViewData.TemplateInfo.FormattedModelValue;
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+    htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control";
+    htmlAttributes["style"] = "text-align: right;";
+    htmlAttributes["disabled"] = "disabled";
+}
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#@id").maskMoney({
+            prefix: 'R$ ', allowNegative: true, thousands: '.', decimal: ',', affixesStay: false, allowZero: true
+        });
+    });
+</script>
+@Html.TextBox("", valor, htmlAttributes)

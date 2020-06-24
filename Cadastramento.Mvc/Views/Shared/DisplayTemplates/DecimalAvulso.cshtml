@@ -1,0 +1,21 @@
+﻿@model decimal?
+@{
+    Layout = "";
+
+    string id = ViewData.TemplateInfo.HtmlFieldPrefix;
+
+    int casasDecimais = Convert.ToInt16(ViewData["CasasDecimais"] ?? 2);
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+    htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control";
+    htmlAttributes["placeholder"] = "Valor";
+    htmlAttributes["style"] = "text-align: right;";
+    htmlAttributes["disabled"] = "disabled";
+}
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#@id").maskMoney({
+            allowNegative: false, thousands: ".", decimal: ",", affixesStay: false, allowZero: true, precision: @casasDecimais});
+    });
+</script>
+@Html.TextBox("", Model.HasValue ? (object) Model.Value : null, htmlAttributes)

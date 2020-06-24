@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{669289F0-4F01-4AB0-9306-4A2D674A33CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cadastramento.ModelData</RootNamespace>
+    <AssemblyName>Cadastramento.ModelData</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Mysql\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Mysql\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Fabric.Plugin, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Mysql\MySql.Fabric.Plugin.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Mysql\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Logic\Cadastramento\analise.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\auditlog.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\auditlogdetail.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\auditlogexcecao.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\Cadastramento.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cadastramento.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\Cadastramento.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\Cadastramento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cadastramento.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\CadastramentoEntities.cs" />
+    <Compile Include="Logic\Cadastramento\cadeiaprodutiva.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\carroceria.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\consideracao.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\consultor.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\empresa.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\empresaprojeto.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\logacesso.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\menuacao.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\motorista.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\municipio.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\perfil.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\processo.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\processosituacao.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\processotipo.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\situacaocadastro.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\sysdiagrams.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\tipocarga.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\tipocarroceria.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\tipoincentivo.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\tipoveiculo.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\unidademedida.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\usuario.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\usuariomenu.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\usuariomenuacao.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\usuariomenuacaoperfilpermissao.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\usuariomenuperfilpermissao.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\usuarioperfil.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\Cadastramento\veiculo.cs">
+      <DependentUpon>Cadastramento.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\ModelBinder\DecimalModelBinder.cs" />
+    <Compile Include="Logic\ModelBinder\IntModelBinder.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Attributes\SkipTrackingAttribute.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Attributes\TrackChangesAttribute.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\AdditionLogDetailsAuditor.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\ChangeLogDetailsAuditor.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\Comparators\Comparator.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\Comparators\ComparatorFactory.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\Comparators\DateComparator.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\Comparators\NullableComparator.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\Comparators\NullableDateComparator.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\Comparators\StringComparator.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\Comparators\ValueTypeComparator.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\DeletetionLogDetailsAuditor.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Auditors\LogAuditor.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\CommonTracker.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\DbMapping.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\EntityTracker.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\EntityTrackingConfiguration.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\ExceptResponse.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\GlobalTrackingConfig.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\OverrideTrackingResponse.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\PropertyTrackingConfiguerationKey.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\PropertyTrackingConfiguration.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\TrackAllResponse.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\TrackingConfigurationPriority.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\TrackingConfigurationValue.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Configuration\TrackingDataStore.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Extensions\EntityTypeConfigurationExtensions.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Extensions\TypeExtensions.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Interfaces\IDbContext.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Interfaces\ILogDetailsAuditor.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Interfaces\ITrackerContext.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Interfaces\IUnTrackable.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Models\EventType.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Tools\LogDataMigration.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Tools\MigrationJobStatus.cs" />
+    <Compile Include="Logic\TrackerEnabledDbContext\Tools\NameChangedEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Logic\Cadastramento\Cadastramento.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Cadastramento.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Logic\Cadastramento\Cadastramento.edmx.diagram">
+      <DependentUpon>Cadastramento.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Logic\Cadastramento\Cadastramento.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cadastramento.edmx</DependentUpon>
+      <LastGenOutput>Cadastramento.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Logic\Cadastramento\Cadastramento.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cadastramento.edmx</DependentUpon>
+      <LastGenOutput>Cadastramento.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

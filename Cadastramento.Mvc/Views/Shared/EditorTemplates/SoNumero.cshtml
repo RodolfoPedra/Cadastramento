@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "";
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+
+    string valor = string.Empty;
+
+    if (ViewData.ModelMetadata.Model != null)
+    {
+        valor = ViewData.ModelMetadata.Model.ToString();
+    }
+
+    htmlAttributes["onkeypress"] += "return customNumeric(event, '');";
+
+    htmlAttributes["maxlength"] = htmlAttributes["maxlength"] ?? "11";
+    htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control text-right";
+}
+@Html.TextBox("", valor, "{0:N0}", htmlAttributes)

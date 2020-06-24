@@ -1,0 +1,26 @@
+﻿@using System.Web.Routing;
+@model System.DateTime?
+@{
+    Layout = "";
+
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+
+    string valor = null;
+    if (ViewData.ModelMetadata.Model != null)
+    {
+        valor = string.Format("{0:dd/MM/yyyy}", ViewData.ModelMetadata.Model);
+    }
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+
+    htmlAttributes["class"] = "form-control";
+    htmlAttributes["disabled"] = "disabled";
+}
+<div class="input-group date">
+    @Html.TextBox("", string.Format("{0:dd/MM/yyyy}", valor), htmlAttributes)
+    <div class="input-group-append">
+        <span class="input-group-text">
+            <i class="la la-calendar"></i>
+        </span>
+    </div>
+</div>

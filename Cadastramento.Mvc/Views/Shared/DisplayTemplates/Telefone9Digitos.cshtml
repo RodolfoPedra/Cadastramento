@@ -1,0 +1,33 @@
+﻿@model string
+@{
+    Layout = "";
+
+    string
+        id = ViewData.TemplateInfo.HtmlFieldPrefix,
+        valor = null;
+
+    if (ViewData.ModelMetadata.Model != null)
+    {
+        valor = ViewData.ModelMetadata.Model.ToString();
+    }
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+
+    htmlAttributes["style"] = "width: 100%;";
+    htmlAttributes["disabled"] = "disabled";
+    htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control";
+}
+<script>
+    jQuery(document).ready(function () {
+        jQuery('#@id').focusout(function () { //Função para implementar o nono digito de telefones
+
+            var
+                element = jQuery(this).unmask(),
+                phone = element.val().replace(/\D/g, '');
+
+            element.mask(phone.length > 10 ? "(99) 99999-999?9" : "(99) 9999-9999?9");
+
+        }).trigger('focusout');
+    });
+</script>
+@Html.TextBox("", valor, htmlAttributes)

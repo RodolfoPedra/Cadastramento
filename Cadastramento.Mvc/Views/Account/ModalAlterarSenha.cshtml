@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+
+<script>
+    $(document).ready(function () {
+        $("#btnSalvarModalMedia").unbind("click").click(function (e) {
+            e.preventDefault();
+
+            var atual = $("#formAlterarSenha #senhaatual").val();
+            var nova = $("#formAlterarSenha #novasenha").val();
+            var novaConfirmacao = $("#formAlterarSenha #novasenhaconfirmar").val();
+
+            if (!verificaValor(atual)) {
+                mensagemAviso("Informe sua senha atual");
+                return;
+            }
+            if (!verificaValor(nova)) {
+                mensagemAviso("Informe sua nova senha");
+                return;
+            }
+            if (!verificaValor(novaConfirmacao)) {
+                mensagemAviso("Confirme sua nova senha");
+                return;
+            }
+
+            var obj = {
+                senhaAtual: atual,
+                novaSenha: nova,
+                novaSenhaConfirmacao: novaConfirmacao
+            };
+
+            $.post(content + "Account/AlterarSenha", obj, function (data) {
+                if (data.Mensagem == "OK") {
+                    mensagemSucesso("Operação realizada com sucesso");
+                    $("#modalMedia").modal('hide');
+                }
+                else if (data.Mensagem == "SENHA_ATUAL") {
+                    mensagemAviso("A senha atual informada esta incorreta.");
+                }
+                else if (data.Mensagem == "NOVA_SENHA") {
+                    mensagemAviso("A nova senha informada não confere com a digitada no campo de confirmação.");
+                }
+                else {
+                    mensagemErro("Ocorreu um erro ao tentar realizar a operação desejada.");
+                }
+            });
+        });
+    });
+</script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "formAlterarSenha" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.Label("senhaatual", "Digite a senha atual")
+                @Html.TextBox("senhaatual", null, new { @class = "form-control", @type = "password" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.Label("novasenha", "Digite a nova senha")
+                @Html.TextBox("novasenha", null, new { @class = "form-control", @type = "password" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.Label("novasenhaconfirmar", "Digite novamente a nova senha")
+                @Html.TextBox("novasenhaconfirmar", null, new { @class = "form-control", @type = "password" })
+            </div>
+        </div>
+    </div>
+}

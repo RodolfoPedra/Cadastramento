@@ -1,0 +1,78 @@
+﻿@model Cadastramento.ModelData.Logic.Cadastramento.cadeiaprodutiva
+@{
+    ViewBag.Title = "..:: Cadastramento | Cadeia Produtiva - Incluir ::..";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- begin:: Subheader -->
+<div class="kt-subheader kt-grid__item" id="kt_subheader">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-head__title">
+                Cadeia Produtiva
+            </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+        </div>
+    </div>
+</div>
+<!-- end:: Subheader -->
+
+<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    Incluir
+                </h3>
+            </div>
+        </div>
+        <!--begin::Form-->
+        @using (Html.BeginForm("Incluir", "CadeiaProdutiva", FormMethod.Post, new { @class = "kt-form", @id = "form" }))
+        {
+            <div class="kt-portlet__body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.Label("descricao", "Descrição")
+                            @Html.TextBoxFor(model => model.descricao, new { @class = "form-control", @placeholder = "Descrição" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("situacao", "Situação")
+                            @Html.DropDownListFor(model => model.situacao, ViewBag.SituacaoLista as SelectList, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <button type="button" class="btn btn-dark" onclick="Salvar_Click();"><i class="fa fa-save"></i> Salvar</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='@Url.Content("~/CadeiaProdutiva/")'; return false;"><i class="fa fa-arrow-left"></i> Voltar</button>
+                </div>
+            </div>
+        }
+        <!--end::Form-->
+    </div>
+    <!--end::Portlet-->
+</div>
+
+@section Scripts{
+    <script>
+        function Salvar_Click() {
+            if (!verificaValor($("#descricao").val())) {
+                mensagemAviso("O campo Descrição é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#situacao").val())) {
+                mensagemAviso("O campo Situação é obrigatório");
+                return;
+            }
+
+            $("#form").submit();
+        }
+    </script>
+}

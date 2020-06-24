@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CadastramentoModelStoreContainer" CdmEntityContainer="CadastramentoEntities">
+    <EntitySetMapping Name="analise">
+      <EntityTypeMapping TypeName="CadastramentoModel.analise">
+        <MappingFragment StoreEntitySet="analise">
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+          <ScalarProperty Name="situacaoid" ColumnName="situacaoid" />
+          <ScalarProperty Name="datahoraanalise" ColumnName="datahoraanalise" />
+          <ScalarProperty Name="carroceriaid" ColumnName="carroceriaid" />
+          <ScalarProperty Name="veiculoid" ColumnName="veiculoid" />
+          <ScalarProperty Name="motoristaid" ColumnName="motoristaid" />
+          <ScalarProperty Name="analiseid" ColumnName="analiseid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="auditlog">
+      <EntityTypeMapping TypeName="CadastramentoModel.auditlog">
+        <MappingFragment StoreEntitySet="auditlog">
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+          <ScalarProperty Name="TypeFullName" ColumnName="TypeFullName" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="EventDateUTC" ColumnName="EventDateUTC" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AuditLogId" ColumnName="AuditLogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="auditlogdetail">
+      <EntityTypeMapping TypeName="CadastramentoModel.auditlogdetail">
+        <MappingFragment StoreEntitySet="auditlogdetail">
+          <ScalarProperty Name="AuditLogId" ColumnName="AuditLogId" />
+          <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+          <ScalarProperty Name="OriginalValue" ColumnName="OriginalValue" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="auditlogexcecao">
+      <EntityTypeMapping TypeName="CadastramentoModel.auditlogexcecao">
+        <MappingFragment StoreEntitySet="auditlogexcecao">
+          <ScalarProperty Name="EntityTypeName" ColumnName="EntityTypeName" />
+          <ScalarProperty Name="AuditLogExcecaoId" ColumnName="AuditLogExcecaoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cadeiaprodutiva">
+      <EntityTypeMapping TypeName="CadastramentoModel.cadeiaprodutiva">
+        <MappingFragment StoreEntitySet="cadeiaprodutiva">
+          <ScalarProperty Name="cadeiaprodutivaidsistemaantigo" ColumnName="cadeiaprodutivaidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="cadeiaprodutivaid" ColumnName="cadeiaprodutivaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carroceria">
+      <EntityTypeMapping TypeName="CadastramentoModel.carroceria">
+        <MappingFragment StoreEntitySet="carroceria">
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="numerocompartimento" ColumnName="numerocompartimento" />
+          <ScalarProperty Name="compartimentoid" ColumnName="compartimentoid" />
+          <ScalarProperty Name="veiculoid" ColumnName="veiculoid" />
+          <ScalarProperty Name="documentourl" ColumnName="documentourl" />
+          <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
+          <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
+          <ScalarProperty Name="statuscarroceria" ColumnName="statuscarroceria" />
+          <ScalarProperty Name="empresamonitoramento" ColumnName="empresamonitoramento" />
+          <ScalarProperty Name="tipomonitoramento" ColumnName="tipomonitoramento" />
+          <ScalarProperty Name="monitorado" ColumnName="monitorado" />
+          <ScalarProperty Name="lotacaomaxima" ColumnName="lotacaomaxima" />
+          <ScalarProperty Name="tipocargaid" ColumnName="tipocargaid" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+          <ScalarProperty Name="cpfcnpj" ColumnName="cpfcnpj" />
+          <ScalarProperty Name="nomeproprietariotransportadora" ColumnName="nomeproprietariotransportadora" />
+          <ScalarProperty Name="anomodelo" ColumnName="anomodelo" />
+          <ScalarProperty Name="anofabricacao" ColumnName="anofabricacao" />
+          <ScalarProperty Name="corpredominante" ColumnName="corpredominante" />
+          <ScalarProperty Name="categoriaantt" ColumnName="categoriaantt" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="cidadelicenciamento" ColumnName="cidadelicenciamento" />
+          <ScalarProperty Name="chassi" ColumnName="chassi" />
+          <ScalarProperty Name="ufplaca" ColumnName="ufplaca" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+          <ScalarProperty Name="tipocarroceriaid" ColumnName="tipocarroceriaid" />
+          <ScalarProperty Name="renavam" ColumnName="renavam" />
+          <ScalarProperty Name="protocolo" ColumnName="protocolo" />
+          <ScalarProperty Name="carroceriaid" ColumnName="carroceriaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consideracao">
+      <EntityTypeMapping TypeName="CadastramentoModel.consideracao">
+        <MappingFragment StoreEntitySet="consideracao">
+          <ScalarProperty Name="consideracaoidsistemaantigo" ColumnName="consideracaoidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="consideracaoid" ColumnName="consideracaoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consultor">
+      <EntityTypeMapping TypeName="CadastramentoModel.consultor">
+        <MappingFragment StoreEntitySet="consultor">
+          <ScalarProperty Name="consultoridsistemaantigo" ColumnName="consultoridsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="consultoriaadequado" ColumnName="consultoriaadequado" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="proprietario" ColumnName="proprietario" />
+          <ScalarProperty Name="consultoria" ColumnName="consultoria" />
+          <ScalarProperty Name="consultorid" ColumnName="consultorid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresa">
+      <EntityTypeMapping TypeName="CadastramentoModel.empresa">
+        <MappingFragment StoreEntitySet="empresa">
+          <ScalarProperty Name="empresaidsistemaantigo" ColumnName="empresaidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+          <ScalarProperty Name="contatoemail" ColumnName="contatoemail" />
+          <ScalarProperty Name="contatotelefone" ColumnName="contatotelefone" />
+          <ScalarProperty Name="contatomunicipioid" ColumnName="contatomunicipioid" />
+          <ScalarProperty Name="contatouf" ColumnName="contatouf" />
+          <ScalarProperty Name="contatocomplemento" ColumnName="contatocomplemento" />
+          <ScalarProperty Name="contatobairro" ColumnName="contatobairro" />
+          <ScalarProperty Name="contatonumero" ColumnName="contatonumero" />
+          <ScalarProperty Name="contatologradouro" ColumnName="contatologradouro" />
+          <ScalarProperty Name="contatocep" ColumnName="contatocep" />
+          <ScalarProperty Name="contatocargo" ColumnName="contatocargo" />
+          <ScalarProperty Name="contatorg" ColumnName="contatorg" />
+          <ScalarProperty Name="contatocpf" ColumnName="contatocpf" />
+          <ScalarProperty Name="contatonome" ColumnName="contatonome" />
+          <ScalarProperty Name="principaisprodutos" ColumnName="principaisprodutos" />
+          <ScalarProperty Name="ramoatividade" ColumnName="ramoatividade" />
+          <ScalarProperty Name="objetivosocial" ColumnName="objetivosocial" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="municipioid" ColumnName="municipioid" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="dataconstituicao" ColumnName="dataconstituicao" />
+          <ScalarProperty Name="inscricaoestadual" ColumnName="inscricaoestadual" />
+          <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+          <ScalarProperty Name="razaosocial" ColumnName="razaosocial" />
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresaprojeto">
+      <EntityTypeMapping TypeName="CadastramentoModel.empresaprojeto">
+        <MappingFragment StoreEntitySet="empresaprojeto">
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="arquivo" ColumnName="arquivo" />
+          <ScalarProperty Name="iniciooperacaoano" ColumnName="iniciooperacaoano" />
+          <ScalarProperty Name="iniciooperacaomes" ColumnName="iniciooperacaomes" />
+          <ScalarProperty Name="prazoimplantacaoterminoano" ColumnName="prazoimplantacaoterminoano" />
+          <ScalarProperty Name="prazoimplantacaoterminomes" ColumnName="prazoimplantacaoterminomes" />
+          <ScalarProperty Name="prazoimplantacaoinicioano" ColumnName="prazoimplantacaoinicioano" />
+          <ScalarProperty Name="prazoimplantacaoiniciomes" ColumnName="prazoimplantacaoiniciomes" />
+          <ScalarProperty Name="capacidadeunidadeindustrial" ColumnName="capacidadeunidadeindustrial" />
+          <ScalarProperty Name="principalprodutoindustrializado" ColumnName="principalprodutoindustrializado" />
+          <ScalarProperty Name="principalmateriaprimaorigemimportada" ColumnName="principalmateriaprimaorigemimportada" />
+          <ScalarProperty Name="principalmateriaprimaorigemnacional" ColumnName="principalmateriaprimaorigemnacional" />
+          <ScalarProperty Name="investimentototal" ColumnName="investimentototal" />
+          <ScalarProperty Name="capitalgiro" ColumnName="capitalgiro" />
+          <ScalarProperty Name="investimentofixo" ColumnName="investimentofixo" />
+          <ScalarProperty Name="investimentooutros" ColumnName="investimentooutros" />
+          <ScalarProperty Name="investimentomaquinaequipamento" ColumnName="investimentomaquinaequipamento" />
+          <ScalarProperty Name="investimentoconstrucaoinstalacao" ColumnName="investimentoconstrucaoinstalacao" />
+          <ScalarProperty Name="areanecessariaterreno" ColumnName="areanecessariaterreno" />
+          <ScalarProperty Name="areanecessariaconstruida" ColumnName="areanecessariaconstruida" />
+          <ScalarProperty Name="localizacaoempreendimento" ColumnName="localizacaoempreendimento" />
+          <ScalarProperty Name="horariofuncionamentonoturno" ColumnName="horariofuncionamentonoturno" />
+          <ScalarProperty Name="horariofuncionamentovespertino" ColumnName="horariofuncionamentovespertino" />
+          <ScalarProperty Name="horariofuncionamentomatutino" ColumnName="horariofuncionamentomatutino" />
+          <ScalarProperty Name="faturamentoanualfuturo" ColumnName="faturamentoanualfuturo" />
+          <ScalarProperty Name="faturamentoanualatual" ColumnName="faturamentoanualatual" />
+          <ScalarProperty Name="numeroempregofuturo" ColumnName="numeroempregofuturo" />
+          <ScalarProperty Name="numeroempregoatual" ColumnName="numeroempregoatual" />
+          <ScalarProperty Name="finalidade" ColumnName="finalidade" />
+          <ScalarProperty Name="numeroprocesso" ColumnName="numeroprocesso" />
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+          <ScalarProperty Name="empresaprojetoid" ColumnName="empresaprojetoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logacesso">
+      <EntityTypeMapping TypeName="CadastramentoModel.logacesso">
+        <MappingFragment StoreEntitySet="logacesso">
+          <ScalarProperty Name="browser" ColumnName="browser" />
+          <ScalarProperty Name="municipio" ColumnName="municipio" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="datahoralog" ColumnName="datahoralog" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="sistema" ColumnName="sistema" />
+          <ScalarProperty Name="logacessoid" ColumnName="logacessoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menuacao">
+      <EntityTypeMapping TypeName="CadastramentoModel.menuacao">
+        <MappingFragment StoreEntitySet="menuacao">
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="ordembotao" ColumnName="ordembotao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="menuacaoid" ColumnName="menuacaoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="motorista">
+      <EntityTypeMapping TypeName="CadastramentoModel.motorista">
+        <MappingFragment StoreEntitySet="motorista">
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="documentourl" ColumnName="documentourl" />
+          <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
+          <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="datavalidadecnh" ColumnName="datavalidadecnh" />
+          <ScalarProperty Name="dataemissaocnh" ColumnName="dataemissaocnh" />
+          <ScalarProperty Name="categoriacnh" ColumnName="categoriacnh" />
+          <ScalarProperty Name="ufcnh" ColumnName="ufcnh" />
+          <ScalarProperty Name="cnh" ColumnName="cnh" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="rgorgaoexpedidor" ColumnName="rgorgaoexpedidor" />
+          <ScalarProperty Name="rguf" ColumnName="rguf" />
+          <ScalarProperty Name="rg" ColumnName="rg" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="protocolo" ColumnName="protocolo" />
+          <ScalarProperty Name="motoristaid" ColumnName="motoristaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="municipio">
+      <EntityTypeMapping TypeName="CadastramentoModel.municipio">
+        <MappingFragment StoreEntitySet="municipio">
+          <ScalarProperty Name="municipioidsistemaantigo" ColumnName="municipioidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="municipioid" ColumnName="municipioid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perfil">
+      <EntityTypeMapping TypeName="CadastramentoModel.perfil">
+        <MappingFragment StoreEntitySet="perfil">
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="perfilid" ColumnName="perfilid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="processo">
+      <EntityTypeMapping TypeName="CadastramentoModel.processo">
+        <MappingFragment StoreEntitySet="processo">
+          <ScalarProperty Name="processoidsistemaantigo" ColumnName="processoidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="deliberacao6data" ColumnName="deliberacao6data" />
+          <ScalarProperty Name="deliberacao6numero" ColumnName="deliberacao6numero" />
+          <ScalarProperty Name="deliberacao5data" ColumnName="deliberacao5data" />
+          <ScalarProperty Name="deliberacao5numero" ColumnName="deliberacao5numero" />
+          <ScalarProperty Name="deliberacao4data" ColumnName="deliberacao4data" />
+          <ScalarProperty Name="deliberacao4numero" ColumnName="deliberacao4numero" />
+          <ScalarProperty Name="deliberacao3data" ColumnName="deliberacao3data" />
+          <ScalarProperty Name="deliberacao3numero" ColumnName="deliberacao3numero" />
+          <ScalarProperty Name="deliberacao2data" ColumnName="deliberacao2data" />
+          <ScalarProperty Name="deliberacao2numero" ColumnName="deliberacao2numero" />
+          <ScalarProperty Name="deliberacao1data" ColumnName="deliberacao1data" />
+          <ScalarProperty Name="deliberacao1numero" ColumnName="deliberacao1numero" />
+          <ScalarProperty Name="vigencia5fim" ColumnName="vigencia5fim" />
+          <ScalarProperty Name="vigencia5inicio" ColumnName="vigencia5inicio" />
+          <ScalarProperty Name="vigencia4fim" ColumnName="vigencia4fim" />
+          <ScalarProperty Name="vigencia4inicio" ColumnName="vigencia4inicio" />
+          <ScalarProperty Name="vigencia3fim" ColumnName="vigencia3fim" />
+          <ScalarProperty Name="vigencia3inicio" ColumnName="vigencia3inicio" />
+          <ScalarProperty Name="vigencia2fim" ColumnName="vigencia2fim" />
+          <ScalarProperty Name="vigencia2inicio" ColumnName="vigencia2inicio" />
+          <ScalarProperty Name="vigencia1fim" ColumnName="vigencia1fim" />
+          <ScalarProperty Name="vigencia1inicio" ColumnName="vigencia1inicio" />
+          <ScalarProperty Name="prazodia5" ColumnName="prazodia5" />
+          <ScalarProperty Name="prazomes5" ColumnName="prazomes5" />
+          <ScalarProperty Name="prazoano5" ColumnName="prazoano5" />
+          <ScalarProperty Name="prazodia4" ColumnName="prazodia4" />
+          <ScalarProperty Name="prazomes4" ColumnName="prazomes4" />
+          <ScalarProperty Name="prazoano4" ColumnName="prazoano4" />
+          <ScalarProperty Name="prazodia3" ColumnName="prazodia3" />
+          <ScalarProperty Name="prazomes3" ColumnName="prazomes3" />
+          <ScalarProperty Name="prazoano3" ColumnName="prazoano3" />
+          <ScalarProperty Name="prazodia2" ColumnName="prazodia2" />
+          <ScalarProperty Name="prazomes2" ColumnName="prazomes2" />
+          <ScalarProperty Name="prazoano2" ColumnName="prazoano2" />
+          <ScalarProperty Name="prazodia1" ColumnName="prazodia1" />
+          <ScalarProperty Name="prazomes1" ColumnName="prazomes1" />
+          <ScalarProperty Name="prazoano1" ColumnName="prazoano1" />
+          <ScalarProperty Name="adicional" ColumnName="adicional" />
+          <ScalarProperty Name="percentual" ColumnName="percentual" />
+          <ScalarProperty Name="ta2dataentregaprojeto" ColumnName="ta2dataentregaprojeto" />
+          <ScalarProperty Name="ta2prazoentregaprojeto" ColumnName="ta2prazoentregaprojeto" />
+          <ScalarProperty Name="ta2dataentrega" ColumnName="ta2dataentrega" />
+          <ScalarProperty Name="ta2dataassinatura" ColumnName="ta2dataassinatura" />
+          <ScalarProperty Name="ta2" ColumnName="ta2" />
+          <ScalarProperty Name="tadataentregaprojeto" ColumnName="tadataentregaprojeto" />
+          <ScalarProperty Name="taprazoentregaprojeto" ColumnName="taprazoentregaprojeto" />
+          <ScalarProperty Name="tadataentrega" ColumnName="tadataentrega" />
+          <ScalarProperty Name="tadataassinatura" ColumnName="tadataassinatura" />
+          <ScalarProperty Name="ta" ColumnName="ta" />
+          <ScalarProperty Name="certificado" ColumnName="certificado" />
+          <ScalarProperty Name="justificativapendencia" ColumnName="justificativapendencia" />
+          <ScalarProperty Name="providencias" ColumnName="providencias" />
+          <ScalarProperty Name="investimentototal" ColumnName="investimentototal" />
+          <ScalarProperty Name="investimentofuturo" ColumnName="investimentofuturo" />
+          <ScalarProperty Name="investimentoinicial" ColumnName="investimentoinicial" />
+          <ScalarProperty Name="empregototal" ColumnName="empregototal" />
+          <ScalarProperty Name="empregofuturo" ColumnName="empregofuturo" />
+          <ScalarProperty Name="empregoinicial" ColumnName="empregoinicial" />
+          <ScalarProperty Name="consultorid" ColumnName="consultorid" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="treinamento" ColumnName="treinamento" />
+          <ScalarProperty Name="consideracaoid" ColumnName="consideracaoid" />
+          <ScalarProperty Name="processosituacaoid" ColumnName="processosituacaoid" />
+          <ScalarProperty Name="atividade" ColumnName="atividade" />
+          <ScalarProperty Name="cadeiaprodutivaid" ColumnName="cadeiaprodutivaid" />
+          <ScalarProperty Name="tipoincentivoid" ColumnName="tipoincentivoid" />
+          <ScalarProperty Name="processotipoid" ColumnName="processotipoid" />
+          <ScalarProperty Name="empresaid" ColumnName="empresaid" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="processoid" ColumnName="processoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="processosituacao">
+      <EntityTypeMapping TypeName="CadastramentoModel.processosituacao">
+        <MappingFragment StoreEntitySet="processosituacao">
+          <ScalarProperty Name="processosituacaoidsistemaantigo" ColumnName="processosituacaoidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricaoadequada" ColumnName="descricaoadequada" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="processosituacaoid" ColumnName="processosituacaoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="processotipo">
+      <EntityTypeMapping TypeName="CadastramentoModel.processotipo">
+        <MappingFragment StoreEntitySet="processotipo">
+          <ScalarProperty Name="processotipoidsistemaantigo" ColumnName="processotipoidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="processotipoid" ColumnName="processotipoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="situacaocadastro">
+      <EntityTypeMapping TypeName="CadastramentoModel.situacaocadastro">
+        <MappingFragment StoreEntitySet="situacaocadastro">
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CadastramentoModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipocarga">
+      <EntityTypeMapping TypeName="CadastramentoModel.tipocarga">
+        <MappingFragment StoreEntitySet="tipocarga">
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="tipocargaid" ColumnName="tipocargaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipocarroceria">
+      <EntityTypeMapping TypeName="CadastramentoModel.tipocarroceria">
+        <MappingFragment StoreEntitySet="tipocarroceria">
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="tipocarroceriaid" ColumnName="tipocarroceriaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoincentivo">
+      <EntityTypeMapping TypeName="CadastramentoModel.tipoincentivo">
+        <MappingFragment StoreEntitySet="tipoincentivo">
+          <ScalarProperty Name="tipoincentivoidsistemaantigo" ColumnName="tipoincentivoidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricaoadequada" ColumnName="descricaoadequada" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="tipoincentivoid" ColumnName="tipoincentivoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoveiculo">
+      <EntityTypeMapping TypeName="CadastramentoModel.tipoveiculo">
+        <MappingFragment StoreEntitySet="tipoveiculo">
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="tipoveiculoid" ColumnName="tipoveiculoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unidademedida">
+      <EntityTypeMapping TypeName="CadastramentoModel.unidademedida">
+        <MappingFragment StoreEntitySet="unidademedida">
+          <ScalarProperty Name="unidademedidaidsistemaantigo" ColumnName="unidademedidaidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="unidademedidaid" ColumnName="unidademedidaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="CadastramentoModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="usuarioidsistemaantigo" ColumnName="usuarioidsistemaantigo" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuariomenu">
+      <EntityTypeMapping TypeName="CadastramentoModel.usuariomenu">
+        <MappingFragment StoreEntitySet="usuariomenu">
+          <ScalarProperty Name="titulopagina" ColumnName="titulopagina" />
+          <ScalarProperty Name="classeicone" ColumnName="classeicone" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="ordem" ColumnName="ordem" />
+          <ScalarProperty Name="abrirnovajanela" ColumnName="abrirnovajanela" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="texto" ColumnName="texto" />
+          <ScalarProperty Name="paiusuariomenuid" ColumnName="paiusuariomenuid" />
+          <ScalarProperty Name="usuariomenuid" ColumnName="usuariomenuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuariomenuacao">
+      <EntityTypeMapping TypeName="CadastramentoModel.usuariomenuacao">
+        <MappingFragment StoreEntitySet="usuariomenuacao">
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="situacao" ColumnName="situacao" />
+          <ScalarProperty Name="menuacaoid" ColumnName="menuacaoid" />
+          <ScalarProperty Name="usuariomenuid" ColumnName="usuariomenuid" />
+          <ScalarProperty Name="usuariomenuacaoid" ColumnName="usuariomenuacaoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuariomenuacaoperfilpermissao">
+      <EntityTypeMapping TypeName="CadastramentoModel.usuariomenuacaoperfilpermissao">
+        <MappingFragment StoreEntitySet="usuariomenuacaoperfilpermissao">
+          <ScalarProperty Name="perfilid" ColumnName="perfilid" />
+          <ScalarProperty Name="usuariomenuacaoid" ColumnName="usuariomenuacaoid" />
+          <ScalarProperty Name="usuariomenuacaoperfilpermissaoid" ColumnName="usuariomenuacaoperfilpermissaoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuariomenuperfilpermissao">
+      <EntityTypeMapping TypeName="CadastramentoModel.usuariomenuperfilpermissao">
+        <MappingFragment StoreEntitySet="usuariomenuperfilpermissao">
+          <ScalarProperty Name="perfilid" ColumnName="perfilid" />
+          <ScalarProperty Name="usuariomenuid" ColumnName="usuariomenuid" />
+          <ScalarProperty Name="usuariomenuperfilpermissaoid" ColumnName="usuariomenuperfilpermissaoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarioperfil">
+      <EntityTypeMapping TypeName="CadastramentoModel.usuarioperfil">
+        <MappingFragment StoreEntitySet="usuarioperfil">
+          <ScalarProperty Name="perfilid" ColumnName="perfilid" />
+          <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
+          <ScalarProperty Name="usuarioperfilid" ColumnName="usuarioperfilid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="veiculo">
+      <EntityTypeMapping TypeName="CadastramentoModel.veiculo">
+        <MappingFragment StoreEntitySet="veiculo">
+          <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+          <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+          <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+          <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+          <ScalarProperty Name="documentourl" ColumnName="documentourl" />
+          <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
+          <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
+          <ScalarProperty Name="statusveiculo" ColumnName="statusveiculo" />
+          <ScalarProperty Name="empresamonitoramento" ColumnName="empresamonitoramento" />
+          <ScalarProperty Name="tipomonitoramento" ColumnName="tipomonitoramento" />
+          <ScalarProperty Name="monitorado" ColumnName="monitorado" />
+          <ScalarProperty Name="lotacaomaxima" ColumnName="lotacaomaxima" />
+          <ScalarProperty Name="tipocargaid" ColumnName="tipocargaid" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+          <ScalarProperty Name="cpfcnpj" ColumnName="cpfcnpj" />
+          <ScalarProperty Name="nomeproprietariotransportadora" ColumnName="nomeproprietariotransportadora" />
+          <ScalarProperty Name="anomodelo" ColumnName="anomodelo" />
+          <ScalarProperty Name="anofabricacao" ColumnName="anofabricacao" />
+          <ScalarProperty Name="corpredominante" ColumnName="corpredominante" />
+          <ScalarProperty Name="categoriaantt" ColumnName="categoriaantt" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="cidadelicenciamento" ColumnName="cidadelicenciamento" />
+          <ScalarProperty Name="chassi" ColumnName="chassi" />
+          <ScalarProperty Name="ufplaca" ColumnName="ufplaca" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+          <ScalarProperty Name="tipoveiculoid" ColumnName="tipoveiculoid" />
+          <ScalarProperty Name="renavam" ColumnName="renavam" />
+          <ScalarProperty Name="protocolo" ColumnName="protocolo" />
+          <ScalarProperty Name="veiculoid" ColumnName="veiculoid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

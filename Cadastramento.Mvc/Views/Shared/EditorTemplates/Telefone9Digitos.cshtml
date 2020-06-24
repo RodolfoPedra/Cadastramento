@@ -1,0 +1,49 @@
+﻿@model string
+@{
+    Layout = "";
+
+    string
+        id = ViewData.TemplateInfo.HtmlFieldPrefix,
+        valor = null;
+
+    if (ViewData.ModelMetadata.Model != null)
+    {
+        valor = ViewData.ModelMetadata.Model.ToString();
+    }
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+
+    htmlAttributes["style"] = "width: 100%;";
+    htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control";
+}
+<script>
+    jQuery(document).ready(function () {
+        jQuery('#@id').mask("(00) 0000-000090")
+            .focusout(function (event) {
+                var target, phone, element;
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+                phone = target.value.replace(/\D/g, '');
+                element = $(target);
+                element.unmask();
+                if(phone.length > 10) {
+                    element.mask("(00) 00000-00090");
+                } else {
+                    element.mask("(00) 0000-000090");
+                }
+            }).trigger('focusout');
+    });
+</script>
+@Html.TextBox("", valor, htmlAttributes)
+
+
+ @*jQuery('#telefonecelular').focusout(function () { //Função para implementar o nono digito de telefones
+            var phone, element;
+            element = jQuery(this);
+            element.unmask();
+            phone = element.val().replace(/\D/g, '');
+            if (phone.length > 10) {
+                element.mask("(99) 99999-999?9");
+            } else {
+                element.mask("(99) 9999-9999?9");
+            }
+        }).trigger('focusout');*@

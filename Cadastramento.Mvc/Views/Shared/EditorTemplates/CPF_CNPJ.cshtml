@@ -1,0 +1,30 @@
+﻿@model string
+@{
+    Layout = "";
+
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+
+    string valor = null;
+    if (ViewData.ModelMetadata.Model != null)
+    {
+        valor = ViewData.ModelMetadata.Model.ToString();
+    }
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+
+    htmlAttributes["style"] = "width: 100%;";
+    htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control";
+}
+<script>
+    jQuery(document).ready(function () {
+        var options = {
+            onKeyPress: function (cpf, ev, el, op) {
+                var masks = ['000.000.000-000', '00.000.000/0000-00'];
+                $("#@id").mask((cpf.length > 14) ? masks[1] : masks[0], op);
+            }
+        }
+
+        $("#@id").length > 11 ? $("#@id").mask('00.000.000/0000-00', options) : $("#@id").mask('000.000.000-00#', options);
+    });
+</script>
+@Html.TextBox("", valor, htmlAttributes)

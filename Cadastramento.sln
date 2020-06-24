@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastramento.Core", "Cadastramento.Core\Cadastramento.Core.csproj", "{2C3028A5-1F6E-4864-BDAB-B4D03BFB756F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Domínio", "1 - Domínio", "{8D64BE9B-F5CC-4394-9BB8-1D1464F47F64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - DAL", "2 - DAL", "{5B88B4E5-DE81-483E-B306-CFA68ADCF87B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Service", "3 - Service", "{579874AB-33F3-48D7-8B22-754681ECBF24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Business", "4 - Business", "{F2FC4703-3A80-4AB1-908F-8E2A1FDAC418}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - View", "5 - View", "{98FD1BD0-909C-45F6-9061-9800D128EFA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Util", "6 - Util", "{B3156983-7BCA-4C41-8998-270067A422AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastramento.ModelData", "Cadastramento.ModelData\Cadastramento.ModelData.csproj", "{669289F0-4F01-4AB0-9306-4A2D674A33CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastramento.Repository", "Cadastramento.Repository\Cadastramento.Repository.csproj", "{4E64F89C-8866-4856-AFAA-E34B2CFCCEAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastramento.Service", "Cadastramento.Service\Cadastramento.Service.csproj", "{F7B83058-E5E7-49DA-9BFD-AD203194EE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastramento.Util", "Cadastramento.Util\Cadastramento.Util.csproj", "{9DE20B8C-29F2-4948-971B-2207671C33CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadastramento.Mvc", "Cadastramento.Mvc\Cadastramento.Mvc.csproj", "{BD22634C-5FBA-4F5E-9AEA-47EDD63A853D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C3028A5-1F6E-4864-BDAB-B4D03BFB756F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3028A5-1F6E-4864-BDAB-B4D03BFB756F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3028A5-1F6E-4864-BDAB-B4D03BFB756F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3028A5-1F6E-4864-BDAB-B4D03BFB756F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{669289F0-4F01-4AB0-9306-4A2D674A33CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{669289F0-4F01-4AB0-9306-4A2D674A33CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{669289F0-4F01-4AB0-9306-4A2D674A33CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{669289F0-4F01-4AB0-9306-4A2D674A33CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E64F89C-8866-4856-AFAA-E34B2CFCCEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E64F89C-8866-4856-AFAA-E34B2CFCCEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E64F89C-8866-4856-AFAA-E34B2CFCCEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E64F89C-8866-4856-AFAA-E34B2CFCCEAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B83058-E5E7-49DA-9BFD-AD203194EE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B83058-E5E7-49DA-9BFD-AD203194EE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B83058-E5E7-49DA-9BFD-AD203194EE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B83058-E5E7-49DA-9BFD-AD203194EE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE20B8C-29F2-4948-971B-2207671C33CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE20B8C-29F2-4948-971B-2207671C33CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE20B8C-29F2-4948-971B-2207671C33CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE20B8C-29F2-4948-971B-2207671C33CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD22634C-5FBA-4F5E-9AEA-47EDD63A853D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD22634C-5FBA-4F5E-9AEA-47EDD63A853D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD22634C-5FBA-4F5E-9AEA-47EDD63A853D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD22634C-5FBA-4F5E-9AEA-47EDD63A853D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C3028A5-1F6E-4864-BDAB-B4D03BFB756F} = {8D64BE9B-F5CC-4394-9BB8-1D1464F47F64}
+		{669289F0-4F01-4AB0-9306-4A2D674A33CF} = {5B88B4E5-DE81-483E-B306-CFA68ADCF87B}
+		{4E64F89C-8866-4856-AFAA-E34B2CFCCEAA} = {5B88B4E5-DE81-483E-B306-CFA68ADCF87B}
+		{F7B83058-E5E7-49DA-9BFD-AD203194EE28} = {579874AB-33F3-48D7-8B22-754681ECBF24}
+		{9DE20B8C-29F2-4948-971B-2207671C33CE} = {B3156983-7BCA-4C41-8998-270067A422AB}
+		{BD22634C-5FBA-4F5E-9AEA-47EDD63A853D} = {98FD1BD0-909C-45F6-9061-9800D128EFA5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC7FD933-C215-43E3-AA86-CC1562732E5F}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://aderenciasistemas.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Cadastramento.Core\\Cadastramento.Core.csproj
+		SccProjectTopLevelParentUniqueName1 = Cadastramento.sln
+		SccProjectName1 = Cadastramento.Core
+		SccLocalPath1 = Cadastramento.Core
+		SccProjectUniqueName2 = Cadastramento.ModelData\\Cadastramento.ModelData.csproj
+		SccProjectTopLevelParentUniqueName2 = Cadastramento.sln
+		SccProjectName2 = Cadastramento.ModelData
+		SccLocalPath2 = Cadastramento.ModelData
+		SccProjectUniqueName3 = Cadastramento.Mvc\\Cadastramento.Mvc.csproj
+		SccProjectTopLevelParentUniqueName3 = Cadastramento.sln
+		SccProjectName3 = Cadastramento.Mvc
+		SccLocalPath3 = Cadastramento.Mvc
+		SccProjectUniqueName4 = Cadastramento.Repository\\Cadastramento.Repository.csproj
+		SccProjectTopLevelParentUniqueName4 = Cadastramento.sln
+		SccProjectName4 = Cadastramento.Repository
+		SccLocalPath4 = Cadastramento.Repository
+		SccProjectUniqueName5 = Cadastramento.Service\\Cadastramento.Service.csproj
+		SccProjectTopLevelParentUniqueName5 = Cadastramento.sln
+		SccProjectName5 = Cadastramento.Service
+		SccLocalPath5 = Cadastramento.Service
+		SccProjectUniqueName6 = Cadastramento.Util\\Cadastramento.Util.csproj
+		SccProjectTopLevelParentUniqueName6 = Cadastramento.sln
+		SccProjectName6 = Cadastramento.Util
+		SccLocalPath6 = Cadastramento.Util
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,23 @@
+﻿@model string
+@{
+    Layout = "";
+
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+
+    string valor = null;
+    if (ViewData.ModelMetadata.Model != null)
+    {
+        valor = ViewData.ModelMetadata.Model.ToString();
+    }
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+
+    htmlAttributes["style"] = "width: 100%;";
+    htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control";
+}
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#@id").mask("999.999.999-99", { clearIfNotMatch: true });
+    });
+</script>
+@Html.TextBox("", valor, htmlAttributes)

@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewBag.Title = "..:: Cadastramento | Análises ::..";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- begin:: Subheader -->
+<div class="kt-subheader kt-grid__item" id="kt_subheader">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-head__title">
+                Análises
+            </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+        </div>
+    </div>
+</div>
+<!-- end:: Subheader -->
+
+<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
+    <div class="row">
+        <div class="col-md-12 kt-margin-b-10">
+            <button type="button" class="btn btn-dark" onclick="Incluir_Click()"><i class="fa fa-plus"></i> Incluir</button>
+            <button type="button" class="btn btn-dark" onclick="Alterar_Click()"><i class="fa fa-edit"></i> Alterar</button>
+            <button type="button" class="btn btn-dark" onclick="Visualizar_Click()"><i class="fa fa-search"></i> Visualizar</button>
+            <button type="button" class="btn btn-dark" onclick="Excluir_Click()"><i class="fa fa-trash"></i> Excluir</button>
+        </div>
+    </div>
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="fa fa-filter"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    Filtros
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("datahorainclusao", "Data Cadastro")
+                        @Html.TextBox("datahorainclusao", null, new { @class = "form-control", @placeholder = "Data Cadastro" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("situacao", "Situação")
+                        @Html.DropDownList("situacao", ViewBag.SituacaoLista as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <button type="button" class="btn btn-dark" onclick="Filtrar_Click()"><i class="fa fa-filter"></i> Filtrar</button>
+                    <button type="button" class="btn btn-secondary" onclick="LimparFiltro_Click()"><i class="fa fa-broom"></i> Limpar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="fa fa-database"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    Análise de Motoristas
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover" id="IndexGridMotorista"></table>
+                </div>
+            </div>
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="col-md-12 kt-margin-b-10">
+                <button type="button" class="btn btn-dark" onclick="AnalisarMotorista_Click()"><i class="fa fa-edit"></i> Analizar</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="fa fa-database"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    Análise de Veículos
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover" id="IndexGridVeiculo"></table>
+                </div>
+            </div>
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="col-md-12 kt-margin-b-10">
+                <button type="button" class="btn btn-dark" onclick="AnalisarVeiculo_Click()"><i class="fa fa-edit"></i> Analizar</button>
+            </div>
+        </div>
+    </div>
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="fa fa-database"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    Análise de Carrocerias
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover" id="IndexGridCarroceria"></table>
+                </div>
+            </div>
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="col-md-12 kt-margin-b-10">
+                <button type="button" class="btn btn-dark" onclick="AnalisarCarroceria_Click()"><i class="fa fa-edit"></i> Analizar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var tableMotorista;
+        $(document).ready(function () {
+            tableMotorista = $("#IndexGridMotorista").DataTable({
+                searching: false,
+                fixedHeader: true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "@VirtualPathUtility.ToAbsolute("~/Analise/IndexGridMotorista/")",
+                    data: function (d) {                      
+                        d.datahorainclusao = $("#datahorainclusao").val();
+                        d.situacao = $("#situacao").val();
+                    }
+                },
+                columns: [
+                    { name: 'motoristaid', data: 'motoristaid', visible: false },
+                    { name: 'protocolo', data: 'protocolo', title: "Protocolo", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'nome', data: 'nome', title: "Nome", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'cpf', data: 'cpf', title: "CPF", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'cnh', data: 'cnh', title: "CNH", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'situacao', data: 'situacao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
+                ],
+                columnDefs: [
+                    { targets: -1, className: 'dt-body-center' }
+                ],
+                order: [[1, "asc"]]
+            });
+
+            $('#IndexGridMotorista tbody').on('click', 'tr', function () {
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    tableMotorista.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
+        });
+
+        var tableVeiculo;
+        $(document).ready(function () {
+            tableVeiculo = $("#IndexGridVeiculo").DataTable({
+                searching: false,
+                fixedHeader: true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "@VirtualPathUtility.ToAbsolute("~/Analise/IndexGridVeiculo/")",
+                    data: function (d) {                       
+                        d.datahorainclusao = $("#datahorainclusao").val();
+                        d.situacao = $("#situacao").val();
+                    }
+                },
+                columns: [
+                    { name: 'veiculoid', data: 'veiculoid', visible: false },
+                    { name: 'protocolo', data: 'protocolo', title: "Protocolo", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'placa', data: 'placa', title: "Placa", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },                    
+                    { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'situacao', data: 'situacao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
+                ],
+                columnDefs: [
+                    { targets: -1, className: 'dt-body-center' }
+                ],
+                order: [[1, "asc"]]
+            });
+
+            $('#IndexGridVeiculo tbody').on('click', 'tr', function () {
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    tableVeiculo.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
+        });
+
+        var tableCarroceria;
+        $(document).ready(function () {
+            tableCarroceria = $("#IndexGridCarroceria").DataTable({
+                searching: false,
+                fixedHeader: true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "@VirtualPathUtility.ToAbsolute("~/Analise/IndexGridCarroceria/")",
+                    data: function (d) {                       
+                        d.datahorainclusao = $("#datahorainclusao").val();
+                        d.situacao = $("#situacao").val();
+                    }
+                },
+                columns: [
+                    { name: 'carroceriaid', data: 'carroceriaid', visible: false },
+                    { name: 'protocolo', data: 'protocolo', title: "Protocolo", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'placa', data: 'placa', title: "Placa", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },                    
+                    { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'situacao', data: 'situacao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
+                ],
+                columnDefs: [
+                    { targets: -1, className: 'dt-body-center' }
+                ],
+                order: [[1, "asc"]]
+            });
+
+            $('#IndexGridCarroceria tbody').on('click', 'tr', function () {
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    tableCarroceria.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
+        });
+
+        function AnalisarMotorista_Click() {
+            var row = tableMotorista.row('.selected').data();
+            if (!verificaValor(row)) {
+                mensagemAviso("Selecione um registro");
+                return;
+            }
+
+            window.location.href = content + "Analise/AnalisarMotorista/" + row.motoristaid;
+        }
+
+        function AnalisarVeiculo_Click() {
+            var row = tableVeiculo.row('.selected').data();
+            if (!verificaValor(row)) {
+                mensagemAviso("Selecione um registro");
+                return;
+            }
+
+            window.location.href = content + "Analise/AnalisarVeiculo/" + row.veiculoid;
+        }
+
+        function AnalisarCarroceria_Click() {
+            var row = tableCarroceria.row('.selected').data();
+            if (!verificaValor(row)) {
+                mensagemAviso("Selecione um registro");
+                return;
+            }
+
+            window.location.href = content + "Analise/AnalisarCarroceria/" + row.carroceriaid;
+        }
+
+    </script>
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9ac7d33be43b4d998902477d0c196971" Name="Diagram1" ZoomLevel="18">
+        <EntityTypeShape EntityType="CadastramentoModel.analise" Width="1.5" PointX="7.75" PointY="6.875" />
+        <EntityTypeShape EntityType="CadastramentoModel.auditlog" Width="1.5" PointX="5.75" PointY="3.125" />
+        <EntityTypeShape EntityType="CadastramentoModel.auditlogdetail" Width="1.5" PointX="8" PointY="3.25" />
+        <EntityTypeShape EntityType="CadastramentoModel.auditlogexcecao" Width="1.5" PointX="0.75" PointY="9.875" />
+        <EntityTypeShape EntityType="CadastramentoModel.cadeiaprodutiva" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="CadastramentoModel.carroceria" Width="1.5" PointX="10" PointY="12.625" />
+        <EntityTypeShape EntityType="CadastramentoModel.consideracao" Width="1.5" PointX="3" PointY="29.75" />
+        <EntityTypeShape EntityType="CadastramentoModel.consultor" Width="1.5" PointX="3" PointY="33.25" />
+        <EntityTypeShape EntityType="CadastramentoModel.empresa" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="CadastramentoModel.empresaprojeto" Width="1.5" PointX="5.25" PointY="30.625" />
+        <EntityTypeShape EntityType="CadastramentoModel.logacesso" Width="1.5" PointX="15.75" PointY="12.875" />
+        <EntityTypeShape EntityType="CadastramentoModel.menuacao" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CadastramentoModel.motorista" Width="1.5" PointX="10" PointY="33.5" />
+        <EntityTypeShape EntityType="CadastramentoModel.municipio" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="CadastramentoModel.perfil" Width="1.5" PointX="15" PointY="8.875" />
+        <EntityTypeShape EntityType="CadastramentoModel.processo" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="CadastramentoModel.processosituacao" Width="1.5" PointX="3" PointY="22.5" />
+        <EntityTypeShape EntityType="CadastramentoModel.processotipo" Width="1.5" PointX="3" PointY="26.25" />
+        <EntityTypeShape EntityType="CadastramentoModel.situacaocadastro" Width="1.5" PointX="7.75" PointY="15.875" />
+        <EntityTypeShape EntityType="CadastramentoModel.sysdiagrams" Width="1.5" PointX="15.75" PointY="16.875" />
+        <EntityTypeShape EntityType="CadastramentoModel.tipocarga" Width="1.5" PointX="7.75" PointY="20" />
+        <EntityTypeShape EntityType="CadastramentoModel.tipocarroceria" Width="1.5" PointX="7.75" PointY="11.625" />
+        <EntityTypeShape EntityType="CadastramentoModel.tipoincentivo" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="CadastramentoModel.tipoveiculo" Width="1.5" PointX="10.75" PointY="9.125" />
+        <EntityTypeShape EntityType="CadastramentoModel.unidademedida" Width="1.5" PointX="17.75" PointY="12.875" />
+        <EntityTypeShape EntityType="CadastramentoModel.usuario" Width="1.5" PointX="15" PointY="22.625" />
+        <EntityTypeShape EntityType="CadastramentoModel.usuariomenu" Width="1.5" PointX="12.75" PointY="4.5" />
+        <EntityTypeShape EntityType="CadastramentoModel.usuariomenuacao" Width="1.5" PointX="15" PointY="4.625" />
+        <EntityTypeShape EntityType="CadastramentoModel.usuariomenuacaoperfilpermissao" Width="1.5" PointX="17.25" PointY="2.25" />
+        <EntityTypeShape EntityType="CadastramentoModel.usuariomenuperfilpermissao" Width="1.5" PointX="18" PointY="5.25" />
+        <EntityTypeShape EntityType="CadastramentoModel.usuarioperfil" Width="1.5" PointX="17.25" PointY="9.375" />
+        <EntityTypeShape EntityType="CadastramentoModel.veiculo" Width="1.5" PointX="13" PointY="13.125" />
+        <AssociationConnector Association="CadastramentoModel.auditlogdetail_FK_auditlogdetail_auditlog" />
+        <AssociationConnector Association="CadastramentoModel.processo_fk_processo_cadeiaprodutiva" />
+        <AssociationConnector Association="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId" />
+        <AssociationConnector Association="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" />
+        <AssociationConnector Association="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" />
+        <AssociationConnector Association="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" />
+        <AssociationConnector Association="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" />
+        <AssociationConnector Association="CadastramentoModel.processo_fk_processo_consideracao" />
+        <AssociationConnector Association="CadastramentoModel.processo_fk_processo_consultor" />
+        <AssociationConnector Association="CadastramentoModel.empresa_fk_empresa_contatomunicipio" />
+        <AssociationConnector Association="CadastramentoModel.empresa_fk_empresa_municipio" />
+        <AssociationConnector Association="CadastramentoModel.fk_empresaprojeto_empresa" />
+        <AssociationConnector Association="CadastramentoModel.processo_fk_processo_empresa" />
+        <AssociationConnector Association="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_menuacao" />
+        <AssociationConnector Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" />
+        <AssociationConnector Association="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" />
+        <AssociationConnector Association="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil" />
+        <AssociationConnector Association="CadastramentoModel.usuarioperfil_fk_usuarioperfil_perfil" />
+        <AssociationConnector Association="CadastramentoModel.processo_fk_processo_processosituacao" />
+        <AssociationConnector Association="CadastramentoModel.processo_fk_processo_processotipo" />
+        <AssociationConnector Association="CadastramentoModel.processo_fk_processo_tipoincentivo" />
+        <AssociationConnector Association="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" />
+        <AssociationConnector Association="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" />
+        <AssociationConnector Association="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" />
+        <AssociationConnector Association="CadastramentoModel.usuarioperfil_fk_usuarioperfil_usuario" />
+        <AssociationConnector Association="CadastramentoModel.usuariomenu_fk_paiusuariomenu_usuariomenu" />
+        <AssociationConnector Association="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_usuariomenu" />
+        <AssociationConnector Association="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" />
+        <AssociationConnector Association="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

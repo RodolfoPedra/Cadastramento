@@ -1,0 +1,44 @@
+﻿@using System.Web.Routing;
+@model DateTime?
+@{
+    Layout = "";
+
+    RouteValueDictionary htmlAttributes = new RouteValueDictionary(ViewData["htmlAttributes"]);
+
+    string id = (htmlAttributes["id"] ?? ViewData.TemplateInfo.GetFullHtmlFieldId("")).ToString()
+        , compJquery = string.Empty;
+
+
+    DateTime? valor = (DateTime?)(ViewData.ModelMetadata.Model ?? htmlAttributes["value"] ?? null);
+    if (valor != null)
+    {
+        htmlAttributes.Remove("value");
+    }
+
+    if (htmlAttributes.ContainsKey("onchange"))
+    {
+        compJquery += string.Concat(".on(\"changeDate\", function (e) { if(Convert.String.ToDate($('#", id, "').val()).IsValida())", htmlAttributes["onchange"], " })");
+        htmlAttributes.Remove("onchange");
+    }
+
+    htmlAttributes["class"] = "form-control";
+    htmlAttributes["placeholder"] = "Data";
+    htmlAttributes["autocomplete"] = "off";
+}
+<script>
+    jQuery(document).ready(function () {
+        $("#@id").mask("99/99/9999").datepicker({
+            language: "pt-BR",
+            autoclose: true,
+            todayHighlight: true,
+            format: "dd/mm/yyyy",
+            clearBtn: true,
+        }).on("show", function (e) {
+            var obj = $(e.currentTarget);
+            if (obj.prop('readonly') || obj.prop('disabled')) {
+                obj.datepicker("hide");
+            }
+        })@Html.Raw(compJquery);
+    });
+</script>
+@Html.TextBox("", string.Format("{0:dd/MM/yyyy}", valor), htmlAttributes)

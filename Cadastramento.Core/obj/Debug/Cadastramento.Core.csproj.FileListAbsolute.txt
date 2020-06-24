@@ -1,0 +1,4 @@
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\bin\Debug\Cadastramento.Core.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\bin\Debug\Cadastramento.Core.pdb
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\obj\Debug\Cadastramento.Core.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\obj\Debug\Cadastramento.Core.pdb

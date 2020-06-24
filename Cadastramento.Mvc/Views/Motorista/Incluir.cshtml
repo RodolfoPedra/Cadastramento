@@ -1,0 +1,188 @@
+﻿
+@{
+
+    ViewBag.Title = "..:: Cadastramento | Veículos ::..";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container-cadastro">
+    <ul class="lista">
+        <li class="item-lista il-selected" #itemlista>
+            Identificação
+            <div class="box-wizard bw-selected" #bwlista></div>
+        </li>
+        <li class="item-lista" #itemlista>
+            Dados Pessoais
+            <div class="box-wizard" #bwlista></div>
+        </li>
+        <li class="item-lista" #itemlista>
+            Endereço
+            <div class="box-wizard" #bwlista></div>
+        </li>
+        <li class="item-lista" #itemlista>
+            Importar Documento
+            <div class="box-wizard" #bwlista></div>
+        </li>
+    </ul>
+
+    <div class="section-form">
+
+        <div #identificacao>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>CPF</label>
+                    <input type="text" name="cpf" placeholder="" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label>CNH</label>
+                    <input type="text" name="cnh" placeholder="" />
+                </div>
+            </div>
+            <hr />
+            <div class="col-md-12 section-buttons">
+                <button type="button" class="btn-cancelar">Cancelar</button>
+                <button type="button" class="btn-proximo">
+                    Proximo <span class="glyphicon glyphicon-arrow-right"></span>
+                </button>
+            </div>
+        </div>
+
+
+        <div #dadospessoais style="display: none;">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label>Nome</label>
+                    <input type="text" name="nome" placeholder="" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Telefone</label>
+                    <input type="text" name="telefone" placeholder="" />
+                </div>
+                <div class="form-group col-md-3">
+                    <label>RG</label>
+                    <input type="text" name="rg" placeholder="" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label>E-mail</label>
+                    <input type="text" name="e-mail" placeholder="" />
+                </div>
+            </div>
+            <hr />
+            <div class="col-md-12 section-buttons">
+                <button type="button" class="btn-cancelar">Cancelar</button>
+                <button type="button" class="btn-proximo">Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
+            </div>
+        </div>
+
+        <div #endereco style="display: none;">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label>Cep</label>
+                    <input type="text" name="cep" placeholder="" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Logradouro</label>
+                    <input type="text" name="logradouro" placeholder="" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Nº</label>
+                    <input type="text" name="numero" placeholder="" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Complemento</label>
+                    <input type="text" name="complemento" placeholder="" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Bairro</label>
+                    <input #bairro id="bairro" type="text" class="form-control" />
+                    <input type="text" name="bairro" placeholder="" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Cidade</label>
+                    <input type="text" name="cidade" placeholder="" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label>UF</label>
+                    <input type="text" name="uf" placeholder="" />
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12 section-buttons">
+                    <button type="button" class="btn-cancelar">Cancelar</button>
+                    <button type="button" class="btn-proximo">Proximo</button>
+                </div>
+            </div>
+        </div>
+
+        <div #dadoscnh style="display: none;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label>Validade CNH</label>
+                            <input type="text" name="datavalidadecnh" placeholder="" />
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label>Emissão CNH</label>
+                            <input type="text" name="dataemissaocnh" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label>Categoria CNH</label>
+                            <input type="text" name="categoriacnh" placeholder="" />
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label>UF CNH</label>
+                            <input type="text" name="ufcnh" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-row" style="text-align: right;">
+                        <div class="form-group col-md-10">
+                            <button class="btn btn-success">
+                                Anexar Documento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <input type="file" name="file" />
+                            Imagem é obrigatório.
+                        </div>
+                    </div>
+                </div>
+                <div class="card profile-card-2" style="width: 410px; height: 535px;">
+                    <div class="card-img-block">
+                        <img [src]="documentoURL" [style.width.px]="imagemLargura" [style.margin.px]="imagemMargem" class="img-fluid" style="cursor: pointer;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-12 section-buttons">
+                <button type="button" class="btn-cancelar">Cancelar</button>
+                <button type="button" class="btn-proximo" style="margin-left: 5px;">
+                    Salvar
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

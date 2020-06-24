@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "..:: Cadastramento | Empresas ::..";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- begin:: Subheader -->
+<div class="kt-subheader kt-grid__item" id="kt_subheader">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <h3 class="kt-head__title">
+                Empresas
+            </h3>
+            <span class="kt-subheader__separator kt-hidden"></span>
+        </div>
+    </div>
+</div>
+<!-- end:: Subheader -->
+
+<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
+    <div class="row">
+        <div class="col-md-12 kt-margin-b-10">
+            <button type="button" class="btn btn-dark" onclick="Incluir_Click()"><i class="fa fa-plus"></i> Incluir</button>
+            <button type="button" class="btn btn-dark" onclick="Alterar_Click()"><i class="fa fa-edit"></i> Alterar</button>
+            <button type="button" class="btn btn-dark" onclick="Visualizar_Click()"><i class="fa fa-search"></i> Visualizar</button>
+            <button type="button" class="btn btn-dark" onclick="Excluir_Click()"><i class="fa fa-trash"></i> Excluir</button>
+        </div>
+    </div>
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="fa fa-filter"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    Filtros
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.Label("cnpj", "CNPJ")
+                        @Html.Editor("cnpj", "CNPJ")
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        @Html.Label("razaosocial", "Razão Social")
+                        @Html.TextBox("razaosocial", null, new { @class = "form-control", @placeholder = "Razão Social" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.Label("municipioid", "Município")
+                        @Html.DropDownList("municipioid", ViewBag.MunicipioLista as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <button type="button" class="btn btn-dark" onclick="Filtrar_Click()"><i class="fa fa-filter"></i> Filtrar</button>
+                    <button type="button" class="btn btn-secondary" onclick="LimparFiltro_Click()"><i class="fa fa-broom"></i> Limpar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <span class="kt-portlet__head-icon">
+                    <i class="fa fa-database"></i>
+                </span>
+                <h3 class="kt-portlet__head-title">
+                    Registros
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover" id="gridIndex"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var table;
+        $(document).ready(function () {
+            table = $("#gridIndex").DataTable({
+                searching: false,
+                fixedHeader: true,
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "@VirtualPathUtility.ToAbsolute("~/Empresa/IndexGrid/")",
+                    data: function (d) {
+                        d.cnpj = $("#cnpj").val();
+                        d.razaosocial = $("#razaosocial").val();
+                        d.municipioid = $("#municipioid").val();
+                    }
+                },
+                columns: [
+                    { name: 'empresaid', data: 'empresaid', visible: false },
+                    { name: 'cnpj', data: 'cnpj', title: "CNPJ", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'razaosocial', data: 'razaosocial', title: "Razão Social", sortable: true, searchable: true, autoWidth: true },
+                    { name: 'municipio.nome', data: 'municipio', title: "Município - UF", sortable: true, searchable: true, autoWidth: true }
+                ],
+                columnDefs: [
+                    { targets: 1, className: 'dt-body-center' },
+                    { targets: -1, className: 'dt-body-center' }
+                ],
+                order: [[2, "asc"]]
+            });
+
+            $('#gridIndex tbody').on('click', 'tr', function () {
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            } );
+        });
+
+        function Filtrar_Click() {
+            table.ajax.reload();
+        }
+
+        function LimparFiltro_Click() {
+            $("#cnpj, #razaosocial, #municipioid").val("").change();
+            table.ajax.reload();
+        }
+
+        function Incluir_Click() {
+            window.location.href = content + "Empresa/Incluir";
+        }
+
+         function Alterar_Click() {
+            var row = table.row('.selected').data();
+            if (!verificaValor(row)) {
+                mensagemAviso("Selecione um registro");
+                return;
+            }
+
+             window.location.href = content + "Empresa/Alterar/" + row.empresaid;
+        }
+
+        function Visualizar_Click() {
+            var row = table.row('.selected').data();
+            if (!verificaValor(row)) {
+                mensagemAviso("Selecione um registro");
+                return;
+            }
+
+            window.location.href = content + "Empresa/Visualizar/" + row.empresaid;
+        }
+
+        function Excluir_Click() {
+            var row = table.row('.selected').data();
+            if (!verificaValor(row)) {
+                mensagemAviso("Selecione um registro");
+                return;
+            }
+
+            window.location.href = content + "Empresa/Excluir/" + row.empresaid;
+        }
+    </script>
+}
