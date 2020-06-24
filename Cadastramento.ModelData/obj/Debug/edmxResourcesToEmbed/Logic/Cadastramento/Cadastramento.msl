@@ -601,5 +601,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="analise">
+      <EntityTypeMapping TypeName="CadastramentoModel.analise">
+        <MappingFragment StoreEntitySet="analise">
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+          <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
+          <ScalarProperty Name="datahoraanalise" ColumnName="datahoraanalise" />
+          <ScalarProperty Name="carroceriaid" ColumnName="carroceriaid" />
+          <ScalarProperty Name="veiculoid" ColumnName="veiculoid" />
+          <ScalarProperty Name="motoristaid" ColumnName="motoristaid" />
+          <ScalarProperty Name="analiseid" ColumnName="analiseid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

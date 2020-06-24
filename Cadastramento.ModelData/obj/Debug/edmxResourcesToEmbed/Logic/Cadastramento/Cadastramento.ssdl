@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CadastramentoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="analise">
+    <Key>
+      <PropertyRef Name="analiseid" />
+    </Key>
+    <Property Name="analiseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="motoristaid" Type="int" />
+    <Property Name="veiculoid" Type="int" />
+    <Property Name="carroceriaid" Type="int" />
+    <Property Name="datahoraanalise" Type="datetime" Nullable="false" />
+    <Property Name="situacaocadastroid" Type="int" />
+    <Property Name="observacao" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="auditlog">
     <Key>
       <PropertyRef Name="AuditLogId" />
@@ -606,6 +618,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_analise_situacaocadastro">
+    <End Role="situacaocadastro" Type="Self.situacaocadastro" Multiplicity="0..1" />
+    <End Role="analise" Type="Self.analise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="situacaocadastro">
+        <PropertyRef Name="situacaocadastroid" />
+      </Principal>
+      <Dependent Role="analise">
+        <PropertyRef Name="situacaocadastroid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_carroceria_carroceria_CompartimentoId">
     <End Role="carroceria" Type="Self.carroceria" Multiplicity="0..1" />
     <End Role="carroceria1" Type="Self.carroceria" Multiplicity="*" />
@@ -929,6 +953,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="CadastramentoModelStoreContainer">
+    <EntitySet Name="analise" EntityType="Self.analise" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="auditlog" EntityType="Self.auditlog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="auditlogdetail" EntityType="Self.auditlogdetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="auditlogexcecao" EntityType="Self.auditlogexcecao" Schema="dbo" store:Type="Tables" />
@@ -970,6 +995,10 @@
     <AssociationSet Name="empresa$fk_empresa_municipio" Association="Self.empresa$fk_empresa_municipio">
       <End Role="municipio" EntitySet="municipio" />
       <End Role="empresa" EntitySet="empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_analise_situacaocadastro" Association="Self.FK_analise_situacaocadastro">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="analise" EntitySet="analise" />
     </AssociationSet>
     <AssociationSet Name="FK_carroceria_carroceria_CompartimentoId" Association="Self.FK_carroceria_carroceria_CompartimentoId">
       <End Role="carroceria" EntitySet="carroceria" />

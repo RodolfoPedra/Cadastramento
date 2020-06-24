@@ -6,12 +6,26 @@ using System.Web.Mvc;
 
 namespace Cadastramento.Mvc.Controllers
 {
-    public class CarroceriaController : Controller
+    public class CarroceriaController : BaseController
     {
         // GET: Carroceria
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Incluir() {
+
+            PreparaViewBag();
+
+            return View();
+        }
+
+        private void PreparaViewBag()
+        {
+            ViewBag.ListaTipoCarroceria = TipoCarroceria();
+            ViewBag.ListaMonitoramento = ListaMonitoramento();
+            ViewBag.ListaTipoCarga = TipoCarga();
         }
     }
 }

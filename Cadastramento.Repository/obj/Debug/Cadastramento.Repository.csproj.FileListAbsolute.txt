@@ -31,3 +31,68 @@ C:\Projetos\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repos
 C:\Projetos\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.csproj.CopyComplete
 C:\Projetos\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.dll
 C:\Projetos\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.pdb
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\Cadastramento.Repository.dll.config
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\Cadastramento.Repository.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\Cadastramento.Repository.pdb
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\Cadastramento.ModelData.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\EntityFramework.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\EntityFramework.MappingAPI.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.Mvc.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.WebPages.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.Razor.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\Cadastramento.ModelData.pdb
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\Cadastramento.ModelData.dll.config
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\EntityFramework.xml
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\EntityFramework.MappingAPI.pdb
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.Mvc.xml
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.WebPages.xml
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.Razor.xml
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\pt-br\System.Web.Mvc.resources.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\pt-br\System.Web.WebPages.resources.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\pt-br\System.Web.WebPages.Razor.resources.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\pt-br\System.Web.Razor.resources.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\bin\Debug\pt-br\System.Web.WebPages.Deployment.resources.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.csprojAssemblyReference.cache
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.csproj.CopyComplete
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.dll
+C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.pdb
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\Cadastramento.Repository.dll.config
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\Cadastramento.Repository.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\Cadastramento.Repository.pdb
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\Cadastramento.ModelData.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\EntityFramework.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\EntityFramework.MappingAPI.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.Mvc.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.WebPages.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.Razor.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\Cadastramento.ModelData.pdb
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\Cadastramento.ModelData.dll.config
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\EntityFramework.xml
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\EntityFramework.MappingAPI.pdb
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.Mvc.xml
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.WebPages.xml
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.Razor.xml
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\pt-br\System.Web.Mvc.resources.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\pt-br\System.Web.WebPages.resources.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\pt-br\System.Web.WebPages.Razor.resources.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\pt-br\System.Web.Razor.resources.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\bin\Debug\pt-br\System.Web.WebPages.Deployment.resources.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.csprojAssemblyReference.cache
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.csproj.CoreCompileInputs.cache
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.csproj.CopyComplete
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.dll
+C:\Projetos\Cadastramento\Cadastramento\Cadastramento.Repository\obj\Debug\Cadastramento.Repository.pdb

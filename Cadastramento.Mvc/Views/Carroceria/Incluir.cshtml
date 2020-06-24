@@ -1,4 +1,4 @@
-﻿@model Cadastramento.ModelData.Logic.Cadastramento.veiculo
+﻿@model Cadastramento.ModelData.Logic.Cadastramento.carroceria
 @{
     ViewBag.Title = "..:: Cadastramento | Veículo ::..";
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
@@ -23,16 +23,18 @@
             Monitoramento
             <div class="box-wizard"></div>
         </li>
-        @*<li class="item-lista">
-            Importar Documento
-            <div class="box-wizard"></div>
-        </li>*@
     </ul>
 
     @using (Html.BeginForm("Incluir", "Veiculo", FormMethod.Post, new { @class = "kt-form", @id = "form" }))
     {
         <div class="section-form">
             <section data-anime="sectionDatas">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("tipoveiculo", "Tipo de Carroceria")
+                        @Html.DropDownListFor(model => model.tipocarroceriaid, ViewBag.ListaTipoCarroceria as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         @Html.Label("renavan", "RENAVAN")
@@ -56,13 +58,7 @@
                 </div>
             </section>
 
-            <section data-anime="sectionDatas">
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        @Html.Label("tipoveiculo", "Tipo de Veículo")
-                        @Html.DropDownListFor(model => model.tipoveiculoid, ViewBag.ListaTipoVeiculo as SelectList, new { @class = "form-control" })
-                    </div>
-                </div>
+            <section data-anime="sectionDatas">            
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         @Html.Label("chassi", "CHASSI")
@@ -123,7 +119,6 @@
             </section>
 
             <section data-anime="sectionDatas">
-
                 <div class="form-row">
                     <div class="form-group col-md-8">
                         @Html.Label("cep", "CEP")
@@ -189,7 +184,7 @@
 
                 <div class="form-row">
                     <div class="col-md-12 section-buttons">
-                        <button type="button" class="btn btn-danger" onclick="window.location='@Url.Content("~/Veiculo/Incluir")'; return false;"> Cancelar</button>
+                        <button type="button" class="btn btn-danger" onclick="window.location='@Url.Content("~/Motorista/Incluir")'; return false;"> Cancelar</button>
                         <button type="button" class="btn btn-success" onclick="Salvar_Click();" style="margin-left: 5px;">Salvar</button>
                     </div>
                 </div>

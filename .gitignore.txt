@@ -1,0 +1,2 @@
+./Cadastramento.Mvc/Web.Config
+./Cadastramento.ModelData/Web.Config

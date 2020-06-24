@@ -833,6 +833,11 @@
       <End Role="situacaocadastro" EntitySet="situacaocadastro" />
       <End Role="motorista" EntitySet="motorista" />
     </AssociationSet>
+    <EntitySet Name="analise" EntityType="CadastramentoModel.analise" />
+    <AssociationSet Name="FK_analise_situacaocadastro" Association="CadastramentoModel.FK_analise_situacaocadastro">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="analise" EntitySet="analise" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="carroceria">
     <Key>
@@ -897,6 +902,7 @@
     <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="carroceria" />
     <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="veiculo" />
     <NavigationProperty Name="motorista" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="motorista" />
+    <NavigationProperty Name="analise" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="situacaocadastro" ToRole="analise" />
   </EntityType>
   <EntityType Name="tipocarga">
     <Key>
@@ -1130,6 +1136,31 @@
         <PropertyRef Name="situacaocadastroid" />
       </Principal>
       <Dependent Role="motorista">
+        <PropertyRef Name="situacaocadastroid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="analise">
+    <Key>
+      <PropertyRef Name="analiseid" />
+    </Key>
+    <Property Name="analiseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="motoristaid" Type="Int32" />
+    <Property Name="veiculoid" Type="Int32" />
+    <Property Name="carroceriaid" Type="Int32" />
+    <Property Name="datahoraanalise" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="situacaocadastroid" Type="Int32" />
+    <Property Name="observacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="analise" ToRole="situacaocadastro" />
+  </EntityType>
+  <Association Name="FK_analise_situacaocadastro">
+    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.analise" Role="analise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="situacaocadastro">
+        <PropertyRef Name="situacaocadastroid" />
+      </Principal>
+      <Dependent Role="analise">
         <PropertyRef Name="situacaocadastroid" />
       </Dependent>
     </ReferentialConstraint>

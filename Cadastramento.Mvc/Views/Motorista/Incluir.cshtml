@@ -213,7 +213,7 @@
 
             $.post('@Url.Action("ObterDetran", "Motorista")', { "cpf": cpf, "cnh": cnh },
                 function (data) {
-                    if (data.Record.length > 0) {
+                    if (data.Record.length != 0) {
                         $("#cpf").val(data.Record.cpf);
                         $("#cnh").val(data.Record.cnh);
                         $("#nome").val(data.Record.nome);
