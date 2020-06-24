@@ -1,8 +1,227 @@
-﻿
+﻿@model Cadastramento.ModelData.Logic.Cadastramento.veiculo
 @{
-    ViewBag.Title = "Incluir";
+    ViewBag.Title = "..:: Cadastramento | Veículo ::..";
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
 
-<h2>Incluir</h2>
+<h4><b>Incluir</b></h4>
+<section class="container-cadastro">
+    <ul class="js-tab lista">
+        <li class="item-lista il-selected">
+            Identificação
+            <div class="box-wizard bw-selected"></div>
+        </li>
+        <li class="item-lista">
+            Dados do Veículo
+            <div class="box-wizard"></div>
+        </li>
+        <li class="item-lista">
+            Endereço
+            <div class="box-wizard"></div>
+        </li>
+        <li class="item-lista">
+            Monitoramento
+            <div class="box-wizard"></div>
+        </li>
+        @*<li class="item-lista">
+            Importar Documento
+            <div class="box-wizard"></div>
+        </li>*@
+    </ul>
+
+    @using (Html.BeginForm("Incluir", "Veiculo", FormMethod.Post, new { @class = "kt-form", @id = "form" }))
+    {
+        <div class="section-form">
+            <section data-anime="sectionDatas">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("renavan", "RENAVAN")
+                        @Html.TextBoxFor(model => model.renavam, new { @class = "form-control", @placeholder = "RENAVAN" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("placa", "PLACA")
+                        @Html.TextBoxFor(model => model.placa, new { @class = "form-control", @placeholder = "PLACA" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("ufPlaca", "UF DA PLACA")
+                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
+                    </div>
+                </div>
+                <hr />
+                <div class="col-md-12 section-buttons">
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="Obter_Dados_Click();">
+                        Proximo <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                </div>
+            </section>
+
+            <section data-anime="sectionDatas">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("tipoveiculo", "Tipo de Veículo")
+                        @Html.DropDownListFor(model => model.monitorado, ViewBag.ListaTipoVeiculo as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("chassi", "CHASSI")
+                        @Html.TextBoxFor(model => model.chassi, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("cidadelicenciamento", "CIDADE DE LICENCIAMENTO")
+                        @Html.TextBoxFor(model => model.cidadelicenciamento, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("categoriaantt", "CATEGORIA ANTT")
+                        @Html.TextBoxFor(model => model.categoriaantt, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("corpredominante", "COR PREDOMINANTE")
+                        @Html.TextBoxFor(model => model.corpredominante, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("marca", "MARCA")
+                        @Html.TextBoxFor(model => model.marca, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("anofabricacao", "ANO FABRICAÇÃO")
+                        @Html.TextBoxFor(model => model.anofabricacao, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("anomodelo", "ANO MODELO")
+                        @Html.TextBoxFor(model => model.anomodelo, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("tipocarga", "TIPO DE CARGA")
+                        @Html.DropDownListFor(model => model.tipocarga, ViewBag.ListaTipoCarga as SelectList, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("lotacaomaxima", "LOTAÇÃO MÁXIMA")
+                        @Html.TextBoxFor(model => model.lotacaomaxima, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        @Html.Label("nomeproprietariotransportadora", "NOME DO PROPRIETÁRIO OU TRANSPORTADORA")
+                        @Html.TextBoxFor(model => model.nomeproprietariotransportadora, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("cpfcnpj", "CPF DO PROPRIETÁRIO OU CNPJ DA TRANSPORTADORA")
+                        @Html.TextBoxFor(model => model.cpfcnpj, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                </div>
+                <hr />
+                <div class="col-md-12 section-buttons">
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                    <button type="button" class="btn btn-success">Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
+                </div>
+            </section>
+
+            <section data-anime="sectionDatas">
+
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        @Html.Label("cep", "CEP")
+                        @Html.TextBoxFor(model => model.cep, new { @class = "form-control", @placeholder = "CEP" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("logradouro", "Logradouro")
+                        @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control", @placeholder = "Logradouro" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("numero", "Nº")
+                        @Html.TextBoxFor(model => model.numero, new { @class = "form-control", @placeholder = "Nº" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("complemento", "Complemento")
+                        @Html.TextBoxFor(model => model.complemento, new { @class = "form-control", @placeholder = "Complemento" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("bairro", "Bairro")
+                        @Html.TextBoxFor(model => model.bairro, new { @class = "form-control", @placeholder = "Bairro" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("cidade", "Cidade")
+                        @Html.TextBoxFor(model => model.cidade, new { @class = "form-control", @placeholder = "Cidade" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("uf", "UF")
+                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-12 section-buttons">
+                        <button type="button" class="btn btn-danger">Cancelar</button>
+                        <button type="button" class="btn btn-success">Proximo</button>
+                    </div>
+                </div>
+            </section>
+
+            <section data-anime="sectionDatas">
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        @Html.Label("monitorado", "POSSUI MONITORAMENTO ?")
+                        @Html.DropDownListFor(model => model.monitorado, ViewBag.ListaMonitoramento as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        @Html.Label("tipomonitoramento", "TIPO DE MONITORAMENTO")
+                        @Html.TextBoxFor(model => model.tipomonitoramento, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-5">
+                        @Html.Label("empresamonitoramento", "EMPRESA RESPONSÁVEL PELO MONITORAMENTO")
+                        @Html.TextBoxFor(model => model.empresamonitoramento, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12 section-buttons">
+                        <button type="button" class="btn btn-danger" onclick="window.location='@Url.Content("~/Motorista/Incluir")'; return false;"> Cancelar</button>
+                        <button type="button" class="btn btn-success" onclick="Salvar_Click();" style="margin-left: 5px;">Salvar</button>
+                    </div>
+                </div>
+            </section>
+
+            @*<section data-anime="sectionDatas">
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        @Html.Label("monitorado", "POSSUI MONITORAMENTO ?")
+                        @Html.DropDownListFor(model => model.monitorado, ViewBag.ListaMonitoramento as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        @Html.Label("tipomonitoramento", "TIPO DE MONITORAMENTO")
+                        @Html.TextBoxFor(model => model.tipomonitoramento, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                    <div class="form-group col-md-5">
+                        @Html.Label("empresamonitoramento", "EMPRESA RESPONSÁVEL PELO MONITORAMENTO")
+                        @Html.TextBoxFor(model => model.empresamonitoramento, new { @class = "form-control", @placeholder = "" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12 section-buttons">
+                        <button type="button" class="btn btn-danger" onclick="window.location='@Url.Content("~/Motorista/Incluir")'; return false;"> Cancelar</button>
+                        <button type="button" class="btn btn-success" onclick="Salvar_Click();" style="margin-left: 5px;">Salvar</button>
+                    </div>
+                </div>
+            </section>*@
+
+        </div>
+    }
+</section>
 

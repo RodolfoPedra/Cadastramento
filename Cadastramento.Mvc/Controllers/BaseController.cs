@@ -24,12 +24,35 @@ namespace Cadastramento.Mvc.Controllers
             return listaSituacao.ToSelectList(ent => ent.Key, ent => ent.Value, nomePrimeiroCampo, valorSelecionado);
         }
 
+        public SelectList ListaMonitoramento(object valorSelecionado = null, string nomePrimeiroCampo = "SELECIONE...")
+        {
+            var listaMonitoramente = new Dictionary<string, string>();
+            listaMonitoramente.Add("S", "SIM");
+            listaMonitoramente.Add("N", "NÃO");
+
+            return listaMonitoramente.ToSelectList(ent => ent.Key, ent => ent.Value, nomePrimeiroCampo, valorSelecionado);
+        }
+
         public SelectList ListaSituacao(object valorSelecionado = null, string nomePrimeiroCampo = "SELECIONE...")
         {
 
             return new BaseService<situacaocadastro>().ObterTodos()
                 .OrderBy(ent => ent.situacaocadastroid)
                 .ToSelectList(ent => ent.situacaocadastroid, ent => ent.descricao, nomePrimeiroCampo, valorSelecionado);            
+        }
+
+        public SelectList TipoVeiculo(object valorSelecionado = null, string nomePrimeiroCampo = "SELECIONE...")
+        {
+            return new BaseService<tipoveiculo>().ObterTodos()
+                .OrderBy(ent => ent.tipoveiculoid)
+                .ToSelectList(ent => ent.tipoveiculoid, ent => ent.descricao, nomePrimeiroCampo, valorSelecionado);
+        }
+
+        public SelectList TipoCarga(object valorSelecionado = null, string nomePrimeiroCampo = "SELECIONE...")
+        {
+            return new BaseService<tipocarga>().ObterTodos()
+                .OrderBy(ent => ent.tipocargaid)
+                .ToSelectList(ent => ent.tipocargaid, ent => ent.descricao, nomePrimeiroCampo, valorSelecionado);
         }
 
         public SelectList GerarListaTodosMunicipios(object valorSelecionado = null, string nomePrimeiroCampo = "SELECIONE...")

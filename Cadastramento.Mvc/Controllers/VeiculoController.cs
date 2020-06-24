@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Cadastramento.Mvc.Controllers
 {
-    public class VeiculoController : Controller
+    public class VeiculoController : BaseController
     {
         // GET: Veiculo
         public ActionResult Index()
@@ -17,7 +17,16 @@ namespace Cadastramento.Mvc.Controllers
         public ActionResult Incluir()
         {
 
+            PreparaViewBag();
+
             return View();
+        }
+
+        private void PreparaViewBag()
+        {
+            ViewBag.ListaTipoVeiculo = TipoVeiculo();
+            ViewBag.ListaMonitoramento = ListaMonitoramento();
+            ViewBag.ListaTipoCarga = TipoCarga();
         }
     }
 }
