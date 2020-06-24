@@ -96,9 +96,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\Cadastramento\analise.cs">
-      <DependentUpon>Cadastramento.tt</DependentUpon>
-    </Compile>
     <Compile Include="Logic\Cadastramento\auditlog.cs">
       <DependentUpon>Cadastramento.tt</DependentUpon>
     </Compile>
@@ -167,9 +164,6 @@
       <DependentUpon>Cadastramento.tt</DependentUpon>
     </Compile>
     <Compile Include="Logic\Cadastramento\situacaocadastro.cs">
-      <DependentUpon>Cadastramento.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Logic\Cadastramento\sysdiagrams.cs">
       <DependentUpon>Cadastramento.tt</DependentUpon>
     </Compile>
     <Compile Include="Logic\Cadastramento\tipocarga.cs">

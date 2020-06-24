@@ -1,13 +1,45 @@
-﻿@{
+﻿@using Cadastramento.Core
+@using Cadastramento.ModelData.Logic.Cadastramento
+@using Cadastramento.Mvc.Models
+@using Cadastramento.Service
+@{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html>
+
 <head>
+    <base href="">
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Cadastramento - Cadastro de Motoristas e Veículos">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="@Url.Content("~/Scripts/fontawesome/css/all.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Scripts/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Scripts/fontawesome/css/all.min.css")" rel="stylesheet" type="text/css" />    
+    <link href="@Url.Content("~/Content/css/wizard-component.css")" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
     <link href="@Url.Content("~/Content/css/layout_iagro.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/assets/plugins/global/plugins.bundle.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/scripts.bundle.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/wizard-component.js")" type="module"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap/js/bootstrap.min.js")" type="module"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/select2/pt-BR.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.mask.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.maskMoney.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/Funcoes.js")" type="text/javascript"></script>
+
+    <script>
+        var content = "@Url.Content("~/")";
+    </script>
+    @RenderSection("scripts", false)
+
 </head>
 
 <body>
@@ -39,11 +71,6 @@
                 </div>
             </div>
         </nav>
-        
-        <div class="container" style="position: relative;">
-            @RenderBody()
-            @Html.Partial("_WizardComponet")
-        </div>
         <div class="jumbotron">
             <div class="container">
                 <div class="iconeTopo">
@@ -55,7 +82,9 @@
             </div>
         </div>
     </div>
-
+    <div class="container" style="position: relative;">
+        @RenderBody()
+    </div>
     <footer>
         <div>
             <div class="container clear">
@@ -91,6 +120,53 @@
             </div>
         </div>
     </footer>
+    <script>
+        @{
+            if (Session["Mensagem"] != null)
+            {
+                var tipoAlerta = "";
+                var mensagem = (Mensagem)Session["Mensagem"];
+                switch (mensagem.tipo)
+                {
+                    case TipoMensagem.Amarelo:
+                        tipoAlerta = "warning";
+                        break;
+                    case TipoMensagem.Vermelho:
+                        tipoAlerta = "error";
+                        break;
+                    case TipoMensagem.Verde:
+                        tipoAlerta = "success";
+                        break;
+                }
+
+                if (tipoAlerta == "success")
+                {
+                    <text>
+                        mensagemSucesso('@Html.Raw(mensagem.texto)');
+                    </text>
+                }
+                else if (tipoAlerta == "error")
+                {
+                    <text>
+                        mensagemErro('@Html.Raw(mensagem.texto)');
+                    </text>
+                }
+                else if (tipoAlerta == "warning")
+                {
+                    <text>
+                        mensagemAviso('@Html.Raw(mensagem.texto)');
+                    </text>
+                }
+                else
+                {
+                    <text>
+                        mensagem('@Html.Raw(mensagem.texto)');
+                    </text>
+                }
+                Session["Mensagem"] = null;
+            }
+        }
+    </script>
 </body>
 </html>
 

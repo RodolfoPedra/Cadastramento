@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CadastramentoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="analise">
-    <Key>
-      <PropertyRef Name="analiseid" />
-    </Key>
-    <Property Name="analiseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="motoristaid" Type="int" />
-    <Property Name="veiculoid" Type="int" />
-    <Property Name="carroceriaid" Type="int" />
-    <Property Name="datahoraanalise" Type="datetime" Nullable="false" />
-    <Property Name="situacaoid" Type="int" />
-    <Property Name="observacao" Type="varchar(max)" />
-  </EntityType>
   <EntityType Name="auditlog">
     <Key>
       <PropertyRef Name="AuditLogId" />
@@ -410,16 +398,6 @@
     <Property Name="datahoraalteracao" Type="datetime" />
     <Property Name="usuarioidinclusao" Type="int" />
     <Property Name="datahorainclusao" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="tipocarga">
     <Key>
@@ -951,7 +929,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="CadastramentoModelStoreContainer">
-    <EntitySet Name="analise" EntityType="Self.analise" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="auditlog" EntityType="Self.auditlog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="auditlogdetail" EntityType="Self.auditlogdetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="auditlogexcecao" EntityType="Self.auditlogexcecao" Schema="dbo" store:Type="Tables" />
@@ -970,7 +947,6 @@
     <EntitySet Name="processosituacao" EntityType="Self.processosituacao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="processotipo" EntityType="Self.processotipo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="situacaocadastro" EntityType="Self.situacaocadastro" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipocarga" EntityType="Self.tipocarga" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipocarroceria" EntityType="Self.tipocarroceria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipoincentivo" EntityType="Self.tipoincentivo" Schema="dbo" store:Type="Tables" />

@@ -3,17 +3,17 @@ using Cadastramento.ModelData.Logic.Cadastramento;
 using Cadastramento.Mvc.Models;
 using Cadastramento.Service;
 using Cadastramento.Service.Logic.Cadastramento;
+using Cadastramento.Util;
+using Cadastramento.Util.DataTables;
 using Cadastramento.Util.DataTables.DataTables.AspNet.Core;
 using Cadastramento.Util.DataTables.DataTables.AspNet.Mvc5;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Cadastramento.Mvc.Controllers
 {
-    public class MotoristaController : Controller
+    public class MotoristaController : BaseController
     {
         // GET: Motorista
         public ActionResult Index()
@@ -23,7 +23,8 @@ namespace Cadastramento.Mvc.Controllers
 
         public ActionResult Incluir()
         {
-            
+            PreparaViewBag();
+
             return View();
         }
 
@@ -36,6 +37,7 @@ namespace Cadastramento.Mvc.Controllers
 
                 model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;
                 model.datahorainclusao = DateTime.Now;
+                model.situacaocadastroid = 1;
 
                 srv.Incluir(model);
                 srv.Salvar(SessaoUsuario.Sessao.login);
@@ -125,22 +127,22 @@ namespace Cadastramento.Mvc.Controllers
                 return View(model);
             }
         }
-
-        private void EnviarMensagem(string v, TipoMensagem vermelho)
+      
+        public ActionResult ObterDetran(string cpf, string cnh)
         {
-            throw new NotImplementedException();
-        }
-
-        public ActionResult Obter(string cpf, string cnh)
-        {
-
             var srv = new detranService();
             var obj = srv.GetDadosCNH(cpf, cnh);
-
             return View(obj);
-
         }
 
+       
 
+        private void PreparaViewBag()
+        {
+            SessaoUsuario.Sessao.usuarioid = 1;
+            SessaoUsuario.Sessao.login = "MOTORISTA";
+
+            ViewBag.SituacaoLista = ListaSituacao();
+        }
     }
 }

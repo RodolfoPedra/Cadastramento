@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CadastramentoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="auditlog">
+    <Key>
+      <PropertyRef Name="AuditLogId" />
+    </Key>
+    <Property Name="AuditLogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="150" />
+    <Property Name="EventDateUTC" Type="datetime2" Precision="0" />
+    <Property Name="EventType" Type="int" />
+    <Property Name="TypeFullName" Type="varchar" MaxLength="512" />
+    <Property Name="RecordId" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="auditlogdetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PropertyName" Type="varchar" MaxLength="256" />
+    <Property Name="OriginalValue" Type="varchar(max)" />
+    <Property Name="NewValue" Type="varchar(max)" />
+    <Property Name="AuditLogId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="auditlogexcecao">
+    <Key>
+      <PropertyRef Name="AuditLogExcecaoId" />
+    </Key>
+    <Property Name="AuditLogExcecaoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityTypeName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="cadeiaprodutiva">
+    <Key>
+      <PropertyRef Name="cadeiaprodutivaid" />
+    </Key>
+    <Property Name="cadeiaprodutivaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="cadeiaprodutivaidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="consideracao">
+    <Key>
+      <PropertyRef Name="consideracaoid" />
+    </Key>
+    <Property Name="consideracaoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="consideracaoidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="consultor">
+    <Key>
+      <PropertyRef Name="consultorid" />
+    </Key>
+    <Property Name="consultorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="consultoria" Type="varchar" MaxLength="255" />
+    <Property Name="proprietario" Type="varchar" MaxLength="255" />
+    <Property Name="telefone" Type="varchar" MaxLength="20" />
+    <Property Name="celular" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="consultoriaadequado" Type="varchar" MaxLength="255" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="consultoridsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="empresaid" />
+    </Key>
+    <Property Name="empresaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="razaosocial" Type="varchar" MaxLength="255" />
+    <Property Name="cnpj" Type="varchar" MaxLength="14" />
+    <Property Name="inscricaoestadual" Type="varchar" MaxLength="14" />
+    <Property Name="dataconstituicao" Type="date" />
+    <Property Name="cep" Type="varchar" MaxLength="8" />
+    <Property Name="logradouro" Type="varchar" MaxLength="255" />
+    <Property Name="numero" Type="varchar" MaxLength="10" />
+    <Property Name="bairro" Type="varchar" MaxLength="255" />
+    <Property Name="complemento" Type="varchar" MaxLength="255" />
+    <Property Name="uf" Type="char" MaxLength="2" />
+    <Property Name="municipioid" Type="int" />
+    <Property Name="telefone" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="objetivosocial" Type="varchar(max)" />
+    <Property Name="ramoatividade" Type="varchar(max)" />
+    <Property Name="principaisprodutos" Type="varchar(max)" />
+    <Property Name="contatonome" Type="varchar" MaxLength="255" />
+    <Property Name="contatocpf" Type="varchar" MaxLength="11" />
+    <Property Name="contatorg" Type="varchar" MaxLength="20" />
+    <Property Name="contatocargo" Type="varchar" MaxLength="150" />
+    <Property Name="contatocep" Type="varchar" MaxLength="8" />
+    <Property Name="contatologradouro" Type="varchar" MaxLength="255" />
+    <Property Name="contatonumero" Type="varchar" MaxLength="10" />
+    <Property Name="contatobairro" Type="varchar" MaxLength="255" />
+    <Property Name="contatocomplemento" Type="varchar" MaxLength="255" />
+    <Property Name="contatouf" Type="char" MaxLength="2" />
+    <Property Name="contatomunicipioid" Type="int" />
+    <Property Name="contatotelefone" Type="varchar" MaxLength="20" />
+    <Property Name="contatoemail" Type="varchar" MaxLength="255" />
+    <Property Name="observacao" Type="varchar(max)" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="empresaidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="empresaprojeto">
+    <Key>
+      <PropertyRef Name="empresaprojetoid" />
+    </Key>
+    <Property Name="empresaprojetoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="empresaid" Type="int" />
+    <Property Name="numeroprocesso" Type="varchar" MaxLength="50" />
+    <Property Name="finalidade" Type="char" MaxLength="1" />
+    <Property Name="numeroempregoatual" Type="int" />
+    <Property Name="numeroempregofuturo" Type="int" />
+    <Property Name="faturamentoanualatual" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="faturamentoanualfuturo" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="horariofuncionamentomatutino" Type="varchar" MaxLength="50" />
+    <Property Name="horariofuncionamentovespertino" Type="varchar" MaxLength="50" />
+    <Property Name="horariofuncionamentonoturno" Type="varchar" MaxLength="50" />
+    <Property Name="localizacaoempreendimento" Type="varchar(max)" />
+    <Property Name="areanecessariaconstruida" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="areanecessariaterreno" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="investimentoconstrucaoinstalacao" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="investimentomaquinaequipamento" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="investimentooutros" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="investimentofixo" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="capitalgiro" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="investimentototal" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="principalmateriaprimaorigemnacional" Type="varchar(max)" />
+    <Property Name="principalmateriaprimaorigemimportada" Type="varchar(max)" />
+    <Property Name="principalprodutoindustrializado" Type="varchar(max)" />
+    <Property Name="capacidadeunidadeindustrial" Type="varchar" MaxLength="200" />
+    <Property Name="prazoimplantacaoiniciomes" Type="int" />
+    <Property Name="prazoimplantacaoinicioano" Type="int" />
+    <Property Name="prazoimplantacaoterminomes" Type="int" />
+    <Property Name="prazoimplantacaoterminoano" Type="int" />
+    <Property Name="iniciooperacaomes" Type="int" />
+    <Property Name="iniciooperacaoano" Type="int" />
+    <Property Name="arquivo" Type="varbinary(max)" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime" />
+  </EntityType>
+  <EntityType Name="logacesso">
+    <Key>
+      <PropertyRef Name="logacessoid" />
+    </Key>
+    <Property Name="logacessoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sistema" Type="varchar" MaxLength="50" />
+    <Property Name="usuarioid" Type="int" />
+    <Property Name="login" Type="varchar" MaxLength="200" />
+    <Property Name="datahoralog" Type="datetime2" Precision="0" />
+    <Property Name="ip" Type="varchar" MaxLength="100" />
+    <Property Name="municipio" Type="varchar" MaxLength="255" />
+    <Property Name="browser" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="menuacao">
+    <Key>
+      <PropertyRef Name="menuacaoid" />
+    </Key>
+    <Property Name="menuacaoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="char" MaxLength="1" />
+    <Property Name="descricao" Type="varchar" MaxLength="100" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="ordembotao" Type="int" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="municipio">
+    <Key>
+      <PropertyRef Name="municipioid" />
+    </Key>
+    <Property Name="municipioid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="255" />
+    <Property Name="uf" Type="char" MaxLength="2" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="municipioidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="perfilid" />
+    </Key>
+    <Property Name="perfilid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="150" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="processo">
+    <Key>
+      <PropertyRef Name="processoid" />
+    </Key>
+    <Property Name="processoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="12" />
+    <Property Name="empresaid" Type="int" />
+    <Property Name="processotipoid" Type="int" />
+    <Property Name="tipoincentivoid" Type="int" />
+    <Property Name="cadeiaprodutivaid" Type="int" />
+    <Property Name="atividade" Type="varchar" MaxLength="300" />
+    <Property Name="processosituacaoid" Type="int" />
+    <Property Name="consideracaoid" Type="int" />
+    <Property Name="treinamento" Type="char" MaxLength="1" />
+    <Property Name="data" Type="date" />
+    <Property Name="consultorid" Type="int" />
+    <Property Name="empregoinicial" Type="int" />
+    <Property Name="empregofuturo" Type="int" />
+    <Property Name="empregototal" Type="int" />
+    <Property Name="investimentoinicial" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="investimentofuturo" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="investimentototal" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="providencias" Type="varchar" MaxLength="255" />
+    <Property Name="justificativapendencia" Type="varchar(max)" />
+    <Property Name="certificado" Type="char" MaxLength="1" />
+    <Property Name="ta" Type="varchar" MaxLength="50" />
+    <Property Name="tadataassinatura" Type="date" />
+    <Property Name="tadataentrega" Type="date" />
+    <Property Name="taprazoentregaprojeto" Type="int" />
+    <Property Name="tadataentregaprojeto" Type="date" />
+    <Property Name="ta2" Type="varchar" MaxLength="50" />
+    <Property Name="ta2dataassinatura" Type="date" />
+    <Property Name="ta2dataentrega" Type="date" />
+    <Property Name="ta2prazoentregaprojeto" Type="int" />
+    <Property Name="ta2dataentregaprojeto" Type="date" />
+    <Property Name="percentual" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="adicional" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="prazoano1" Type="int" />
+    <Property Name="prazomes1" Type="int" />
+    <Property Name="prazodia1" Type="int" />
+    <Property Name="prazoano2" Type="int" />
+    <Property Name="prazomes2" Type="int" />
+    <Property Name="prazodia2" Type="int" />
+    <Property Name="prazoano3" Type="int" />
+    <Property Name="prazomes3" Type="int" />
+    <Property Name="prazodia3" Type="int" />
+    <Property Name="prazoano4" Type="int" />
+    <Property Name="prazomes4" Type="int" />
+    <Property Name="prazodia4" Type="int" />
+    <Property Name="prazoano5" Type="int" />
+    <Property Name="prazomes5" Type="int" />
+    <Property Name="prazodia5" Type="int" />
+    <Property Name="vigencia1inicio" Type="date" />
+    <Property Name="vigencia1fim" Type="date" />
+    <Property Name="vigencia2inicio" Type="date" />
+    <Property Name="vigencia2fim" Type="date" />
+    <Property Name="vigencia3inicio" Type="date" />
+    <Property Name="vigencia3fim" Type="date" />
+    <Property Name="vigencia4inicio" Type="date" />
+    <Property Name="vigencia4fim" Type="date" />
+    <Property Name="vigencia5inicio" Type="date" />
+    <Property Name="vigencia5fim" Type="date" />
+    <Property Name="deliberacao1numero" Type="varchar" MaxLength="20" />
+    <Property Name="deliberacao1data" Type="date" />
+    <Property Name="deliberacao2numero" Type="varchar" MaxLength="20" />
+    <Property Name="deliberacao2data" Type="date" />
+    <Property Name="deliberacao3numero" Type="varchar" MaxLength="20" />
+    <Property Name="deliberacao3data" Type="date" />
+    <Property Name="deliberacao4numero" Type="varchar" MaxLength="20" />
+    <Property Name="deliberacao4data" Type="date" />
+    <Property Name="deliberacao5numero" Type="varchar" MaxLength="20" />
+    <Property Name="deliberacao5data" Type="date" />
+    <Property Name="deliberacao6numero" Type="varchar" MaxLength="20" />
+    <Property Name="deliberacao6data" Type="date" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="processoidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="processosituacao">
+    <Key>
+      <PropertyRef Name="processosituacaoid" />
+    </Key>
+    <Property Name="processosituacaoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="descricaoadequada" Type="varchar" MaxLength="255" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="processosituacaoidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="processotipo">
+    <Key>
+      <PropertyRef Name="processotipoid" />
+    </Key>
+    <Property Name="processotipoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="processotipoidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="tipoincentivo">
+    <Key>
+      <PropertyRef Name="tipoincentivoid" />
+    </Key>
+    <Property Name="tipoincentivoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="descricaoadequada" Type="varchar" MaxLength="255" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="tipoincentivoidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="unidademedida">
+    <Key>
+      <PropertyRef Name="unidademedidaid" />
+    </Key>
+    <Property Name="unidademedidaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="255" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="unidademedidaidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="usuarioid" />
+    </Key>
+    <Property Name="usuarioid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="200" />
+    <Property Name="login" Type="varchar" MaxLength="200" />
+    <Property Name="senha" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="150" />
+    <Property Name="telefone" Type="varchar" MaxLength="20" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+    <Property Name="usuarioidsistemaantigo" Type="int" />
+  </EntityType>
+  <EntityType Name="usuariomenu">
+    <Key>
+      <PropertyRef Name="usuariomenuid" />
+    </Key>
+    <Property Name="usuariomenuid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paiusuariomenuid" Type="int" />
+    <Property Name="texto" Type="varchar" MaxLength="100" />
+    <Property Name="url" Type="varchar" MaxLength="200" />
+    <Property Name="abrirnovajanela" Type="char" MaxLength="1" />
+    <Property Name="ordem" Type="int" />
+    <Property Name="tipo" Type="char" MaxLength="1" />
+    <Property Name="classeicone" Type="varchar" MaxLength="150" />
+    <Property Name="titulopagina" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="usuariomenuacao">
+    <Key>
+      <PropertyRef Name="usuariomenuacaoid" />
+    </Key>
+    <Property Name="usuariomenuacaoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuariomenuid" Type="int" Nullable="false" />
+    <Property Name="menuacaoid" Type="int" Nullable="false" />
+    <Property Name="situacao" Type="char" MaxLength="1" />
+    <Property Name="usuarioidinclusao" Type="int" />
+    <Property Name="usuarioidalteracao" Type="int" />
+    <Property Name="datahorainclusao" Type="datetime2" Precision="0" />
+    <Property Name="datahoraalteracao" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="usuariomenuacaoperfilpermissao">
+    <Key>
+      <PropertyRef Name="usuariomenuacaoperfilpermissaoid" />
+    </Key>
+    <Property Name="usuariomenuacaoperfilpermissaoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuariomenuacaoid" Type="int" Nullable="false" />
+    <Property Name="perfilid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuariomenuperfilpermissao">
+    <Key>
+      <PropertyRef Name="usuariomenuperfilpermissaoid" />
+    </Key>
+    <Property Name="usuariomenuperfilpermissaoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuariomenuid" Type="int" Nullable="false" />
+    <Property Name="perfilid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuarioperfil">
+    <Key>
+      <PropertyRef Name="usuarioperfilid" />
+    </Key>
+    <Property Name="usuarioperfilid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuarioid" Type="int" Nullable="false" />
+    <Property Name="perfilid" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="auditlogdetail$FK_auditlogdetail_auditlog">
+    <End Role="auditlog" Type="Self.auditlog" Multiplicity="0..1" />
+    <End Role="auditlogdetail" Type="Self.auditlogdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="auditlog">
+        <PropertyRef Name="AuditLogId" />
+      </Principal>
+      <Dependent Role="auditlogdetail">
+        <PropertyRef Name="AuditLogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="empresa$fk_empresa_contatomunicipio">
+    <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
+    <End Role="empresa" Type="Self.empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="municipio">
+        <PropertyRef Name="municipioid" />
+      </Principal>
+      <Dependent Role="empresa">
+        <PropertyRef Name="contatomunicipioid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="empresa$fk_empresa_municipio">
+    <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
+    <End Role="empresa" Type="Self.empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="municipio">
+        <PropertyRef Name="municipioid" />
+      </Principal>
+      <Dependent Role="empresa">
+        <PropertyRef Name="municipioid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_empresaprojeto_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+    <End Role="empresaprojeto" Type="Self.empresaprojeto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="empresaid" />
+      </Principal>
+      <Dependent Role="empresaprojeto">
+        <PropertyRef Name="empresaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo$fk_processo_cadeiaprodutiva">
+    <End Role="cadeiaprodutiva" Type="Self.cadeiaprodutiva" Multiplicity="0..1" />
+    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cadeiaprodutiva">
+        <PropertyRef Name="cadeiaprodutivaid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="cadeiaprodutivaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo$fk_processo_consideracao">
+    <End Role="consideracao" Type="Self.consideracao" Multiplicity="0..1" />
+    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="consideracao">
+        <PropertyRef Name="consideracaoid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="consideracaoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo$fk_processo_consultor">
+    <End Role="consultor" Type="Self.consultor" Multiplicity="0..1" />
+    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="consultor">
+        <PropertyRef Name="consultorid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="consultorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo$fk_processo_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="empresaid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="empresaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo$fk_processo_processosituacao">
+    <End Role="processosituacao" Type="Self.processosituacao" Multiplicity="0..1" />
+    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="processosituacao">
+        <PropertyRef Name="processosituacaoid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="processosituacaoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo$fk_processo_processotipo">
+    <End Role="processotipo" Type="Self.processotipo" Multiplicity="0..1" />
+    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="processotipo">
+        <PropertyRef Name="processotipoid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="processotipoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo$fk_processo_tipoincentivo">
+    <End Role="tipoincentivo" Type="Self.tipoincentivo" Multiplicity="0..1" />
+    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoincentivo">
+        <PropertyRef Name="tipoincentivoid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="tipoincentivoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenu$fk_paiusuariomenu_usuariomenu">
+    <End Role="usuariomenu" Type="Self.usuariomenu" Multiplicity="0..1" />
+    <End Role="usuariomenu1" Type="Self.usuariomenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenu">
+        <PropertyRef Name="usuariomenuid" />
+      </Principal>
+      <Dependent Role="usuariomenu1">
+        <PropertyRef Name="paiusuariomenuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuacao$fk_usuariomenuacao_menuacao">
+    <End Role="menuacao" Type="Self.menuacao" Multiplicity="1" />
+    <End Role="usuariomenuacao" Type="Self.usuariomenuacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menuacao">
+        <PropertyRef Name="menuacaoid" />
+      </Principal>
+      <Dependent Role="usuariomenuacao">
+        <PropertyRef Name="menuacaoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuacao$fk_usuariomenuacao_usuariomenu">
+    <End Role="usuariomenu" Type="Self.usuariomenu" Multiplicity="1" />
+    <End Role="usuariomenuacao" Type="Self.usuariomenuacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenu">
+        <PropertyRef Name="usuariomenuid" />
+      </Principal>
+      <Dependent Role="usuariomenuacao">
+        <PropertyRef Name="usuariomenuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuacaoperfilpermissao$fk_usuariomenuacaoperfilpermissao_perfil">
+    <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
+    <End Role="usuariomenuacaoperfilpermissao" Type="Self.usuariomenuacaoperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="perfilid" />
+      </Principal>
+      <Dependent Role="usuariomenuacaoperfilpermissao">
+        <PropertyRef Name="perfilid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuacaoperfilpermissao$fk_usuariomenuacaoperfilpermissao_usuariomenuacao">
+    <End Role="usuariomenuacao" Type="Self.usuariomenuacao" Multiplicity="1" />
+    <End Role="usuariomenuacaoperfilpermissao" Type="Self.usuariomenuacaoperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenuacao">
+        <PropertyRef Name="usuariomenuacaoid" />
+      </Principal>
+      <Dependent Role="usuariomenuacaoperfilpermissao">
+        <PropertyRef Name="usuariomenuacaoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuperfilpermissao$FK_usuariomenuperfilpermissao_perfil">
+    <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
+    <End Role="usuariomenuperfilpermissao" Type="Self.usuariomenuperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="perfilid" />
+      </Principal>
+      <Dependent Role="usuariomenuperfilpermissao">
+        <PropertyRef Name="perfilid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuperfilpermissao$FK_usuariomenuperfilpermissao_usuariomenu">
+    <End Role="usuariomenu" Type="Self.usuariomenu" Multiplicity="1" />
+    <End Role="usuariomenuperfilpermissao" Type="Self.usuariomenuperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenu">
+        <PropertyRef Name="usuariomenuid" />
+      </Principal>
+      <Dependent Role="usuariomenuperfilpermissao">
+        <PropertyRef Name="usuariomenuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuarioperfil$fk_usuarioperfil_perfil">
+    <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
+    <End Role="usuarioperfil" Type="Self.usuarioperfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="perfilid" />
+      </Principal>
+      <Dependent Role="usuarioperfil">
+        <PropertyRef Name="perfilid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuarioperfil$fk_usuarioperfil_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="usuarioperfil" Type="Self.usuarioperfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="usuarioid" />
+      </Principal>
+      <Dependent Role="usuarioperfil">
+        <PropertyRef Name="usuarioid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CadastramentoModelStoreContainer">
+    <EntitySet Name="auditlog" EntityType="Self.auditlog" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="auditlogdetail" EntityType="Self.auditlogdetail" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="auditlogexcecao" EntityType="Self.auditlogexcecao" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="cadeiaprodutiva" EntityType="Self.cadeiaprodutiva" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="consideracao" EntityType="Self.consideracao" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="consultor" EntityType="Self.consultor" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="empresaprojeto" EntityType="Self.empresaprojeto" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="logacesso" EntityType="Self.logacesso" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="menuacao" EntityType="Self.menuacao" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="municipio" EntityType="Self.municipio" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="perfil" EntityType="Self.perfil" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="processo" EntityType="Self.processo" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="processosituacao" EntityType="Self.processosituacao" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="processotipo" EntityType="Self.processotipo" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="tipoincentivo" EntityType="Self.tipoincentivo" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="unidademedida" EntityType="Self.unidademedida" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="usuariomenu" EntityType="Self.usuariomenu" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="usuariomenuacao" EntityType="Self.usuariomenuacao" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="usuariomenuacaoperfilpermissao" EntityType="Self.usuariomenuacaoperfilpermissao" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="usuariomenuperfilpermissao" EntityType="Self.usuariomenuperfilpermissao" Schema="Cadastramento" store:Type="Tables" />
+    <EntitySet Name="usuarioperfil" EntityType="Self.usuarioperfil" Schema="Cadastramento" store:Type="Tables" />
+    <AssociationSet Name="auditlogdetail$FK_auditlogdetail_auditlog" Association="Self.auditlogdetail$FK_auditlogdetail_auditlog">
+      <End Role="auditlog" EntitySet="auditlog" />
+      <End Role="auditlogdetail" EntitySet="auditlogdetail" />
+    </AssociationSet>
+    <AssociationSet Name="empresa$fk_empresa_contatomunicipio" Association="Self.empresa$fk_empresa_contatomunicipio">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="empresa" EntitySet="empresa" />
+    </AssociationSet>
+    <AssociationSet Name="empresa$fk_empresa_municipio" Association="Self.empresa$fk_empresa_municipio">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="empresa" EntitySet="empresa" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empresaprojeto_empresa" Association="Self.fk_empresaprojeto_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="empresaprojeto" EntitySet="empresaprojeto" />
+    </AssociationSet>
+    <AssociationSet Name="processo$fk_processo_cadeiaprodutiva" Association="Self.processo$fk_processo_cadeiaprodutiva">
+      <End Role="cadeiaprodutiva" EntitySet="cadeiaprodutiva" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo$fk_processo_consideracao" Association="Self.processo$fk_processo_consideracao">
+      <End Role="consideracao" EntitySet="consideracao" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo$fk_processo_consultor" Association="Self.processo$fk_processo_consultor">
+      <End Role="consultor" EntitySet="consultor" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo$fk_processo_empresa" Association="Self.processo$fk_processo_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo$fk_processo_processosituacao" Association="Self.processo$fk_processo_processosituacao">
+      <End Role="processosituacao" EntitySet="processosituacao" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo$fk_processo_processotipo" Association="Self.processo$fk_processo_processotipo">
+      <End Role="processotipo" EntitySet="processotipo" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo$fk_processo_tipoincentivo" Association="Self.processo$fk_processo_tipoincentivo">
+      <End Role="tipoincentivo" EntitySet="tipoincentivo" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenu$fk_paiusuariomenu_usuariomenu" Association="Self.usuariomenu$fk_paiusuariomenu_usuariomenu">
+      <End Role="usuariomenu" EntitySet="usuariomenu" />
+      <End Role="usuariomenu1" EntitySet="usuariomenu" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacao$fk_usuariomenuacao_menuacao" Association="Self.usuariomenuacao$fk_usuariomenuacao_menuacao">
+      <End Role="menuacao" EntitySet="menuacao" />
+      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacao$fk_usuariomenuacao_usuariomenu" Association="Self.usuariomenuacao$fk_usuariomenuacao_usuariomenu">
+      <End Role="usuariomenu" EntitySet="usuariomenu" />
+      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacaoperfilpermissao$fk_usuariomenuacaoperfilpermissao_perfil" Association="Self.usuariomenuacaoperfilpermissao$fk_usuariomenuacaoperfilpermissao_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacaoperfilpermissao$fk_usuariomenuacaoperfilpermissao_usuariomenuacao" Association="Self.usuariomenuacaoperfilpermissao$fk_usuariomenuacaoperfilpermissao_usuariomenuacao">
+      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
+      <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuperfilpermissao$FK_usuariomenuperfilpermissao_perfil" Association="Self.usuariomenuperfilpermissao$FK_usuariomenuperfilpermissao_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="usuariomenuperfilpermissao" EntitySet="usuariomenuperfilpermissao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuperfilpermissao$FK_usuariomenuperfilpermissao_usuariomenu" Association="Self.usuariomenuperfilpermissao$FK_usuariomenuperfilpermissao_usuariomenu">
+      <End Role="usuariomenu" EntitySet="usuariomenu" />
+      <End Role="usuariomenuperfilpermissao" EntitySet="usuariomenuperfilpermissao" />
+    </AssociationSet>
+    <AssociationSet Name="usuarioperfil$fk_usuarioperfil_perfil" Association="Self.usuarioperfil$fk_usuarioperfil_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="usuarioperfil" EntitySet="usuarioperfil" />
+    </AssociationSet>
+    <AssociationSet Name="usuarioperfil$fk_usuarioperfil_usuario" Association="Self.usuarioperfil$fk_usuarioperfil_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuarioperfil" EntitySet="usuarioperfil" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

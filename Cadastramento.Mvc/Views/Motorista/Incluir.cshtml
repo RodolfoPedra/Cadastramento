@@ -1,188 +1,226 @@
-﻿
+﻿@model Cadastramento.ModelData.Logic.Cadastramento.motorista
 @{
-
-    ViewBag.Title = "..:: Cadastramento | Veículos ::..";
+    ViewBag.Title = "..:: Cadastramento | Motorista ::..";
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
 
-<div class="container-cadastro">
-    <ul class="lista">
-        <li class="item-lista il-selected" #itemlista>
+<h4><b>Motoristas</b></h4>
+<section class="container-cadastro">
+    <ul class="js-tab lista">
+        <li class="item-lista il-selected">
             Identificação
-            <div class="box-wizard bw-selected" #bwlista></div>
+            <div class="box-wizard bw-selected"></div>
         </li>
-        <li class="item-lista" #itemlista>
+        <li class="item-lista">
             Dados Pessoais
-            <div class="box-wizard" #bwlista></div>
+            <div class="box-wizard"></div>
         </li>
-        <li class="item-lista" #itemlista>
+        <li class="item-lista">
             Endereço
-            <div class="box-wizard" #bwlista></div>
+            <div class="box-wizard"></div>
         </li>
-        <li class="item-lista" #itemlista>
+        <li class="item-lista">
             Importar Documento
-            <div class="box-wizard" #bwlista></div>
+            <div class="box-wizard"></div>
         </li>
     </ul>
 
-    <div class="section-form">
-
-        <div #identificacao>
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label>CPF</label>
-                    <input type="text" name="cpf" placeholder="" />
+    @using (Html.BeginForm("Incluir", "Motorista", FormMethod.Post, new { @class = "kt-form", @id = "form" }))
+    {
+        <div class="section-form">
+            <section data-anime="sectionDatas">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("cpf", "CPF")
+                        @Html.TextBoxFor(model => model.cpf, new { @class = "form-control", @placeholder = "CPF" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("cnh", "CNH")
+                        @Html.TextBoxFor(model => model.cnh, new { @class = "form-control", @placeholder = "CNH" })
+                    </div>
                 </div>
-                <div class="form-group col-md-3">
-                    <label>CNH</label>
-                    <input type="text" name="cnh" placeholder="" />
-                </div>
-            </div>
-            <hr />
-            <div class="col-md-12 section-buttons">
-                <button type="button" class="btn-cancelar">Cancelar</button>
-                <button type="button" class="btn-proximo">
-                    Proximo <span class="glyphicon glyphicon-arrow-right"></span>
-                </button>
-            </div>
-        </div>
-
-
-        <div #dadospessoais style="display: none;">
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label>Nome</label>
-                    <input type="text" name="nome" placeholder="" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label>Telefone</label>
-                    <input type="text" name="telefone" placeholder="" />
-                </div>
-                <div class="form-group col-md-3">
-                    <label>RG</label>
-                    <input type="text" name="rg" placeholder="" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label>E-mail</label>
-                    <input type="text" name="e-mail" placeholder="" />
-                </div>
-            </div>
-            <hr />
-            <div class="col-md-12 section-buttons">
-                <button type="button" class="btn-cancelar">Cancelar</button>
-                <button type="button" class="btn-proximo">Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
-            </div>
-        </div>
-
-        <div #endereco style="display: none;">
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label>Cep</label>
-                    <input type="text" name="cep" placeholder="" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Logradouro</label>
-                    <input type="text" name="logradouro" placeholder="" />
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Nº</label>
-                    <input type="text" name="numero" placeholder="" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Complemento</label>
-                    <input type="text" name="complemento" placeholder="" />
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Bairro</label>
-                    <input #bairro id="bairro" type="text" class="form-control" />
-                    <input type="text" name="bairro" placeholder="" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Cidade</label>
-                    <input type="text" name="cidade" placeholder="" />
-                </div>
-                <div class="form-group col-md-2">
-                    <label>UF</label>
-                    <input type="text" name="uf" placeholder="" />
-                </div>
-            </div>
-            <hr />
-            <div class="row">
+                <hr />
                 <div class="col-md-12 section-buttons">
-                    <button type="button" class="btn-cancelar">Cancelar</button>
-                    <button type="button" class="btn-proximo">Proximo</button>
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                    <button type="button" class="btn btn-success" onclick="Obter_Dados_Click();">
+                        Proximo <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div #dadoscnh style="display: none;">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-row">
-                        <div class="form-group col-md-5">
-                            <label>Validade CNH</label>
-                            <input type="text" name="datavalidadecnh" placeholder="" />
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label>Emissão CNH</label>
-                            <input type="text" name="dataemissaocnh" placeholder="" />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-5">
-                            <label>Categoria CNH</label>
-                            <input type="text" name="categoriacnh" placeholder="" />
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label>UF CNH</label>
-                            <input type="text" name="ufcnh" placeholder="" />
-                        </div>
-                    </div>
-                    <div class="form-row" style="text-align: right;">
-                        <div class="form-group col-md-10">
-                            <button class="btn btn-success">
-                                Anexar Documento
-                            </button>
-                        </div>
+            <section data-anime="sectionDatas">
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        @Html.Label("nome", "Nome")
+                        @Html.TextBoxFor(model => model.nome, new { @class = "form-control", @placeholder = "Nome" })
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-row">
-                        <div class="form-group col-md-10">
-                            <input type="file" name="file" />
-                            Imagem é obrigatório.
-                        </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("telefone", "Telefone")
+                        @Html.TextBoxFor(model => model.telefone, new { @class = "form-control", @placeholder = "Telefone" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("rg", "RG")
+                        @Html.TextBoxFor(model => model.rg, new { @class = "form-control", @placeholder = "RG" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("rguf", "RG UF")
+                        @Html.TextBoxFor(model => model.rguf, new { @class = "form-control", @placeholder = "RG UF" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("rgorgaoexpedidor", "Órgão Expedidor")
+                        @Html.TextBoxFor(model => model.rgorgaoexpedidor, new { @class = "form-control", @placeholder = "Órgão Expedidor" })
                     </div>
                 </div>
-                <div class="card profile-card-2" style="width: 410px; height: 535px;">
-                    <div class="card-img-block">
-                        <img [src]="documentoURL" [style.width.px]="imagemLargura" [style.margin.px]="imagemMargem" class="img-fluid" style="cursor: pointer;">
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        @Html.Label("email", "E-mail")
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "E-mail" })
                     </div>
                 </div>
-            </div>
-        </div>
-        <hr />
-        <div class="form-row">
-            <div class="col-md-12 section-buttons">
-                <button type="button" class="btn-cancelar">Cancelar</button>
-                <button type="button" class="btn-proximo" style="margin-left: 5px;">
-                    Salvar
-                </button>
-            </div>
-        </div>
+                <hr />
+                <div class="col-md-12 section-buttons">
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                    <button type="button" class="btn btn-success">Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
+                </div>
+            </section>
 
-    </div>
-</div>
+            <section data-anime="sectionDatas">
+
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        @Html.Label("cep", "CEP")
+                        @Html.TextBoxFor(model => model.cep, new { @class = "form-control", @placeholder = "CEP" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("logradouro", "Logradouro")
+                        @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control", @placeholder = "Logradouro" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("numero", "Nº")
+                        @Html.TextBoxFor(model => model.numero, new { @class = "form-control", @placeholder = "Nº" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("complemento", "Complemento")
+                        @Html.TextBoxFor(model => model.complemento, new { @class = "form-control", @placeholder = "Complemento" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("bairro", "Bairro")
+                        @Html.TextBoxFor(model => model.bairro, new { @class = "form-control", @placeholder = "Bairro" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("cidade", "Cidade")
+                        @Html.TextBoxFor(model => model.cidade, new { @class = "form-control", @placeholder = "Cidade" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.Label("uf", "UF")
+                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12 section-buttons">
+                        <button type="button" class="btn btn-danger">Cancelar</button>
+                        <button type="button" class="btn btn-success">Proximo</button>
+                    </div>
+                </div>
+            </section>
+
+            <section data-anime="sectionDatas">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                @Html.Label("datavalidadecnh", "Validade CNH")
+                                @Html.TextBoxFor(model => model.datavalidadecnh, new { @class = "form-control", @placeholder = "Validade CNH" })
+                            </div>
+                            <div class="form-group col-md-5">
+                                @Html.Label("dataemissaocnh", "Emissão CNH")
+                                @Html.TextBoxFor(model => model.dataemissaocnh, new { @class = "form-control", @placeholder = "Emissão CNH" })
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                @Html.Label("categoriacnh", "Categoria CNH")
+                                @Html.TextBoxFor(model => model.categoriacnh, new { @class = "form-control", @placeholder = "Categoria CNH" })
+                            </div>
+                            <div class="form-group col-md-5">
+                                @Html.Label("ufcnh", "UF CNH")
+                                @Html.TextBoxFor(model => model.ufcnh, new { @class = "form-control", @placeholder = "UF CNH" })
+                            </div>
+                        </div>
+                        <div class="form-row" style="text-align: right;">
+                            <div class="form-group col-md-10">
+                                <button class="btn btn-success">
+                                    Anexar Documento
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <input type="file" name="file" class="form-control" />
+                                Imagem é obrigatório.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card profile-card-2" style="width: 410px; height: 535px;">
+                        <div class="card-img-block">
+                            <img [src]="documentoURL" [style.width.px]="imagemLargura" [style.margin.px]="imagemMargem" class="img-fluid" style="cursor: pointer;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 section-buttons">
+                        <button type="button" class="btn btn-danger" onclick="window.location='@Url.Content("~/Motorista/Incluir")'; return false;"> Cancelar</button>
+                        <button type="button" class="btn btn-success" onclick="Salvar_Click();" style="margin-left: 5px;">Salvar</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    }
+</section>
+
+@section Scripts{
+    <script>
+        function Salvar_Click() {
+            //if (!verificaValor($("#descricao").val())) {
+            //    mensagemAviso("O campo Descrição é obrigatório");
+            //    return;
+            //}
+            //if (!verificaValor($("#situacao").val())) {
+            //    mensagemAviso("O campo Situação é obrigatório");
+            //    return;
+            //}
+
+            $("#form").submit();
+        }
+
+        function Obter_Dados_Click() {
+
+            var cpf = $("#cpf").val();
+            var cnh = $("#cnh").val();
+            
+            $.post('@Url.Action("ObterDetran", "Motorista")', { "cpf": cpf, "cnh": cnh }, function (data) { });
+        }
+
+
+    </script>
+}
+
+
+
+
+
 
 
 

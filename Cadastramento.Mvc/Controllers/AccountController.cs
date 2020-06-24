@@ -46,9 +46,9 @@ namespace Cadastramento.Mvc.Controllers
                     EnviarMensagem("Usuário não encontrado!", TipoMensagem.Vermelho);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                EnviarMensagem("Ocorreu um erro. Tente mais tarde." + ex.Message, TipoMensagem.Vermelho);
+                EnviarMensagem("Ocorreu um erro. Tente mais tarde.", TipoMensagem.Vermelho);
             }
 
             return View();

@@ -1,4 +1,5 @@
-C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\bin\Debug\Cadastramento.Core.dll
-C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\bin\Debug\Cadastramento.Core.pdb
-C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\obj\Debug\Cadastramento.Core.dll
-C:\Users\rodol\Documents\Projetos\Cadastramento MVC Aderencia\Cadastramento.Core\obj\Debug\Cadastramento.Core.pdb
+C:\Projetos\Cadastramento\Cadastramento.Core\bin\Debug\Cadastramento.Core.dll
+C:\Projetos\Cadastramento\Cadastramento.Core\bin\Debug\Cadastramento.Core.pdb
+C:\Projetos\Cadastramento\Cadastramento.Core\obj\Debug\Cadastramento.Core.csproj.CoreCompileInputs.cache
+C:\Projetos\Cadastramento\Cadastramento.Core\obj\Debug\Cadastramento.Core.dll
+C:\Projetos\Cadastramento\Cadastramento.Core\obj\Debug\Cadastramento.Core.pdb

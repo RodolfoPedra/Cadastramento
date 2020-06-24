@@ -1842,6 +1842,7 @@
     <Content Include="assets\plugins\global\plugins.bundle.rtl.css" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\tooltipster.bundle.css" />
+    <Content Include="Content\css\wizard-component.css" />
     <Content Include="Content\img\arte-topo.jpg" />
     <Content Include="Content\img\avatar_img.jpg" />
     <Content Include="Content\img\banner_login.jpg" />
@@ -3535,6 +3536,7 @@
     <Content Include="Scripts\select2\pt-BR.js" />
     <Content Include="Scripts\sum_datatables.js" />
     <Content Include="Scripts\tooltipster.bundle.js" />
+    <Content Include="Scripts\wizard-component.js" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -3698,7 +3700,6 @@
     <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="Scripts\fontawesome\webfonts\fa-solid-900.woff2" />
-    <Content Include="Views\Shared\_WizardComponet.cshtml" />
     <Content Include="Views\Analise\Index.cshtml" />
     <Content Include="Views\Analise\AnalisarMotorista.cshtml" />
     <Content Include="Views\Analise\AnalisarVeiculo.cshtml" />
