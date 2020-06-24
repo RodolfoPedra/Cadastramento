@@ -55,6 +55,13 @@ namespace Cadastramento.Mvc.Controllers
                 .ToSelectList(ent => ent.tipocargaid, ent => ent.descricao, nomePrimeiroCampo, valorSelecionado);
         }
 
+        public SelectList TipoCarroceria(object valorSelecionado = null, string nomePrimeiroCampo = "SELECIONE...")
+        {
+            return new BaseService<tipocarroceria>().ObterTodos()
+                .OrderBy(ent => ent.tipocarroceriaid)
+                .ToSelectList(ent => ent.tipocarroceriaid, ent => ent.descricao, nomePrimeiroCampo, valorSelecionado);
+        }
+
         public SelectList GerarListaTodosMunicipios(object valorSelecionado = null, string nomePrimeiroCampo = "SELECIONE...")
         {
             return new BaseService<municipio>().ObterTodos()
