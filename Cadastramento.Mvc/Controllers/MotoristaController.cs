@@ -100,7 +100,6 @@ namespace Cadastramento.Mvc.Controllers
             catch (Exception)
             {
                 EnviarMensagem("Ocorreu um erro ao tentar realizar a operação desejada.", TipoMensagem.Vermelho);
-
                 
                 return View(model);
             }

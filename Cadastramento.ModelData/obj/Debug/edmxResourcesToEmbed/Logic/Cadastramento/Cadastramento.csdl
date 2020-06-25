@@ -790,11 +790,21 @@
       <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
       <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
     </AssociationSet>
-    <EntitySet Name="carroceria" EntityType="CadastramentoModel.carroceria" />
     <EntitySet Name="situacaocadastro" EntityType="CadastramentoModel.situacaocadastro" />
     <EntitySet Name="tipocarga" EntityType="CadastramentoModel.tipocarga" />
     <EntitySet Name="tipocarroceria" EntityType="CadastramentoModel.tipocarroceria" />
     <EntitySet Name="tipoveiculo" EntityType="CadastramentoModel.tipoveiculo" />
+    <EntitySet Name="motorista" EntityType="CadastramentoModel.motorista" />
+    <AssociationSet Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="motorista" EntitySet="motorista" />
+    </AssociationSet>
+    <EntitySet Name="analise" EntityType="CadastramentoModel.analise" />
+    <AssociationSet Name="FK_analise_situacaocadastro" Association="CadastramentoModel.FK_analise_situacaocadastro">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="analise" EntitySet="analise" />
+    </AssociationSet>
+    <EntitySet Name="carroceria" EntityType="CadastramentoModel.carroceria" />
     <EntitySet Name="veiculo" EntityType="CadastramentoModel.veiculo" />
     <AssociationSet Name="FK_carroceria_carroceria_CompartimentoId" Association="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId">
       <End Role="carroceria" EntitySet="carroceria" />
@@ -828,17 +838,139 @@
       <End Role="tipoveiculo" EntitySet="tipoveiculo" />
       <End Role="veiculo" EntitySet="veiculo" />
     </AssociationSet>
-    <EntitySet Name="motorista" EntityType="CadastramentoModel.motorista" />
-    <AssociationSet Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId">
-      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-      <End Role="motorista" EntitySet="motorista" />
-    </AssociationSet>
-    <EntitySet Name="analise" EntityType="CadastramentoModel.analise" />
-    <AssociationSet Name="FK_analise_situacaocadastro" Association="CadastramentoModel.FK_analise_situacaocadastro">
-      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-      <End Role="analise" EntitySet="analise" />
-    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="situacaocadastro">
+    <Key>
+      <PropertyRef Name="situacaocadastroid" />
+    </Key>
+    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="motorista" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="motorista" />
+    <NavigationProperty Name="analise" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="situacaocadastro" ToRole="analise" />
+    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="carroceria" />
+    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="veiculo" />
+  </EntityType>
+  <EntityType Name="tipocarga">
+    <Key>
+      <PropertyRef Name="tipocargaid" />
+    </Key>
+    <Property Name="tipocargaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="carroceria" />
+    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="veiculo" />
+  </EntityType>
+  <EntityType Name="tipocarroceria">
+    <Key>
+      <PropertyRef Name="tipocarroceriaid" />
+    </Key>
+    <Property Name="tipocarroceriaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" FromRole="tipocarroceria" ToRole="carroceria" />
+  </EntityType>
+  <EntityType Name="tipoveiculo">
+    <Key>
+      <PropertyRef Name="tipoveiculoid" />
+    </Key>
+    <Property Name="tipoveiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="tipoveiculo" ToRole="veiculo" />
+  </EntityType>
+  <EntityType Name="motorista">
+    <Key>
+      <PropertyRef Name="motoristaid" />
+    </Key>
+    <Property Name="motoristaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="rguf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="rgorgaoexpedidor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="cnh" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="ufcnh" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="categoriacnh" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="dataemissaocnh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="datavalidadecnh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="datavalidadecadastro" Type="DateTime" Precision="3" />
+    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
+    <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="motorista" ToRole="situacaocadastro" />
+    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId">
+    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CadastramentoModel.motorista" Role="motorista" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="situacaocadastro">
+        <PropertyRef Name="situacaocadastroid" />
+      </Principal>
+      <Dependent Role="motorista">
+        <PropertyRef Name="situacaocadastroid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="analise">
+    <Key>
+      <PropertyRef Name="analiseid" />
+    </Key>
+    <Property Name="analiseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="motoristaid" Type="Int32" />
+    <Property Name="veiculoid" Type="Int32" />
+    <Property Name="carroceriaid" Type="Int32" />
+    <Property Name="datahoraanalise" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="situacaocadastroid" Type="Int32" />
+    <Property Name="observacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="analise" ToRole="situacaocadastro" />
+  </EntityType>
+  <Association Name="FK_analise_situacaocadastro">
+    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.analise" Role="analise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="situacaocadastro">
+        <PropertyRef Name="situacaocadastroid" />
+      </Principal>
+      <Dependent Role="analise">
+        <PropertyRef Name="situacaocadastroid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="carroceria">
     <Key>
       <PropertyRef Name="carroceriaid" />
@@ -881,68 +1013,15 @@
     <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
     <Property Name="usuarioidinclusao" Type="Int32" />
     <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="carroceria1" Relationship="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId" FromRole="carroceria" ToRole="carroceria1" />
     <NavigationProperty Name="carroceria2" Relationship="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId" FromRole="carroceria1" ToRole="carroceria" />
     <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="carroceria" ToRole="situacaocadastro" />
     <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="carroceria" ToRole="tipocarga" />
     <NavigationProperty Name="tipocarroceria" Relationship="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" FromRole="carroceria" ToRole="tipocarroceria" />
     <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="carroceria" ToRole="veiculo" />
-  </EntityType>
-  <EntityType Name="situacaocadastro">
-    <Key>
-      <PropertyRef Name="situacaocadastroid" />
-    </Key>
-    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="carroceria" />
-    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="veiculo" />
-    <NavigationProperty Name="motorista" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="motorista" />
-    <NavigationProperty Name="analise" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="situacaocadastro" ToRole="analise" />
-  </EntityType>
-  <EntityType Name="tipocarga">
-    <Key>
-      <PropertyRef Name="tipocargaid" />
-    </Key>
-    <Property Name="tipocargaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="carroceria" />
-    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="veiculo" />
-  </EntityType>
-  <EntityType Name="tipocarroceria">
-    <Key>
-      <PropertyRef Name="tipocarroceriaid" />
-    </Key>
-    <Property Name="tipocarroceriaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" FromRole="tipocarroceria" ToRole="carroceria" />
-  </EntityType>
-  <EntityType Name="tipoveiculo">
-    <Key>
-      <PropertyRef Name="tipoveiculoid" />
-    </Key>
-    <Property Name="tipoveiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="tipoveiculo" ToRole="veiculo" />
   </EntityType>
   <EntityType Name="veiculo">
     <Key>
@@ -983,6 +1062,9 @@
     <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
     <Property Name="usuarioidinclusao" Type="Int32" />
     <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="veiculo" ToRole="carroceria" />
     <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="veiculo" ToRole="situacaocadastro" />
     <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="veiculo" ToRole="tipocarga" />
@@ -1089,82 +1171,6 @@
       </Principal>
       <Dependent Role="veiculo">
         <PropertyRef Name="tipoveiculoid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="motorista">
-    <Key>
-      <PropertyRef Name="motoristaid" />
-    </Key>
-    <Property Name="motoristaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="rguf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="rgorgaoexpedidor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="cnh" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="ufcnh" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="categoriacnh" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="dataemissaocnh" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="datavalidadecnh" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="datavalidadecadastro" Type="DateTime" Precision="3" />
-    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
-    <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="motorista" ToRole="situacaocadastro" />
-    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <Association Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId">
-    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="CadastramentoModel.motorista" Role="motorista" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="situacaocadastro">
-        <PropertyRef Name="situacaocadastroid" />
-      </Principal>
-      <Dependent Role="motorista">
-        <PropertyRef Name="situacaocadastroid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="analise">
-    <Key>
-      <PropertyRef Name="analiseid" />
-    </Key>
-    <Property Name="analiseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="motoristaid" Type="Int32" />
-    <Property Name="veiculoid" Type="Int32" />
-    <Property Name="carroceriaid" Type="Int32" />
-    <Property Name="datahoraanalise" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="situacaocadastroid" Type="Int32" />
-    <Property Name="observacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="analise" ToRole="situacaocadastro" />
-  </EntityType>
-  <Association Name="FK_analise_situacaocadastro">
-    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="0..1" />
-    <End Type="CadastramentoModel.analise" Role="analise" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="situacaocadastro">
-        <PropertyRef Name="situacaocadastroid" />
-      </Principal>
-      <Dependent Role="analise">
-        <PropertyRef Name="situacaocadastroid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

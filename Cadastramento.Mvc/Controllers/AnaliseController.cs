@@ -40,11 +40,11 @@ namespace Cadastramento.Mvc.Controllers
                 {
                     switch (filter.Key)
                     {                       
-                        case "datahorainclusao":
-                            var datahorainclusao = request.Get<string>(filter.Key);
-                            if (!string.IsNullOrEmpty(datahorainclusao))
-                                filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
-                            break;
+                        //case "datahorainclusao":
+                        //    var datahorainclusao = request.Get<string>(filter.Key);
+                        //    if (!string.IsNullOrEmpty(datahorainclusao))
+                        //        filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
+                        //    break;
                         case "situacao":
                             var situacaocadastroid = request.Get<int>(filter.Key);
                             if (situacaocadastroid != 0)
@@ -99,11 +99,11 @@ namespace Cadastramento.Mvc.Controllers
                 {
                     switch (filter.Key)
                     {                        
-                        case "datahorainclusao":
-                            var datahorainclusao = request.Get<string>(filter.Key);
-                            if (!string.IsNullOrEmpty(datahorainclusao))
-                                filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
-                            break;
+                        //case "datahorainclusao":
+                        //    var datahorainclusao = request.Get<string>(filter.Key);
+                        //    if (!string.IsNullOrEmpty(datahorainclusao))
+                        //        filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
+                        //    break;
                         case "situacao":
                             var situacaocadastroid = request.Get<int>(filter.Key);
                             if (situacaocadastroid != 0)
@@ -143,7 +143,7 @@ namespace Cadastramento.Mvc.Controllers
         public JsonResult IndexGridCarroceria(IDataTablesRequest request)
         {
             var srv = new BaseService<carroceria>();
-            var data = srv.ObterTodos().Where(e=> e.situacaocadastroid == 1);
+            var data = srv.ObterTodos();
 
             var sortColumn = request.Columns.FirstOrDefault(x => x.Sort != null);
 
@@ -157,11 +157,11 @@ namespace Cadastramento.Mvc.Controllers
                 {
                     switch (filter.Key)
                     {                        
-                        case "datahorainclusao":
-                            var datahorainclusao = request.Get<string>(filter.Key);
-                            if (!string.IsNullOrEmpty(datahorainclusao))
-                                filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
-                            break;
+                        //case "datahorainclusao":
+                        //    var datahorainclusao = request.Get<string>(filter.Key);
+                        //    if (!string.IsNullOrEmpty(datahorainclusao))
+                        //        filteredData = filteredData.Where(x => x.datahorainclusao == Convert.ToDateTime(datahorainclusao));
+                        //    break;
                         case "situacao":
                             var situacaocadastroid = request.Get<int>(filter.Key);
                             if (situacaocadastroid != 0)
@@ -203,6 +203,28 @@ namespace Cadastramento.Mvc.Controllers
         {
             ViewBag.SituacaoLista = ListaSituacao();
         }
+               
+        public ActionResult FinalizarAnaliseMotorista(int id, int situacao)
+        {
+            var srv = new BaseService<motorista>();
+            var obj = srv.Obter(id);
+
+            try
+            {
+                obj.situacaocadastroid = situacao;
+                srv.Alterar(obj);
+                srv.Salvar(SessaoUsuario.Sessao.login);
+                EnviarMensagem("Operação realizada com sucesso.", TipoMensagem.Verde);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                EnviarMensagem("Ocorreu um erro ao tentar realizar a operação desejada.", TipoMensagem.Vermelho);
+
+                return View();
+            }
+        }
 
         public ActionResult AnalisarMotorista(int id)
         {
@@ -214,6 +236,28 @@ namespace Cadastramento.Mvc.Controllers
             return View(obj);
         }
 
+
+        public ActionResult FinalizarAnaliseVeiculo(int id, int situacao)
+        {
+            var srv = new BaseService<veiculo>();
+            var obj = srv.Obter(id);
+
+            try
+            {
+                obj.situacaocadastroid = situacao;
+                srv.Alterar(obj);
+                srv.Salvar(SessaoUsuario.Sessao.login);
+                EnviarMensagem("Operação realizada com sucesso.", TipoMensagem.Verde);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                EnviarMensagem("Ocorreu um erro ao tentar realizar a operação desejada.", TipoMensagem.Vermelho);
+
+                return View();
+            }
+        }
         public ActionResult AnalisarVeiculo(int id)
         {
             var srv = new BaseService<veiculo>();
@@ -224,6 +268,27 @@ namespace Cadastramento.Mvc.Controllers
             return View(obj);
         }
 
+        public ActionResult FinalizarAnaliseCarroceria(int id, int situacao)
+        {
+            var srv = new BaseService<carroceria>();
+            var obj = srv.Obter(id);
+
+            try
+            {
+                obj.situacaocadastroid = situacao;
+                srv.Alterar(obj);
+                srv.Salvar(SessaoUsuario.Sessao.login);
+                EnviarMensagem("Operação realizada com sucesso.", TipoMensagem.Verde);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                EnviarMensagem("Ocorreu um erro ao tentar realizar a operação desejada.", TipoMensagem.Vermelho);
+
+                return View();
+            }
+        }
         public ActionResult AnalisarCarroceria(int id)
         {
             var srv = new BaseService<carroceria>();

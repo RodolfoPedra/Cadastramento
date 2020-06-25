@@ -151,10 +151,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="Download();"><i class="fa fa-save"></i> Visualizar Documento</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="kt-portlet__foot">
                 <div class="kt-form__actions">
-                    <button type="button" class="btn btn-dark" onclick="Salvar_Click();"><i class="fa fa-save"></i> Aprovar</button>
+                    <button type="button" class="btn btn-dark" onclick="Finalizar();"><i class="fa fa-save"></i> Aprovar</button>
                     <button type="button" class="btn btn-secondary" onclick="window.location='@Url.Content("~/Analise/")'; return false;"><i class="fa fa-arrow-left"></i> Voltar</button>
                 </div>
             </div>
@@ -166,17 +173,27 @@
 
 @section Scripts{
     <script>
-        function Salvar_Click() {
-            if (!verificaValor($("#descricao").val())) {
-                mensagemAviso("O campo Descrição é obrigatório");
-                return;
-            }
-            if (!verificaValor($("#situacao").val())) {
-                mensagemAviso("O campo Situação é obrigatório");
-                return;
-            }
+        function Download() {
 
-            $("#form").submit();
+            window.location.href = content + "Analise/DownloadArquivoVeiculo?id=" + $("#veiculoid").val();
+        }
+
+        //function Salvar_Click() {
+        //    if (!verificaValor($("#descricao").val())) {
+        //        mensagemAviso("O campo Descrição é obrigatório");
+        //        return;
+        //    }
+        //    if (!verificaValor($("#situacao").val())) {
+        //        mensagemAviso("O campo Situação é obrigatório");
+        //        return;
+        //    }
+
+        //    $("#form").submit();
+        //}
+
+        function Finalizar() {
+
+            window.location.href = content + "Analise/FinalizarAnaliseVeiculo?id=" + $("#veiculoid").val() + "&situacao=" + $("#situacaocadastroid").val();
         }
     </script>
 }

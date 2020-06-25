@@ -18,15 +18,6 @@
 <!-- end:: Subheader -->
 
 <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
-    <div class="row">
-        <div class="col-md-12 kt-margin-b-10">
-            <button type="button" class="btn btn-dark" onclick="Incluir_Click()"><i class="fa fa-plus"></i> Incluir</button>
-            <button type="button" class="btn btn-dark" onclick="Alterar_Click()"><i class="fa fa-edit"></i> Alterar</button>
-            <button type="button" class="btn btn-dark" onclick="Visualizar_Click()"><i class="fa fa-search"></i> Visualizar</button>
-            <button type="button" class="btn btn-dark" onclick="Excluir_Click()"><i class="fa fa-trash"></i> Excluir</button>
-        </div>
-    </div>
-
     <div class="kt-portlet">
         <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
@@ -40,12 +31,12 @@
         </div>
         <div class="kt-portlet__body">
             <div class="row">
-                <div class="col-md-6">
+                @*<div class="col-md-6">
                     <div class="form-group">
                         @Html.Label("datahorainclusao", "Data Cadastro")
                         @Html.TextBox("datahorainclusao", null, new { @class = "form-control", @placeholder = "Data Cadastro" })
                     </div>
-                </div>
+                </div>*@
                 <div class="col-md-6">
                     <div class="form-group">
                         @Html.Label("situacao", "Situação")
@@ -88,7 +79,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="kt-portlet">
         <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
@@ -150,7 +141,7 @@
                 serverSide: true,
                 ajax: {
                     url: "@VirtualPathUtility.ToAbsolute("~/Analise/IndexGridMotorista/")",
-                    data: function (d) {                      
+                    data: function (d) {
                         d.datahorainclusao = $("#datahorainclusao").val();
                         d.situacao = $("#situacao").val();
                     }
@@ -190,7 +181,7 @@
                 serverSide: true,
                 ajax: {
                     url: "@VirtualPathUtility.ToAbsolute("~/Analise/IndexGridVeiculo/")",
-                    data: function (d) {                       
+                    data: function (d) {
                         d.datahorainclusao = $("#datahorainclusao").val();
                         d.situacao = $("#situacao").val();
                     }
@@ -199,7 +190,7 @@
                     { name: 'veiculoid', data: 'veiculoid', visible: false },
                     { name: 'protocolo', data: 'protocolo', title: "Protocolo", sortable: true, searchable: true, autoWidth: true },
                     { name: 'placa', data: 'placa', title: "Placa", sortable: true, searchable: true, autoWidth: true },
-                    { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },                    
+                    { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },
                     { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
                     { name: 'descricao', data: 'descricao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
                 ],
@@ -229,7 +220,7 @@
                 serverSide: true,
                 ajax: {
                     url: "@VirtualPathUtility.ToAbsolute("~/Analise/IndexGridCarroceria/")",
-                    data: function (d) {                       
+                    data: function (d) {
                         d.datahorainclusao = $("#datahorainclusao").val();
                         d.situacao = $("#situacao").val();
                     }
@@ -238,7 +229,7 @@
                     { name: 'carroceriaid', data: 'carroceriaid', visible: false },
                     { name: 'protocolo', data: 'protocolo', title: "Protocolo", sortable: true, searchable: true, autoWidth: true },
                     { name: 'placa', data: 'placa', title: "Placa", sortable: true, searchable: true, autoWidth: true },
-                    { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },                    
+                    { name: 'renavam', data: 'renavam', title: "Renavam", sortable: true, searchable: true, autoWidth: true },
                     { name: 'datahorainclusao', data: 'datahorainclusao', title: "Data Cadastro", sortable: true, searchable: true, autoWidth: true },
                     { name: 'descricao', data: 'descricao', title: "Situação", sortable: true, searchable: true, autoWidth: true }
                 ],
@@ -263,7 +254,7 @@
             tableMotorista.ajax.reload();
             tableVeiculo.ajax.reload();
             tableCarroceria.ajax.reload();
-            
+
         }
 
         function AnalisarMotorista_Click() {

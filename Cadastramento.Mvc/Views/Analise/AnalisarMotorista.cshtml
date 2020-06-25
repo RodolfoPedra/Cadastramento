@@ -35,116 +35,124 @@
             @Html.HiddenFor(model => model.usuarioidinclusao)
             @Html.HiddenFor(model => model.datahorainclusao)
 
-    <div class="kt-portlet__body">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    @Html.Label("nome", "Nome")
-                    @Html.TextBoxFor(model => model.nome, new { @class = "form-control", @placeholder = "Nome" })
+            <div class="kt-portlet__body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.Label("nome", "Nome")
+                            @Html.TextBoxFor(model => model.nome, new { @class = "form-control", @placeholder = "Nome" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("cpf", "CPF")
+                            @Html.TextBoxFor(model => model.cpf, new { @class = "form-control", @placeholder = "CPF" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("cnh", "CNH")
+                            @Html.TextBoxFor(model => model.cnh, new { @class = "form-control", @placeholder = "CNH" })
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("cpf", "CPF")
-                    @Html.TextBoxFor(model => model.cpf, new { @class = "form-control", @placeholder = "CPF" })
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("categoriacnh", "Categoria CNH")
+                            @Html.TextBoxFor(model => model.categoriacnh, new { @class = "form-control", @placeholder = "Categoria CNH" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("rg", "RG")
+                            @Html.TextBoxFor(model => model.rg, new { @class = "form-control", @placeholder = "RG" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("rguf", "RG UF")
+                            @Html.TextBoxFor(model => model.rguf, new { @class = "form-control", @placeholder = "RG UF" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("rgorgaoexpedidor", "Órgão Expedidor")
+                            @Html.TextBoxFor(model => model.rgorgaoexpedidor, new { @class = "form-control", @placeholder = "Órgão Expedidor" })
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("cnh", "CNH")
-                    @Html.TextBoxFor(model => model.cnh, new { @class = "form-control", @placeholder = "CNH" })
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("categoriacnh", "Categoria CNH")
-                    @Html.TextBoxFor(model => model.categoriacnh, new { @class = "form-control", @placeholder = "Categoria CNH" })
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("rg", "RG")
-                    @Html.TextBoxFor(model => model.rg, new { @class = "form-control", @placeholder = "RG" })
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("rguf", "RG UF")
-                    @Html.TextBoxFor(model => model.rguf, new { @class = "form-control", @placeholder = "RG UF" })
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("rgorgaoexpedidor", "Órgão Expedidor")
-                    @Html.TextBoxFor(model => model.rgorgaoexpedidor, new { @class = "form-control", @placeholder = "Órgão Expedidor" })
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("telefone", "Telefone")
-                    @Html.TextBoxFor(model => model.telefone, new { @class = "form-control", @placeholder = "Telefone" })
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("telefone", "Telefone")
+                            @Html.TextBoxFor(model => model.telefone, new { @class = "form-control", @placeholder = "Telefone" })
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            @Html.Label("email", "E-mail")
+                            @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "E-mail" })
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-9">
-                <div class="form-group">
-                    @Html.Label("email", "E-mail")
-                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "E-mail" })
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("cep", "CEP")
+                            @Html.TextBoxFor(model => model.cep, new { @class = "form-control", @placeholder = "CEP" })
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            @Html.Label("logradouro", "Logradouro")
+                            @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control", @placeholder = "Logradouro" })
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("cep", "CEP")
-                    @Html.TextBoxFor(model => model.cep, new { @class = "form-control", @placeholder = "CEP" })
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("bairro", "Bairro")
+                            @Html.TextBoxFor(model => model.bairro, new { @class = "form-control", @placeholder = "Bairro" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("uf", "UF")
+                            @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-9">
-                <div class="form-group">
-                    @Html.Label("logradouro", "Logradouro")
-                    @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control", @placeholder = "Logradouro" })
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("situacao", "Situação")
+                            @Html.DropDownListFor(model => model.situacaocadastroid, ViewBag.SituacaoLista as SelectList, new { @class = "form-control" })
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("bairro", "Bairro")
-                    @Html.TextBoxFor(model => model.bairro, new { @class = "form-control", @placeholder = "Bairro" })
+                @*<div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.Label("observacao", "Motivo Aprovação")
+                                @Html.TextArea("observacao", "", new { @class = "form-control", @cols = 100, @rows = 10, @placeholder = "UF" })
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="Download();"><i class="fa fa-save"></i> Visualizar Documento</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("uf", "UF")
-                    @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    @Html.Label("situacao", "Situação")
-                    @Html.DropDownListFor(model => model.situacaocadastroid, ViewBag.SituacaoLista as SelectList, new { @class = "form-control" })
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <button type="button" class="btn btn-success" onclick="Download();"><i class="fa fa-save"></i> Visualizar Documento</button>        
-                </div>
-            </div>
-        </div>
-        
-    </div>
             <div class="kt-portlet__foot">
                 <div class="kt-form__actions">
-                    <button type="button" class="btn btn-dark" onclick="Salvar_Click();"><i class="fa fa-save"></i> Aprovar</button>                    
+                    <button type="button" class="btn btn-dark" onclick="Finalizar();"><i class="fa fa-save"></i> Finalizar</button>
                     <button type="button" class="btn btn-secondary" onclick="window.location='@Url.Content("~/Analise/")'; return false;"><i class="fa fa-arrow-left"></i> Voltar</button>
                 </div>
             </div>
@@ -156,24 +164,30 @@
 
 @section Scripts{
     <script>
-
         function Download() {
 
             window.location.href = content + "Analise/DownloadArquivoMotorista?id=" + $("#motoristaid").val();
         }
 
-        function Salvar_Click() {
-            if (!verificaValor($("#descricao").val())) {
-                mensagemAviso("O campo Descrição é obrigatório");
-                return;
-            }
-            if (!verificaValor($("#situacao").val())) {
-                mensagemAviso("O campo Situação é obrigatório");
-                return;
-            }
+        //function Salvar_Click() {
+        //    if (!verificaValor($("#descricao").val())) {
+        //        mensagemAviso("O campo Descrição é obrigatório");
+        //        return;
+        //    }
+        //    if (!verificaValor($("#situacao").val())) {
+        //        mensagemAviso("O campo Situação é obrigatório");
+        //        return;
+        //    }
 
-            $("#form").submit();
+        //    $("#form").submit();
+        //}
+
+
+        function Finalizar() {
+
+            window.location.href = content + "Analise/FinalizarAnaliseMotorista?id=" + $("#motoristaid").val() + "&situacao=" + $("#situacaocadastroid").val();
         }
+
     </script>
 }
 
