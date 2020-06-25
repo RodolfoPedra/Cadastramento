@@ -31,6 +31,7 @@
 
     @using (Html.BeginForm("Incluir", "Veiculo", FormMethod.Post, new { @class = "kt-form", @id = "form", @enctype = "multipart/form-data" }))
     {
+        @Html.HiddenFor(model => model.situacaocadastroid)
         <div class="section-form">
             <section data-anime="sectionDatas">
                 <div class="form-row">
@@ -234,25 +235,22 @@
             $.post('@Url.Action("ObterDetran", "Veiculo")', { "placa": placa, "renavam": renavam },
                 function (data) {
                     if (data.Result == "OK" && data.Record.length != 0) {
-                        $("#cpf").val(data.Record.cpf);
-                        $("#cnh").val(data.Record.cnh);
-                        $("#nome").val(data.Record.nome);
-                        $("#telefone").val(data.Record.telefone);
-                        $("#rg").val(data.Record.rg);
-                        $("#rguf").val(data.Record.rguf);
-                        $("#rgorgaoexpedidor").val(data.Record.rgorgaoexpedidor);
-                        $("#email").val(data.Record.email);
+                        $("#renavan").val(data.Record.renavam);
+                        $("#placa").val(data.Record.placa);
+                        $("#ufPlaca").val(data.Record.uf);
+                        $("#chassi").val(data.Record.chassi);
+                        $("#cidadelicenciamento").val(data.Record.cidadelicenciamento);
+                        $("#corpredominante").val(data.Record.corpredominante);
+                        $("#marca").val(data.Record.marca);
+                        $("#anofabricacao").val(data.Record.anofabricacao);
+                        $("#anomodelo").val(data.Record.anomodelo);
+                        $("#nomeproprietariotransportadora").val(data.Record.nomeproprietariotransportadora);                                                                                                                
                         $("#cep").val(data.Record.cep);
-                        $("#logradouro").val(data.Record.logradouro);
                         $("#numero").val(data.Record.numero);
                         $("#complemento").val(data.Record.complemento);
                         $("#bairro").val(data.Record.bairro);
                         $("#cidade").val(data.Record.cidade);
                         $("#uf").val(data.Record.uf);
-                        //$("#datavalidadecnh").val(data.Record.datavalidadecnh);
-                        //$("#dataemissaocnh").val(data.Record.dataemissaocnh);
-                        $("#categoriacnh").val(data.Record.categoriacnh);
-                        $("#ufcnh").val(data.Record.ufcnh);
                         $("#situacaocadastroid").val(data.Record.situacaocadastroid);
                     }
                     else {

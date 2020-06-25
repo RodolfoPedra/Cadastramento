@@ -95,6 +95,9 @@
     <Property Name="datahoraalteracao" Type="datetime" />
     <Property Name="usuarioidinclusao" Type="int" />
     <Property Name="datahorainclusao" Type="datetime" Nullable="false" />
+    <Property Name="arquivo" Type="varbinary(max)" />
+    <Property Name="nomearquivo" Type="varchar" MaxLength="250" />
+    <Property Name="contenttype" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="consideracao">
     <Key>
@@ -555,7 +558,7 @@
     <Property Name="tipoveiculoid" Type="int" />
     <Property Name="placa" Type="varchar" MaxLength="10" />
     <Property Name="ufplaca" Type="varchar" MaxLength="2" />
-    <Property Name="chassi" Type="varchar" MaxLength="16" />
+    <Property Name="chassi" Type="varchar" MaxLength="50" />
     <Property Name="cidadelicenciamento" Type="varchar" MaxLength="50" />
     <Property Name="marca" Type="varchar" MaxLength="50" />
     <Property Name="categoriaantt" Type="varchar" MaxLength="50" />
@@ -584,6 +587,9 @@
     <Property Name="datahoraalteracao" Type="datetime" />
     <Property Name="usuarioidinclusao" Type="int" />
     <Property Name="datahorainclusao" Type="datetime" Nullable="false" />
+    <Property Name="arquivo" Type="varbinary(max)" />
+    <Property Name="nomearquivo" Type="varchar" MaxLength="250" />
+    <Property Name="contenttype" Type="varchar" MaxLength="200" />
   </EntityType>
   <Association Name="auditlogdetail$FK_auditlogdetail_auditlog">
     <End Role="auditlog" Type="Self.auditlog" Multiplicity="0..1" />
