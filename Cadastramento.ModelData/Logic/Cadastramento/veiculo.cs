@@ -59,10 +59,10 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public string nomearquivo { get; set; }
         public string contenttype { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<carroceria> carroceria { get; set; }
         public virtual situacaocadastro situacaocadastro { get; set; }
         public virtual tipocarga tipocarga { get; set; }
         public virtual tipoveiculo tipoveiculo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<carroceria> carroceria { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tipocarga()
         {
-            this.carroceria = new HashSet<carroceria>();
             this.veiculo = new HashSet<veiculo>();
+            this.carroceria = new HashSet<carroceria>();
         }
     
         public int tipocargaid { get; set; }
@@ -30,8 +30,8 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public System.DateTime datahorainclusao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<carroceria> carroceria { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<veiculo> veiculo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<carroceria> carroceria { get; set; }
     }
 }

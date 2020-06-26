@@ -40,13 +40,14 @@ namespace Cadastramento.Mvc.Controllers
                 model.contenttype = file.ContentType;
                 model.nomearquivo = file.FileName;
 
-
                 model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;
+                model.datavalidadecadastro = DateTime.Now;
                 model.datahorainclusao = DateTime.Now;
                 if (model.situacaocadastroid != 2)
                 {
                     model.situacaocadastroid = 1;
                 }
+                
                 srv.Incluir(model);
                 srv.Salvar(SessaoUsuario.Sessao.login);
 
@@ -56,7 +57,7 @@ namespace Cadastramento.Mvc.Controllers
 
                 EnviarMensagem("Operação realizada com sucesso. Protocolo Nº: " + model.protocolo, TipoMensagem.Verde);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Incluir");
             }
             catch (Exception ex)
             {

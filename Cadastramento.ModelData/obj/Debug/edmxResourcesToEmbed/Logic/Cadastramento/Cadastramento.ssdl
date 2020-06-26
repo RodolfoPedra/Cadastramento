@@ -63,7 +63,7 @@
     <Property Name="tipocarroceriaid" Type="int" Nullable="false" />
     <Property Name="placa" Type="varchar" MaxLength="10" />
     <Property Name="ufplaca" Type="varchar" MaxLength="2" />
-    <Property Name="chassi" Type="varchar" MaxLength="16" />
+    <Property Name="chassi" Type="varchar" MaxLength="50" />
     <Property Name="cidadelicenciamento" Type="varchar" MaxLength="50" />
     <Property Name="marca" Type="varchar" MaxLength="50" />
     <Property Name="categoriaantt" Type="varchar" MaxLength="50" />
@@ -558,7 +558,7 @@
     <Property Name="tipoveiculoid" Type="int" />
     <Property Name="placa" Type="varchar" MaxLength="10" />
     <Property Name="ufplaca" Type="varchar" MaxLength="2" />
-    <Property Name="chassi" Type="varchar" MaxLength="16" />
+    <Property Name="chassi" Type="varchar" MaxLength="50" />
     <Property Name="cidadelicenciamento" Type="varchar" MaxLength="50" />
     <Property Name="marca" Type="varchar" MaxLength="50" />
     <Property Name="categoriaantt" Type="varchar" MaxLength="50" />

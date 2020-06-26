@@ -1,5 +1,186 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CadastramentoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="menuacao">
+    <Key>
+      <PropertyRef Name="menuacaoid" />
+    </Key>
+    <Property Name="menuacaoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="situacao" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ordembotao" Type="Int32" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Precision="0" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="usuariomenuacao" Relationship="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_menuacao" FromRole="menuacao" ToRole="usuariomenuacao" />
+  </EntityType>
+  <EntityContainer Name="CadastramentoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="menuacao" EntityType="Self.menuacao" />
+    <EntitySet Name="analise" EntityType="CadastramentoModel.analise" />
+    <EntitySet Name="auditlog" EntityType="CadastramentoModel.auditlog" />
+    <EntitySet Name="auditlogdetail" EntityType="CadastramentoModel.auditlogdetail" />
+    <EntitySet Name="auditlogexcecao" EntityType="CadastramentoModel.auditlogexcecao" />
+    <EntitySet Name="cadeiaprodutiva" EntityType="CadastramentoModel.cadeiaprodutiva" />
+    <EntitySet Name="consideracao" EntityType="CadastramentoModel.consideracao" />
+    <EntitySet Name="consultor" EntityType="CadastramentoModel.consultor" />
+    <EntitySet Name="empresa" EntityType="CadastramentoModel.empresa" />
+    <EntitySet Name="empresaprojeto" EntityType="CadastramentoModel.empresaprojeto" />
+    <EntitySet Name="logacesso" EntityType="CadastramentoModel.logacesso" />
+    <EntitySet Name="motorista" EntityType="CadastramentoModel.motorista" />
+    <EntitySet Name="municipio" EntityType="CadastramentoModel.municipio" />
+    <EntitySet Name="perfil" EntityType="CadastramentoModel.perfil" />
+    <EntitySet Name="processo" EntityType="CadastramentoModel.processo" />
+    <EntitySet Name="processosituacao" EntityType="CadastramentoModel.processosituacao" />
+    <EntitySet Name="processotipo" EntityType="CadastramentoModel.processotipo" />
+    <EntitySet Name="situacaocadastro" EntityType="CadastramentoModel.situacaocadastro" />
+    <EntitySet Name="tipocarga" EntityType="CadastramentoModel.tipocarga" />
+    <EntitySet Name="tipocarroceria" EntityType="CadastramentoModel.tipocarroceria" />
+    <EntitySet Name="tipoincentivo" EntityType="CadastramentoModel.tipoincentivo" />
+    <EntitySet Name="tipoveiculo" EntityType="CadastramentoModel.tipoveiculo" />
+    <EntitySet Name="unidademedida" EntityType="CadastramentoModel.unidademedida" />
+    <EntitySet Name="usuario" EntityType="CadastramentoModel.usuario" />
+    <EntitySet Name="usuariomenu" EntityType="CadastramentoModel.usuariomenu" />
+    <EntitySet Name="usuariomenuacao" EntityType="CadastramentoModel.usuariomenuacao" />
+    <EntitySet Name="usuariomenuacaoperfilpermissao" EntityType="CadastramentoModel.usuariomenuacaoperfilpermissao" />
+    <EntitySet Name="usuariomenuperfilpermissao" EntityType="CadastramentoModel.usuariomenuperfilpermissao" />
+    <EntitySet Name="usuarioperfil" EntityType="CadastramentoModel.usuarioperfil" />
+    <AssociationSet Name="FK_analise_situacaocadastro" Association="CadastramentoModel.FK_analise_situacaocadastro">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="analise" EntitySet="analise" />
+    </AssociationSet>
+    <AssociationSet Name="auditlogdetail_FK_auditlogdetail_auditlog" Association="CadastramentoModel.auditlogdetail_FK_auditlogdetail_auditlog">
+      <End Role="auditlog" EntitySet="auditlog" />
+      <End Role="auditlogdetail" EntitySet="auditlogdetail" />
+    </AssociationSet>
+    <AssociationSet Name="processo_fk_processo_cadeiaprodutiva" Association="CadastramentoModel.processo_fk_processo_cadeiaprodutiva">
+      <End Role="cadeiaprodutiva" EntitySet="cadeiaprodutiva" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo_fk_processo_consideracao" Association="CadastramentoModel.processo_fk_processo_consideracao">
+      <End Role="consideracao" EntitySet="consideracao" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo_fk_processo_consultor" Association="CadastramentoModel.processo_fk_processo_consultor">
+      <End Role="consultor" EntitySet="consultor" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="empresa_fk_empresa_contatomunicipio" Association="CadastramentoModel.empresa_fk_empresa_contatomunicipio">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="empresa" EntitySet="empresa" />
+    </AssociationSet>
+    <AssociationSet Name="empresa_fk_empresa_municipio" Association="CadastramentoModel.empresa_fk_empresa_municipio">
+      <End Role="municipio" EntitySet="municipio" />
+      <End Role="empresa" EntitySet="empresa" />
+    </AssociationSet>
+    <AssociationSet Name="fk_empresaprojeto_empresa" Association="CadastramentoModel.fk_empresaprojeto_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="empresaprojeto" EntitySet="empresaprojeto" />
+    </AssociationSet>
+    <AssociationSet Name="processo_fk_processo_empresa" Association="CadastramentoModel.processo_fk_processo_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacao_fk_usuariomenuacao_menuacao" Association="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_menuacao">
+      <End Role="menuacao" EntitySet="menuacao" />
+      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="motorista" EntitySet="motorista" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" Association="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil" Association="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="usuariomenuperfilpermissao" EntitySet="usuariomenuperfilpermissao" />
+    </AssociationSet>
+    <AssociationSet Name="usuarioperfil_fk_usuarioperfil_perfil" Association="CadastramentoModel.usuarioperfil_fk_usuarioperfil_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="usuarioperfil" EntitySet="usuarioperfil" />
+    </AssociationSet>
+    <AssociationSet Name="processo_fk_processo_processosituacao" Association="CadastramentoModel.processo_fk_processo_processosituacao">
+      <End Role="processosituacao" EntitySet="processosituacao" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo_fk_processo_processotipo" Association="CadastramentoModel.processo_fk_processo_processotipo">
+      <End Role="processotipo" EntitySet="processotipo" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="processo_fk_processo_tipoincentivo" Association="CadastramentoModel.processo_fk_processo_tipoincentivo">
+      <End Role="tipoincentivo" EntitySet="tipoincentivo" />
+      <End Role="processo" EntitySet="processo" />
+    </AssociationSet>
+    <AssociationSet Name="usuarioperfil_fk_usuarioperfil_usuario" Association="CadastramentoModel.usuarioperfil_fk_usuarioperfil_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="usuarioperfil" EntitySet="usuarioperfil" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenu_fk_paiusuariomenu_usuariomenu" Association="CadastramentoModel.usuariomenu_fk_paiusuariomenu_usuariomenu">
+      <End Role="usuariomenu" EntitySet="usuariomenu" />
+      <End Role="usuariomenu1" EntitySet="usuariomenu" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacao_fk_usuariomenuacao_usuariomenu" Association="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_usuariomenu">
+      <End Role="usuariomenu" EntitySet="usuariomenu" />
+      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" Association="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu">
+      <End Role="usuariomenu" EntitySet="usuariomenu" />
+      <End Role="usuariomenuperfilpermissao" EntitySet="usuariomenuperfilpermissao" />
+    </AssociationSet>
+    <AssociationSet Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" Association="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao">
+      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
+      <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
+    </AssociationSet>
+    <EntitySet Name="veiculo" EntityType="CadastramentoModel.veiculo" />
+    <AssociationSet Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="veiculo" EntitySet="veiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_veiculo_TiposCargas_TipoCargaId" Association="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId">
+      <End Role="tipocarga" EntitySet="tipocarga" />
+      <End Role="veiculo" EntitySet="veiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_veiculo_Tiposveiculo_TipoVeiculoId" Association="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId">
+      <End Role="tipoveiculo" EntitySet="tipoveiculo" />
+      <End Role="veiculo" EntitySet="veiculo" />
+    </AssociationSet>
+    <EntitySet Name="carroceria" EntityType="CadastramentoModel.carroceria" />
+    <AssociationSet Name="FK_carroceria_carroceria_CompartimentoId" Association="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId">
+      <End Role="carroceria" EntitySet="carroceria" />
+      <End Role="carroceria1" EntitySet="carroceria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carroceria_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId">
+      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+      <End Role="carroceria" EntitySet="carroceria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carroceria_TiposCargas_TipoCargaId" Association="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId">
+      <End Role="tipocarga" EntitySet="tipocarga" />
+      <End Role="carroceria" EntitySet="carroceria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carroceria_Tiposcarroceria_TipoCarroceriaId" Association="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId">
+      <End Role="tipocarroceria" EntitySet="tipocarroceria" />
+      <End Role="carroceria" EntitySet="carroceria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carroceria_Veiculos_VeiculoId" Association="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId">
+      <End Role="veiculo" EntitySet="veiculo" />
+      <End Role="carroceria" EntitySet="carroceria" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="analise">
+    <Key>
+      <PropertyRef Name="analiseid" />
+    </Key>
+    <Property Name="analiseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="motoristaid" Type="Int32" />
+    <Property Name="veiculoid" Type="Int32" />
+    <Property Name="carroceriaid" Type="Int32" />
+    <Property Name="datahoraanalise" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="situacaocadastroid" Type="Int32" />
+    <Property Name="observacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="analise" ToRole="situacaocadastro" />
+  </EntityType>
   <EntityType Name="auditlog">
     <Key>
       <PropertyRef Name="AuditLogId" />
@@ -10,7 +191,7 @@
     <Property Name="EventType" Type="Int32" />
     <Property Name="TypeFullName" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
     <Property Name="RecordId" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="auditlogdetail" Relationship="Self.auditlogdetail_FK_auditlogdetail_auditlog" FromRole="auditlog" ToRole="auditlogdetail" />
+    <NavigationProperty Name="auditlogdetail" Relationship="CadastramentoModel.auditlogdetail_FK_auditlogdetail_auditlog" FromRole="auditlog" ToRole="auditlogdetail" />
   </EntityType>
   <EntityType Name="auditlogdetail">
     <Key>
@@ -21,7 +202,7 @@
     <Property Name="OriginalValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="AuditLogId" Type="Int64" />
-    <NavigationProperty Name="auditlog" Relationship="Self.auditlogdetail_FK_auditlogdetail_auditlog" FromRole="auditlogdetail" ToRole="auditlog" />
+    <NavigationProperty Name="auditlog" Relationship="CadastramentoModel.auditlogdetail_FK_auditlogdetail_auditlog" FromRole="auditlogdetail" ToRole="auditlog" />
   </EntityType>
   <EntityType Name="auditlogexcecao">
     <Key>
@@ -42,7 +223,7 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="cadeiaprodutivaidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="processo" Relationship="Self.processo_fk_processo_cadeiaprodutiva" FromRole="cadeiaprodutiva" ToRole="processo" />
+    <NavigationProperty Name="processo" Relationship="CadastramentoModel.processo_fk_processo_cadeiaprodutiva" FromRole="cadeiaprodutiva" ToRole="processo" />
   </EntityType>
   <EntityType Name="consideracao">
     <Key>
@@ -56,7 +237,7 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="consideracaoidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="processo" Relationship="Self.processo_fk_processo_consideracao" FromRole="consideracao" ToRole="processo" />
+    <NavigationProperty Name="processo" Relationship="CadastramentoModel.processo_fk_processo_consideracao" FromRole="consideracao" ToRole="processo" />
   </EntityType>
   <EntityType Name="consultor">
     <Key>
@@ -74,7 +255,7 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="consultoridsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="processo" Relationship="Self.processo_fk_processo_consultor" FromRole="consultor" ToRole="processo" />
+    <NavigationProperty Name="processo" Relationship="CadastramentoModel.processo_fk_processo_consultor" FromRole="consultor" ToRole="processo" />
   </EntityType>
   <EntityType Name="empresa">
     <Key>
@@ -116,10 +297,10 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="empresaidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="municipio" Relationship="Self.empresa_fk_empresa_contatomunicipio" FromRole="empresa" ToRole="municipio" />
-    <NavigationProperty Name="municipio1" Relationship="Self.empresa_fk_empresa_municipio" FromRole="empresa" ToRole="municipio" />
-    <NavigationProperty Name="empresaprojeto" Relationship="Self.fk_empresaprojeto_empresa" FromRole="empresa" ToRole="empresaprojeto" />
-    <NavigationProperty Name="processo" Relationship="Self.processo_fk_processo_empresa" FromRole="empresa" ToRole="processo" />
+    <NavigationProperty Name="municipio" Relationship="CadastramentoModel.empresa_fk_empresa_contatomunicipio" FromRole="empresa" ToRole="municipio" />
+    <NavigationProperty Name="municipio1" Relationship="CadastramentoModel.empresa_fk_empresa_municipio" FromRole="empresa" ToRole="municipio" />
+    <NavigationProperty Name="empresaprojeto" Relationship="CadastramentoModel.fk_empresaprojeto_empresa" FromRole="empresa" ToRole="empresaprojeto" />
+    <NavigationProperty Name="processo" Relationship="CadastramentoModel.processo_fk_processo_empresa" FromRole="empresa" ToRole="processo" />
   </EntityType>
   <EntityType Name="empresaprojeto">
     <Key>
@@ -160,7 +341,7 @@
     <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="empresa" Relationship="Self.fk_empresaprojeto_empresa" FromRole="empresaprojeto" ToRole="empresa" />
+    <NavigationProperty Name="empresa" Relationship="CadastramentoModel.fk_empresaprojeto_empresa" FromRole="empresaprojeto" ToRole="empresa" />
   </EntityType>
   <EntityType Name="logacesso">
     <Key>
@@ -175,20 +356,42 @@
     <Property Name="municipio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="browser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="menuacao">
+  <EntityType Name="motorista">
     <Key>
-      <PropertyRef Name="menuacaoid" />
+      <PropertyRef Name="motoristaid" />
     </Key>
-    <Property Name="menuacaoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="situacao" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="ordembotao" Type="Int32" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="motoristaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="rguf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="rgorgaoexpedidor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="cnh" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="ufcnh" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="categoriacnh" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="dataemissaocnh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="datavalidadecnh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="datavalidadecadastro" Type="DateTime" Precision="3" />
+    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
+    <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Precision="0" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="usuariomenuacao" Relationship="Self.usuariomenuacao_fk_usuariomenuacao_menuacao" FromRole="menuacao" ToRole="usuariomenuacao" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
+    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="motorista" ToRole="situacaocadastro" />
   </EntityType>
   <EntityType Name="municipio">
     <Key>
@@ -202,8 +405,8 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="municipioidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="empresa" Relationship="Self.empresa_fk_empresa_contatomunicipio" FromRole="municipio" ToRole="empresa" />
-    <NavigationProperty Name="empresa1" Relationship="Self.empresa_fk_empresa_municipio" FromRole="municipio" ToRole="empresa" />
+    <NavigationProperty Name="empresa" Relationship="CadastramentoModel.empresa_fk_empresa_contatomunicipio" FromRole="municipio" ToRole="empresa" />
+    <NavigationProperty Name="empresa1" Relationship="CadastramentoModel.empresa_fk_empresa_municipio" FromRole="municipio" ToRole="empresa" />
   </EntityType>
   <EntityType Name="perfil">
     <Key>
@@ -216,9 +419,9 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahorainclusao" Type="DateTime" Precision="0" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="usuariomenuacaoperfilpermissao" Relationship="Self.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" FromRole="perfil" ToRole="usuariomenuacaoperfilpermissao" />
-    <NavigationProperty Name="usuariomenuperfilpermissao" Relationship="Self.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil" FromRole="perfil" ToRole="usuariomenuperfilpermissao" />
-    <NavigationProperty Name="usuarioperfil" Relationship="Self.usuarioperfil_fk_usuarioperfil_perfil" FromRole="perfil" ToRole="usuarioperfil" />
+    <NavigationProperty Name="usuariomenuacaoperfilpermissao" Relationship="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" FromRole="perfil" ToRole="usuariomenuacaoperfilpermissao" />
+    <NavigationProperty Name="usuariomenuperfilpermissao" Relationship="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil" FromRole="perfil" ToRole="usuariomenuperfilpermissao" />
+    <NavigationProperty Name="usuarioperfil" Relationship="CadastramentoModel.usuarioperfil_fk_usuarioperfil_perfil" FromRole="perfil" ToRole="usuarioperfil" />
   </EntityType>
   <EntityType Name="processo">
     <Key>
@@ -299,13 +502,13 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="processoidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="cadeiaprodutiva" Relationship="Self.processo_fk_processo_cadeiaprodutiva" FromRole="processo" ToRole="cadeiaprodutiva" />
-    <NavigationProperty Name="consideracao" Relationship="Self.processo_fk_processo_consideracao" FromRole="processo" ToRole="consideracao" />
-    <NavigationProperty Name="consultor" Relationship="Self.processo_fk_processo_consultor" FromRole="processo" ToRole="consultor" />
-    <NavigationProperty Name="empresa" Relationship="Self.processo_fk_processo_empresa" FromRole="processo" ToRole="empresa" />
-    <NavigationProperty Name="processosituacao" Relationship="Self.processo_fk_processo_processosituacao" FromRole="processo" ToRole="processosituacao" />
-    <NavigationProperty Name="processotipo" Relationship="Self.processo_fk_processo_processotipo" FromRole="processo" ToRole="processotipo" />
-    <NavigationProperty Name="tipoincentivo" Relationship="Self.processo_fk_processo_tipoincentivo" FromRole="processo" ToRole="tipoincentivo" />
+    <NavigationProperty Name="cadeiaprodutiva" Relationship="CadastramentoModel.processo_fk_processo_cadeiaprodutiva" FromRole="processo" ToRole="cadeiaprodutiva" />
+    <NavigationProperty Name="consideracao" Relationship="CadastramentoModel.processo_fk_processo_consideracao" FromRole="processo" ToRole="consideracao" />
+    <NavigationProperty Name="consultor" Relationship="CadastramentoModel.processo_fk_processo_consultor" FromRole="processo" ToRole="consultor" />
+    <NavigationProperty Name="empresa" Relationship="CadastramentoModel.processo_fk_processo_empresa" FromRole="processo" ToRole="empresa" />
+    <NavigationProperty Name="processosituacao" Relationship="CadastramentoModel.processo_fk_processo_processosituacao" FromRole="processo" ToRole="processosituacao" />
+    <NavigationProperty Name="processotipo" Relationship="CadastramentoModel.processo_fk_processo_processotipo" FromRole="processo" ToRole="processotipo" />
+    <NavigationProperty Name="tipoincentivo" Relationship="CadastramentoModel.processo_fk_processo_tipoincentivo" FromRole="processo" ToRole="tipoincentivo" />
   </EntityType>
   <EntityType Name="processosituacao">
     <Key>
@@ -320,7 +523,7 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="processosituacaoidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="processo" Relationship="Self.processo_fk_processo_processosituacao" FromRole="processosituacao" ToRole="processo" />
+    <NavigationProperty Name="processo" Relationship="CadastramentoModel.processo_fk_processo_processosituacao" FromRole="processosituacao" ToRole="processo" />
   </EntityType>
   <EntityType Name="processotipo">
     <Key>
@@ -334,7 +537,50 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="processotipoidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="processo" Relationship="Self.processo_fk_processo_processotipo" FromRole="processotipo" ToRole="processo" />
+    <NavigationProperty Name="processo" Relationship="CadastramentoModel.processo_fk_processo_processotipo" FromRole="processotipo" ToRole="processo" />
+  </EntityType>
+  <EntityType Name="situacaocadastro">
+    <Key>
+      <PropertyRef Name="situacaocadastroid" />
+    </Key>
+    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="analise" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="situacaocadastro" ToRole="analise" />
+    <NavigationProperty Name="motorista" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="motorista" />
+    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="veiculo" />
+    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="carroceria" />
+  </EntityType>
+  <EntityType Name="tipocarga">
+    <Key>
+      <PropertyRef Name="tipocargaid" />
+    </Key>
+    <Property Name="tipocargaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="veiculo" />
+    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="carroceria" />
+  </EntityType>
+  <EntityType Name="tipocarroceria">
+    <Key>
+      <PropertyRef Name="tipocarroceriaid" />
+    </Key>
+    <Property Name="tipocarroceriaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" FromRole="tipocarroceria" ToRole="carroceria" />
   </EntityType>
   <EntityType Name="tipoincentivo">
     <Key>
@@ -349,7 +595,20 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="tipoincentivoidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="processo" Relationship="Self.processo_fk_processo_tipoincentivo" FromRole="tipoincentivo" ToRole="processo" />
+    <NavigationProperty Name="processo" Relationship="CadastramentoModel.processo_fk_processo_tipoincentivo" FromRole="tipoincentivo" ToRole="processo" />
+  </EntityType>
+  <EntityType Name="tipoveiculo">
+    <Key>
+      <PropertyRef Name="tipoveiculoid" />
+    </Key>
+    <Property Name="tipoveiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="tipoveiculo" ToRole="veiculo" />
   </EntityType>
   <EntityType Name="unidademedida">
     <Key>
@@ -380,7 +639,7 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
     <Property Name="usuarioidsistemaantigo" Type="Int32" />
-    <NavigationProperty Name="usuarioperfil" Relationship="Self.usuarioperfil_fk_usuarioperfil_usuario" FromRole="usuario" ToRole="usuarioperfil" />
+    <NavigationProperty Name="usuarioperfil" Relationship="CadastramentoModel.usuarioperfil_fk_usuarioperfil_usuario" FromRole="usuario" ToRole="usuarioperfil" />
   </EntityType>
   <EntityType Name="usuariomenu">
     <Key>
@@ -395,10 +654,10 @@
     <Property Name="tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="classeicone" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="titulopagina" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="usuariomenu1" Relationship="Self.usuariomenu_fk_paiusuariomenu_usuariomenu" FromRole="usuariomenu" ToRole="usuariomenu1" />
-    <NavigationProperty Name="usuariomenu2" Relationship="Self.usuariomenu_fk_paiusuariomenu_usuariomenu" FromRole="usuariomenu1" ToRole="usuariomenu" />
-    <NavigationProperty Name="usuariomenuacao" Relationship="Self.usuariomenuacao_fk_usuariomenuacao_usuariomenu" FromRole="usuariomenu" ToRole="usuariomenuacao" />
-    <NavigationProperty Name="usuariomenuperfilpermissao" Relationship="Self.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" FromRole="usuariomenu" ToRole="usuariomenuperfilpermissao" />
+    <NavigationProperty Name="usuariomenu1" Relationship="CadastramentoModel.usuariomenu_fk_paiusuariomenu_usuariomenu" FromRole="usuariomenu" ToRole="usuariomenu1" />
+    <NavigationProperty Name="usuariomenu2" Relationship="CadastramentoModel.usuariomenu_fk_paiusuariomenu_usuariomenu" FromRole="usuariomenu1" ToRole="usuariomenu" />
+    <NavigationProperty Name="usuariomenuacao" Relationship="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_usuariomenu" FromRole="usuariomenu" ToRole="usuariomenuacao" />
+    <NavigationProperty Name="usuariomenuperfilpermissao" Relationship="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" FromRole="usuariomenu" ToRole="usuariomenuperfilpermissao" />
   </EntityType>
   <EntityType Name="usuariomenuacao">
     <Key>
@@ -412,9 +671,9 @@
     <Property Name="usuarioidalteracao" Type="Int32" />
     <Property Name="datahorainclusao" Type="DateTime" Precision="0" />
     <Property Name="datahoraalteracao" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="menuacao" Relationship="Self.usuariomenuacao_fk_usuariomenuacao_menuacao" FromRole="usuariomenuacao" ToRole="menuacao" />
-    <NavigationProperty Name="usuariomenu" Relationship="Self.usuariomenuacao_fk_usuariomenuacao_usuariomenu" FromRole="usuariomenuacao" ToRole="usuariomenu" />
-    <NavigationProperty Name="usuariomenuacaoperfilpermissao" Relationship="Self.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" FromRole="usuariomenuacao" ToRole="usuariomenuacaoperfilpermissao" />
+    <NavigationProperty Name="menuacao" Relationship="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_menuacao" FromRole="usuariomenuacao" ToRole="menuacao" />
+    <NavigationProperty Name="usuariomenu" Relationship="CadastramentoModel.usuariomenuacao_fk_usuariomenuacao_usuariomenu" FromRole="usuariomenuacao" ToRole="usuariomenu" />
+    <NavigationProperty Name="usuariomenuacaoperfilpermissao" Relationship="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" FromRole="usuariomenuacao" ToRole="usuariomenuacaoperfilpermissao" />
   </EntityType>
   <EntityType Name="usuariomenuacaoperfilpermissao">
     <Key>
@@ -423,8 +682,8 @@
     <Property Name="usuariomenuacaoperfilpermissaoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="usuariomenuacaoid" Type="Int32" Nullable="false" />
     <Property Name="perfilid" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="perfil" Relationship="Self.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" FromRole="usuariomenuacaoperfilpermissao" ToRole="perfil" />
-    <NavigationProperty Name="usuariomenuacao" Relationship="Self.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" FromRole="usuariomenuacaoperfilpermissao" ToRole="usuariomenuacao" />
+    <NavigationProperty Name="perfil" Relationship="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" FromRole="usuariomenuacaoperfilpermissao" ToRole="perfil" />
+    <NavigationProperty Name="usuariomenuacao" Relationship="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" FromRole="usuariomenuacaoperfilpermissao" ToRole="usuariomenuacao" />
   </EntityType>
   <EntityType Name="usuariomenuperfilpermissao">
     <Key>
@@ -433,8 +692,8 @@
     <Property Name="usuariomenuperfilpermissaoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="usuariomenuid" Type="Int32" Nullable="false" />
     <Property Name="perfilid" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="perfil" Relationship="Self.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil" FromRole="usuariomenuperfilpermissao" ToRole="perfil" />
-    <NavigationProperty Name="usuariomenu" Relationship="Self.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" FromRole="usuariomenuperfilpermissao" ToRole="usuariomenu" />
+    <NavigationProperty Name="perfil" Relationship="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil" FromRole="usuariomenuperfilpermissao" ToRole="perfil" />
+    <NavigationProperty Name="usuariomenu" Relationship="CadastramentoModel.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" FromRole="usuariomenuperfilpermissao" ToRole="usuariomenu" />
   </EntityType>
   <EntityType Name="usuarioperfil">
     <Key>
@@ -443,12 +702,24 @@
     <Property Name="usuarioperfilid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="usuarioid" Type="Int32" Nullable="false" />
     <Property Name="perfilid" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="perfil" Relationship="Self.usuarioperfil_fk_usuarioperfil_perfil" FromRole="usuarioperfil" ToRole="perfil" />
-    <NavigationProperty Name="usuario" Relationship="Self.usuarioperfil_fk_usuarioperfil_usuario" FromRole="usuarioperfil" ToRole="usuario" />
+    <NavigationProperty Name="perfil" Relationship="CadastramentoModel.usuarioperfil_fk_usuarioperfil_perfil" FromRole="usuarioperfil" ToRole="perfil" />
+    <NavigationProperty Name="usuario" Relationship="CadastramentoModel.usuarioperfil_fk_usuarioperfil_usuario" FromRole="usuarioperfil" ToRole="usuario" />
   </EntityType>
+  <Association Name="FK_analise_situacaocadastro">
+    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.analise" Role="analise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="situacaocadastro">
+        <PropertyRef Name="situacaocadastroid" />
+      </Principal>
+      <Dependent Role="analise">
+        <PropertyRef Name="situacaocadastroid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="auditlogdetail_FK_auditlogdetail_auditlog">
-    <End Role="auditlog" Type="Self.auditlog" Multiplicity="0..1" />
-    <End Role="auditlogdetail" Type="Self.auditlogdetail" Multiplicity="*" />
+    <End Type="CadastramentoModel.auditlog" Role="auditlog" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.auditlogdetail" Role="auditlogdetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="auditlog">
         <PropertyRef Name="AuditLogId" />
@@ -459,8 +730,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="processo_fk_processo_cadeiaprodutiva">
-    <End Role="cadeiaprodutiva" Type="Self.cadeiaprodutiva" Multiplicity="0..1" />
-    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <End Type="CadastramentoModel.cadeiaprodutiva" Role="cadeiaprodutiva" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.processo" Role="processo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="cadeiaprodutiva">
         <PropertyRef Name="cadeiaprodutivaid" />
@@ -471,8 +742,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="processo_fk_processo_consideracao">
-    <End Role="consideracao" Type="Self.consideracao" Multiplicity="0..1" />
-    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <End Type="CadastramentoModel.consideracao" Role="consideracao" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.processo" Role="processo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="consideracao">
         <PropertyRef Name="consideracaoid" />
@@ -483,8 +754,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="processo_fk_processo_consultor">
-    <End Role="consultor" Type="Self.consultor" Multiplicity="0..1" />
-    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <End Type="CadastramentoModel.consultor" Role="consultor" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.processo" Role="processo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="consultor">
         <PropertyRef Name="consultorid" />
@@ -495,8 +766,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="empresa_fk_empresa_contatomunicipio">
-    <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
-    <End Role="empresa" Type="Self.empresa" Multiplicity="*" />
+    <End Type="CadastramentoModel.municipio" Role="municipio" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.empresa" Role="empresa" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="municipio">
         <PropertyRef Name="municipioid" />
@@ -507,8 +778,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="empresa_fk_empresa_municipio">
-    <End Role="municipio" Type="Self.municipio" Multiplicity="0..1" />
-    <End Role="empresa" Type="Self.empresa" Multiplicity="*" />
+    <End Type="CadastramentoModel.municipio" Role="municipio" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.empresa" Role="empresa" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="municipio">
         <PropertyRef Name="municipioid" />
@@ -519,8 +790,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_empresaprojeto_empresa">
-    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
-    <End Role="empresaprojeto" Type="Self.empresaprojeto" Multiplicity="*" />
+    <End Type="CadastramentoModel.empresa" Role="empresa" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.empresaprojeto" Role="empresaprojeto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="empresa">
         <PropertyRef Name="empresaid" />
@@ -531,8 +802,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="processo_fk_processo_empresa">
-    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
-    <End Role="processo" Type="Self.processo" Multiplicity="*" />
+    <End Type="CadastramentoModel.empresa" Role="empresa" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.processo" Role="processo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="empresa">
         <PropertyRef Name="empresaid" />
@@ -543,8 +814,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="usuariomenuacao_fk_usuariomenuacao_menuacao">
-    <End Role="menuacao" Type="Self.menuacao" Multiplicity="1" />
-    <End Role="usuariomenuacao" Type="Self.usuariomenuacao" Multiplicity="*" />
+    <End Type="CadastramentoModel.menuacao" Role="menuacao" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuariomenuacao" Role="usuariomenuacao" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="menuacao">
         <PropertyRef Name="menuacaoid" />
@@ -554,384 +825,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil">
-    <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
-    <End Role="usuariomenuacaoperfilpermissao" Type="Self.usuariomenuacaoperfilpermissao" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="perfil">
-        <PropertyRef Name="perfilid" />
-      </Principal>
-      <Dependent Role="usuariomenuacaoperfilpermissao">
-        <PropertyRef Name="perfilid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil">
-    <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
-    <End Role="usuariomenuperfilpermissao" Type="Self.usuariomenuperfilpermissao" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="perfil">
-        <PropertyRef Name="perfilid" />
-      </Principal>
-      <Dependent Role="usuariomenuperfilpermissao">
-        <PropertyRef Name="perfilid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuarioperfil_fk_usuarioperfil_perfil">
-    <End Role="perfil" Type="Self.perfil" Multiplicity="1" />
-    <End Role="usuarioperfil" Type="Self.usuarioperfil" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="perfil">
-        <PropertyRef Name="perfilid" />
-      </Principal>
-      <Dependent Role="usuarioperfil">
-        <PropertyRef Name="perfilid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="processo_fk_processo_processosituacao">
-    <End Role="processosituacao" Type="Self.processosituacao" Multiplicity="0..1" />
-    <End Role="processo" Type="Self.processo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="processosituacao">
-        <PropertyRef Name="processosituacaoid" />
-      </Principal>
-      <Dependent Role="processo">
-        <PropertyRef Name="processosituacaoid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="processo_fk_processo_processotipo">
-    <End Role="processotipo" Type="Self.processotipo" Multiplicity="0..1" />
-    <End Role="processo" Type="Self.processo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="processotipo">
-        <PropertyRef Name="processotipoid" />
-      </Principal>
-      <Dependent Role="processo">
-        <PropertyRef Name="processotipoid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="processo_fk_processo_tipoincentivo">
-    <End Role="tipoincentivo" Type="Self.tipoincentivo" Multiplicity="0..1" />
-    <End Role="processo" Type="Self.processo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tipoincentivo">
-        <PropertyRef Name="tipoincentivoid" />
-      </Principal>
-      <Dependent Role="processo">
-        <PropertyRef Name="tipoincentivoid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuarioperfil_fk_usuarioperfil_usuario">
-    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
-    <End Role="usuarioperfil" Type="Self.usuarioperfil" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuario">
-        <PropertyRef Name="usuarioid" />
-      </Principal>
-      <Dependent Role="usuarioperfil">
-        <PropertyRef Name="usuarioid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuariomenu_fk_paiusuariomenu_usuariomenu">
-    <End Role="usuariomenu" Type="Self.usuariomenu" Multiplicity="0..1" />
-    <End Role="usuariomenu1" Type="Self.usuariomenu" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuariomenu">
-        <PropertyRef Name="usuariomenuid" />
-      </Principal>
-      <Dependent Role="usuariomenu1">
-        <PropertyRef Name="paiusuariomenuid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuariomenuacao_fk_usuariomenuacao_usuariomenu">
-    <End Role="usuariomenu" Type="Self.usuariomenu" Multiplicity="1" />
-    <End Role="usuariomenuacao" Type="Self.usuariomenuacao" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuariomenu">
-        <PropertyRef Name="usuariomenuid" />
-      </Principal>
-      <Dependent Role="usuariomenuacao">
-        <PropertyRef Name="usuariomenuid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu">
-    <End Role="usuariomenu" Type="Self.usuariomenu" Multiplicity="1" />
-    <End Role="usuariomenuperfilpermissao" Type="Self.usuariomenuperfilpermissao" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuariomenu">
-        <PropertyRef Name="usuariomenuid" />
-      </Principal>
-      <Dependent Role="usuariomenuperfilpermissao">
-        <PropertyRef Name="usuariomenuid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao">
-    <End Role="usuariomenuacao" Type="Self.usuariomenuacao" Multiplicity="1" />
-    <End Role="usuariomenuacaoperfilpermissao" Type="Self.usuariomenuacaoperfilpermissao" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuariomenuacao">
-        <PropertyRef Name="usuariomenuacaoid" />
-      </Principal>
-      <Dependent Role="usuariomenuacaoperfilpermissao">
-        <PropertyRef Name="usuariomenuacaoid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="CadastramentoEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="auditlog" EntityType="Self.auditlog" />
-    <EntitySet Name="auditlogdetail" EntityType="Self.auditlogdetail" />
-    <EntitySet Name="auditlogexcecao" EntityType="Self.auditlogexcecao" />
-    <EntitySet Name="cadeiaprodutiva" EntityType="Self.cadeiaprodutiva" />
-    <EntitySet Name="consideracao" EntityType="Self.consideracao" />
-    <EntitySet Name="consultor" EntityType="Self.consultor" />
-    <EntitySet Name="empresa" EntityType="Self.empresa" />
-    <EntitySet Name="empresaprojeto" EntityType="Self.empresaprojeto" />
-    <EntitySet Name="logacesso" EntityType="Self.logacesso" />
-    <EntitySet Name="menuacao" EntityType="Self.menuacao" />
-    <EntitySet Name="municipio" EntityType="Self.municipio" />
-    <EntitySet Name="perfil" EntityType="Self.perfil" />
-    <EntitySet Name="processo" EntityType="Self.processo" />
-    <EntitySet Name="processosituacao" EntityType="Self.processosituacao" />
-    <EntitySet Name="processotipo" EntityType="Self.processotipo" />
-    <EntitySet Name="tipoincentivo" EntityType="Self.tipoincentivo" />
-    <EntitySet Name="unidademedida" EntityType="Self.unidademedida" />
-    <EntitySet Name="usuario" EntityType="Self.usuario" />
-    <EntitySet Name="usuariomenu" EntityType="Self.usuariomenu" />
-    <EntitySet Name="usuariomenuacao" EntityType="Self.usuariomenuacao" />
-    <EntitySet Name="usuariomenuacaoperfilpermissao" EntityType="Self.usuariomenuacaoperfilpermissao" />
-    <EntitySet Name="usuariomenuperfilpermissao" EntityType="Self.usuariomenuperfilpermissao" />
-    <EntitySet Name="usuarioperfil" EntityType="Self.usuarioperfil" />
-    <AssociationSet Name="auditlogdetail_FK_auditlogdetail_auditlog" Association="Self.auditlogdetail_FK_auditlogdetail_auditlog">
-      <End Role="auditlog" EntitySet="auditlog" />
-      <End Role="auditlogdetail" EntitySet="auditlogdetail" />
-    </AssociationSet>
-    <AssociationSet Name="processo_fk_processo_cadeiaprodutiva" Association="Self.processo_fk_processo_cadeiaprodutiva">
-      <End Role="cadeiaprodutiva" EntitySet="cadeiaprodutiva" />
-      <End Role="processo" EntitySet="processo" />
-    </AssociationSet>
-    <AssociationSet Name="processo_fk_processo_consideracao" Association="Self.processo_fk_processo_consideracao">
-      <End Role="consideracao" EntitySet="consideracao" />
-      <End Role="processo" EntitySet="processo" />
-    </AssociationSet>
-    <AssociationSet Name="processo_fk_processo_consultor" Association="Self.processo_fk_processo_consultor">
-      <End Role="consultor" EntitySet="consultor" />
-      <End Role="processo" EntitySet="processo" />
-    </AssociationSet>
-    <AssociationSet Name="empresa_fk_empresa_contatomunicipio" Association="Self.empresa_fk_empresa_contatomunicipio">
-      <End Role="municipio" EntitySet="municipio" />
-      <End Role="empresa" EntitySet="empresa" />
-    </AssociationSet>
-    <AssociationSet Name="empresa_fk_empresa_municipio" Association="Self.empresa_fk_empresa_municipio">
-      <End Role="municipio" EntitySet="municipio" />
-      <End Role="empresa" EntitySet="empresa" />
-    </AssociationSet>
-    <AssociationSet Name="fk_empresaprojeto_empresa" Association="Self.fk_empresaprojeto_empresa">
-      <End Role="empresa" EntitySet="empresa" />
-      <End Role="empresaprojeto" EntitySet="empresaprojeto" />
-    </AssociationSet>
-    <AssociationSet Name="processo_fk_processo_empresa" Association="Self.processo_fk_processo_empresa">
-      <End Role="empresa" EntitySet="empresa" />
-      <End Role="processo" EntitySet="processo" />
-    </AssociationSet>
-    <AssociationSet Name="usuariomenuacao_fk_usuariomenuacao_menuacao" Association="Self.usuariomenuacao_fk_usuariomenuacao_menuacao">
-      <End Role="menuacao" EntitySet="menuacao" />
-      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
-    </AssociationSet>
-    <AssociationSet Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" Association="Self.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil">
-      <End Role="perfil" EntitySet="perfil" />
-      <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
-    </AssociationSet>
-    <AssociationSet Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil" Association="Self.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil">
-      <End Role="perfil" EntitySet="perfil" />
-      <End Role="usuariomenuperfilpermissao" EntitySet="usuariomenuperfilpermissao" />
-    </AssociationSet>
-    <AssociationSet Name="usuarioperfil_fk_usuarioperfil_perfil" Association="Self.usuarioperfil_fk_usuarioperfil_perfil">
-      <End Role="perfil" EntitySet="perfil" />
-      <End Role="usuarioperfil" EntitySet="usuarioperfil" />
-    </AssociationSet>
-    <AssociationSet Name="processo_fk_processo_processosituacao" Association="Self.processo_fk_processo_processosituacao">
-      <End Role="processosituacao" EntitySet="processosituacao" />
-      <End Role="processo" EntitySet="processo" />
-    </AssociationSet>
-    <AssociationSet Name="processo_fk_processo_processotipo" Association="Self.processo_fk_processo_processotipo">
-      <End Role="processotipo" EntitySet="processotipo" />
-      <End Role="processo" EntitySet="processo" />
-    </AssociationSet>
-    <AssociationSet Name="processo_fk_processo_tipoincentivo" Association="Self.processo_fk_processo_tipoincentivo">
-      <End Role="tipoincentivo" EntitySet="tipoincentivo" />
-      <End Role="processo" EntitySet="processo" />
-    </AssociationSet>
-    <AssociationSet Name="usuarioperfil_fk_usuarioperfil_usuario" Association="Self.usuarioperfil_fk_usuarioperfil_usuario">
-      <End Role="usuario" EntitySet="usuario" />
-      <End Role="usuarioperfil" EntitySet="usuarioperfil" />
-    </AssociationSet>
-    <AssociationSet Name="usuariomenu_fk_paiusuariomenu_usuariomenu" Association="Self.usuariomenu_fk_paiusuariomenu_usuariomenu">
-      <End Role="usuariomenu" EntitySet="usuariomenu" />
-      <End Role="usuariomenu1" EntitySet="usuariomenu" />
-    </AssociationSet>
-    <AssociationSet Name="usuariomenuacao_fk_usuariomenuacao_usuariomenu" Association="Self.usuariomenuacao_fk_usuariomenuacao_usuariomenu">
-      <End Role="usuariomenu" EntitySet="usuariomenu" />
-      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
-    </AssociationSet>
-    <AssociationSet Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu" Association="Self.usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu">
-      <End Role="usuariomenu" EntitySet="usuariomenu" />
-      <End Role="usuariomenuperfilpermissao" EntitySet="usuariomenuperfilpermissao" />
-    </AssociationSet>
-    <AssociationSet Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao" Association="Self.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao">
-      <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
-      <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
-    </AssociationSet>
-    <EntitySet Name="situacaocadastro" EntityType="CadastramentoModel.situacaocadastro" />
-    <EntitySet Name="tipocarga" EntityType="CadastramentoModel.tipocarga" />
-    <EntitySet Name="tipocarroceria" EntityType="CadastramentoModel.tipocarroceria" />
-    <EntitySet Name="tipoveiculo" EntityType="CadastramentoModel.tipoveiculo" />
-    <EntitySet Name="motorista" EntityType="CadastramentoModel.motorista" />
-    <AssociationSet Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId">
-      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-      <End Role="motorista" EntitySet="motorista" />
-    </AssociationSet>
-    <EntitySet Name="analise" EntityType="CadastramentoModel.analise" />
-    <AssociationSet Name="FK_analise_situacaocadastro" Association="CadastramentoModel.FK_analise_situacaocadastro">
-      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-      <End Role="analise" EntitySet="analise" />
-    </AssociationSet>
-    <EntitySet Name="carroceria" EntityType="CadastramentoModel.carroceria" />
-    <EntitySet Name="veiculo" EntityType="CadastramentoModel.veiculo" />
-    <AssociationSet Name="FK_carroceria_carroceria_CompartimentoId" Association="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId">
-      <End Role="carroceria" EntitySet="carroceria" />
-      <End Role="carroceria1" EntitySet="carroceria" />
-    </AssociationSet>
-    <AssociationSet Name="FK_carroceria_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId">
-      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-      <End Role="carroceria" EntitySet="carroceria" />
-    </AssociationSet>
-    <AssociationSet Name="FK_carroceria_TiposCargas_TipoCargaId" Association="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId">
-      <End Role="tipocarga" EntitySet="tipocarga" />
-      <End Role="carroceria" EntitySet="carroceria" />
-    </AssociationSet>
-    <AssociationSet Name="FK_carroceria_Tiposcarroceria_TipoCarroceriaId" Association="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId">
-      <End Role="tipocarroceria" EntitySet="tipocarroceria" />
-      <End Role="carroceria" EntitySet="carroceria" />
-    </AssociationSet>
-    <AssociationSet Name="FK_carroceria_Veiculos_VeiculoId" Association="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId">
-      <End Role="veiculo" EntitySet="veiculo" />
-      <End Role="carroceria" EntitySet="carroceria" />
-    </AssociationSet>
-    <AssociationSet Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
-      <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-      <End Role="veiculo" EntitySet="veiculo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_veiculo_TiposCargas_TipoCargaId" Association="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId">
-      <End Role="tipocarga" EntitySet="tipocarga" />
-      <End Role="veiculo" EntitySet="veiculo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_veiculo_Tiposveiculo_TipoVeiculoId" Association="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId">
-      <End Role="tipoveiculo" EntitySet="tipoveiculo" />
-      <End Role="veiculo" EntitySet="veiculo" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="situacaocadastro">
-    <Key>
-      <PropertyRef Name="situacaocadastroid" />
-    </Key>
-    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="motorista" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="motorista" />
-    <NavigationProperty Name="analise" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="situacaocadastro" ToRole="analise" />
-    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="carroceria" />
-    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="veiculo" />
-  </EntityType>
-  <EntityType Name="tipocarga">
-    <Key>
-      <PropertyRef Name="tipocargaid" />
-    </Key>
-    <Property Name="tipocargaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="carroceria" />
-    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="veiculo" />
-  </EntityType>
-  <EntityType Name="tipocarroceria">
-    <Key>
-      <PropertyRef Name="tipocarroceriaid" />
-    </Key>
-    <Property Name="tipocarroceriaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" FromRole="tipocarroceria" ToRole="carroceria" />
-  </EntityType>
-  <EntityType Name="tipoveiculo">
-    <Key>
-      <PropertyRef Name="tipoveiculoid" />
-    </Key>
-    <Property Name="tipoveiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="tipoveiculo" ToRole="veiculo" />
-  </EntityType>
-  <EntityType Name="motorista">
-    <Key>
-      <PropertyRef Name="motoristaid" />
-    </Key>
-    <Property Name="motoristaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="rguf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="rgorgaoexpedidor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="cnh" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="ufcnh" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="categoriacnh" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="dataemissaocnh" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="datavalidadecnh" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="datavalidadecadastro" Type="DateTime" Precision="3" />
-    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
-    <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="motorista" ToRole="situacaocadastro" />
-    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-  </EntityType>
   <Association Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId">
     <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -946,28 +839,220 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="analise">
+  <Association Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil">
+    <End Type="CadastramentoModel.perfil" Role="perfil" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuariomenuacaoperfilpermissao" Role="usuariomenuacaoperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="perfilid" />
+      </Principal>
+      <Dependent Role="usuariomenuacaoperfilpermissao">
+        <PropertyRef Name="perfilid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_perfil">
+    <End Type="CadastramentoModel.perfil" Role="perfil" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuariomenuperfilpermissao" Role="usuariomenuperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="perfilid" />
+      </Principal>
+      <Dependent Role="usuariomenuperfilpermissao">
+        <PropertyRef Name="perfilid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuarioperfil_fk_usuarioperfil_perfil">
+    <End Type="CadastramentoModel.perfil" Role="perfil" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuarioperfil" Role="usuarioperfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="perfilid" />
+      </Principal>
+      <Dependent Role="usuarioperfil">
+        <PropertyRef Name="perfilid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo_fk_processo_processosituacao">
+    <End Type="CadastramentoModel.processosituacao" Role="processosituacao" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.processo" Role="processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="processosituacao">
+        <PropertyRef Name="processosituacaoid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="processosituacaoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo_fk_processo_processotipo">
+    <End Type="CadastramentoModel.processotipo" Role="processotipo" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.processo" Role="processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="processotipo">
+        <PropertyRef Name="processotipoid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="processotipoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="processo_fk_processo_tipoincentivo">
+    <End Type="CadastramentoModel.tipoincentivo" Role="tipoincentivo" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.processo" Role="processo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoincentivo">
+        <PropertyRef Name="tipoincentivoid" />
+      </Principal>
+      <Dependent Role="processo">
+        <PropertyRef Name="tipoincentivoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuarioperfil_fk_usuarioperfil_usuario">
+    <End Type="CadastramentoModel.usuario" Role="usuario" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuarioperfil" Role="usuarioperfil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="usuarioid" />
+      </Principal>
+      <Dependent Role="usuarioperfil">
+        <PropertyRef Name="usuarioid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenu_fk_paiusuariomenu_usuariomenu">
+    <End Type="CadastramentoModel.usuariomenu" Role="usuariomenu" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.usuariomenu" Role="usuariomenu1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenu">
+        <PropertyRef Name="usuariomenuid" />
+      </Principal>
+      <Dependent Role="usuariomenu1">
+        <PropertyRef Name="paiusuariomenuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuacao_fk_usuariomenuacao_usuariomenu">
+    <End Type="CadastramentoModel.usuariomenu" Role="usuariomenu" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuariomenuacao" Role="usuariomenuacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenu">
+        <PropertyRef Name="usuariomenuid" />
+      </Principal>
+      <Dependent Role="usuariomenuacao">
+        <PropertyRef Name="usuariomenuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuperfilpermissao_FK_usuariomenuperfilpermissao_usuariomenu">
+    <End Type="CadastramentoModel.usuariomenu" Role="usuariomenu" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuariomenuperfilpermissao" Role="usuariomenuperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenu">
+        <PropertyRef Name="usuariomenuid" />
+      </Principal>
+      <Dependent Role="usuariomenuperfilpermissao">
+        <PropertyRef Name="usuariomenuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_usuariomenuacao">
+    <End Type="CadastramentoModel.usuariomenuacao" Role="usuariomenuacao" Multiplicity="1" />
+    <End Type="CadastramentoModel.usuariomenuacaoperfilpermissao" Role="usuariomenuacaoperfilpermissao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuariomenuacao">
+        <PropertyRef Name="usuariomenuacaoid" />
+      </Principal>
+      <Dependent Role="usuariomenuacaoperfilpermissao">
+        <PropertyRef Name="usuariomenuacaoid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="veiculo">
     <Key>
-      <PropertyRef Name="analiseid" />
+      <PropertyRef Name="veiculoid" />
     </Key>
-    <Property Name="analiseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="motoristaid" Type="Int32" />
-    <Property Name="veiculoid" Type="Int32" />
-    <Property Name="carroceriaid" Type="Int32" />
-    <Property Name="datahoraanalise" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="situacaocadastroid" Type="Int32" />
-    <Property Name="observacao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="analise" ToRole="situacaocadastro" />
+    <Property Name="veiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="renavam" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="tipoveiculoid" Type="Int32" />
+    <Property Name="placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ufplaca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="chassi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cidadelicenciamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="categoriaantt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="corpredominante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="anofabricacao" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="anomodelo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="nomeproprietariotransportadora" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cpfcnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="tipocargaid" Type="Int32" />
+    <Property Name="lotacaomaxima" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="monitorado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="tipomonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="empresamonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="statusveiculo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="datavalidadecadastro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
+    <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="usuarioidalteracao" Type="Int32" />
+    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+    <Property Name="usuarioidinclusao" Type="Int32" />
+    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="veiculo" ToRole="situacaocadastro" />
+    <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="veiculo" ToRole="tipocarga" />
+    <NavigationProperty Name="tipoveiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="veiculo" ToRole="tipoveiculo" />
+    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="veiculo" ToRole="carroceria" />
   </EntityType>
-  <Association Name="FK_analise_situacaocadastro">
-    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="0..1" />
-    <End Type="CadastramentoModel.analise" Role="analise" Multiplicity="*" />
+  <Association Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
+    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="situacaocadastro">
         <PropertyRef Name="situacaocadastroid" />
       </Principal>
-      <Dependent Role="analise">
+      <Dependent Role="veiculo">
         <PropertyRef Name="situacaocadastroid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_veiculo_TiposCargas_TipoCargaId">
+    <End Type="CadastramentoModel.tipocarga" Role="tipocarga" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocarga">
+        <PropertyRef Name="tipocargaid" />
+      </Principal>
+      <Dependent Role="veiculo">
+        <PropertyRef Name="tipocargaid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_veiculo_Tiposveiculo_TipoVeiculoId">
+    <End Type="CadastramentoModel.tipoveiculo" Role="tipoveiculo" Multiplicity="0..1" />
+    <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoveiculo">
+        <PropertyRef Name="tipoveiculoid" />
+      </Principal>
+      <Dependent Role="veiculo">
+        <PropertyRef Name="tipoveiculoid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -981,7 +1066,7 @@
     <Property Name="tipocarroceriaid" Type="Int32" Nullable="false" />
     <Property Name="placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="ufplaca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="chassi" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="chassi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="cidadelicenciamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="categoriaantt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1022,53 +1107,6 @@
     <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="carroceria" ToRole="tipocarga" />
     <NavigationProperty Name="tipocarroceria" Relationship="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" FromRole="carroceria" ToRole="tipocarroceria" />
     <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="carroceria" ToRole="veiculo" />
-  </EntityType>
-  <EntityType Name="veiculo">
-    <Key>
-      <PropertyRef Name="veiculoid" />
-    </Key>
-    <Property Name="veiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="renavam" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="tipoveiculoid" Type="Int32" />
-    <Property Name="placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="ufplaca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="chassi" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-    <Property Name="cidadelicenciamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="categoriaantt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="corpredominante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="anofabricacao" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="anomodelo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="nomeproprietariotransportadora" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="cpfcnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="tipocargaid" Type="Int32" />
-    <Property Name="lotacaomaxima" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-    <Property Name="monitorado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="tipomonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="empresamonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="statusveiculo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="datavalidadecadastro" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
-    <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="usuarioidalteracao" Type="Int32" />
-    <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-    <Property Name="usuarioidinclusao" Type="Int32" />
-    <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="veiculo" ToRole="carroceria" />
-    <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="veiculo" ToRole="situacaocadastro" />
-    <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="veiculo" ToRole="tipocarga" />
-    <NavigationProperty Name="tipoveiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="veiculo" ToRole="tipoveiculo" />
   </EntityType>
   <Association Name="FK_carroceria_carroceria_CompartimentoId">
     <End Type="CadastramentoModel.carroceria" Role="carroceria" Multiplicity="0..1" />
@@ -1133,44 +1171,6 @@
       </Principal>
       <Dependent Role="carroceria">
         <PropertyRef Name="veiculoid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
-    <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="situacaocadastro">
-        <PropertyRef Name="situacaocadastroid" />
-      </Principal>
-      <Dependent Role="veiculo">
-        <PropertyRef Name="situacaocadastroid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_veiculo_TiposCargas_TipoCargaId">
-    <End Type="CadastramentoModel.tipocarga" Role="tipocarga" Multiplicity="0..1" />
-    <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tipocarga">
-        <PropertyRef Name="tipocargaid" />
-      </Principal>
-      <Dependent Role="veiculo">
-        <PropertyRef Name="tipocargaid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_veiculo_Tiposveiculo_TipoVeiculoId">
-    <End Type="CadastramentoModel.tipoveiculo" Role="tipoveiculo" Multiplicity="0..1" />
-    <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tipoveiculo">
-        <PropertyRef Name="tipoveiculoid" />
-      </Principal>
-      <Dependent Role="veiculo">
-        <PropertyRef Name="tipoveiculoid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

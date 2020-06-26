@@ -40,6 +40,7 @@ namespace Cadastramento.Mvc.Controllers
                 model.nomearquivo = file.FileName;
 
                 model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;
+                model.datavalidadecadastro = DateTime.Now;
                 model.datahorainclusao = DateTime.Now;
                 if (model.situacaocadastroid != 2)
                 {
@@ -66,6 +67,7 @@ namespace Cadastramento.Mvc.Controllers
         }
 
         public JsonResult ObterDetran(string placa, string renavam)
+        
         {
             var srv = new detranService();
             var obj = srv.GetDadosVeiculo(placa, renavam);

@@ -19,7 +19,8 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         /// <param name="userName">Username of the logged in identity</param>
         /// <returns>Returns the number of objects written to the underlying database.</returns>
         public virtual int SaveChanges(object userName)
-        {
+        { 
+
             if (!listaExcecoes.Any())
                 listaExcecoes = this.auditlogexcecao.Select(ent => ent.EntityTypeName).ToList();
 
