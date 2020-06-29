@@ -6,17 +6,57 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
 namespace Cadastramento.Service.Logic.Cadastramento
 {
+    public class MotoristaDetran
+    {
+        public string cnh { get; set; }
+        public string categoriacnh { get; set; }
+        public string dataemissaocnh { get; set; }
+        public string datavalidadecnh { get; set; }
+        public string nome { get; set; }
+        public string cpf { get; set; }
+        public string rg { get; set; }
+        public string telefone { get; set; }
+        public string email { get; set; }
+        public string cep { get; set; }
+        public string logradouro { get; set; }
+        public string bairro { get; set; }
+        public string uf { get; set; }
+        public int situacaocadastroid { get; set; }
+
+    }
+
+    public class VeiculoDetran
+    {
+        public string placa { get; set; }
+        public string renavam { get; set; }
+        public string chassi { get; set; }
+        public string marca { get; set; }
+        public string corpredominante { get; set; }
+        public string anofabricacao { get; set; }
+        public string anomodelo { get; set; }
+        public string nomeproprietariotransportadora { get; set; }
+        public string logradouro { get; set; }
+        public string complemento { get; set; }
+        public string bairro { get; set; }
+        public string cidade { get; set; }
+        public string cep { get; set; }
+        public string uf { get; set; }
+        public int situacaocadastroid { get; set; }
+
+
+
+    }
+
     public sealed class detranService
     {
-
-
-        public motorista GetDadosCNH(string cpf, string registro)
+        public MotoristaDetran GetDadosCNH(string cpf, string registro)
         {
 
             using (var client = new HttpClient())
@@ -26,11 +66,11 @@ namespace Cadastramento.Service.Logic.Cadastramento
                 HttpResponseMessage response = client.GetAsync(URI).Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    var ProdutoJsonString = response.Content.ReadAsStringAsync().Result;
+                    var JsonString = response.Content.ReadAsStringAsync().Result;
 
                     XmlDocument doc = new XmlDocument();
 
-                    doc.LoadXml(ProdutoJsonString);
+                    doc.LoadXml(JsonString);
 
                     XmlNodeList node = doc.GetElementsByTagName("dados");
 
@@ -39,13 +79,11 @@ namespace Cadastramento.Service.Logic.Cadastramento
                         return null;
                     }
 
-                    string dataemissao = node[0]["dtEmissao"].InnerText;
-                    string datavalidadecnh = node[0]["dtVal"].InnerText;
-                    var motorista = new motorista();
+                    var motorista = new MotoristaDetran();
                     motorista.cnh = node[0]["registro"].InnerText.Trim();
                     motorista.categoriacnh = node[0]["categHab"].InnerText.Trim();
-                    //motorista.dataemissaocnh = DateTime.ParseExact(dataemissao, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("pt-BR"));  
-                    //motorista.datavalidadecnh = DateTime.ParseExact(datavalidadecnh, "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("pt-BR"));
+                    motorista.dataemissaocnh =  DateTime.ParseExact(node[0]["dtEmissao"].InnerText, "yyyyMMdd", new CultureInfo("pt-BR")).ToString("dd-MM-yyyy");
+                    motorista.datavalidadecnh = DateTime.ParseExact(node[0]["dtVal"].InnerText, "yyyyMMdd", new CultureInfo("pt-BR")).ToString("dd-MM-yyyy");
                     motorista.nome = node[0]["nome"].InnerText.Trim();
                     motorista.cpf = node[0]["cpf"].InnerText.Trim();
                     motorista.rg = node[0]["rgNum"].InnerText.Trim();
@@ -67,7 +105,7 @@ namespace Cadastramento.Service.Logic.Cadastramento
 
         }
 
-        public veiculo GetDadosVeiculo(string placa, string renavam)
+        public VeiculoDetran GetDadosVeiculo(string placa, string renavam)
         {
 
             using (var client = new HttpClient())
@@ -78,14 +116,14 @@ namespace Cadastramento.Service.Logic.Cadastramento
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var ProdutoJsonString = response.Content.ReadAsStringAsync().Result;
+                    var JsonString = response.Content.ReadAsStringAsync().Result;
 
                     XmlDocument doc = new XmlDocument();
 
-                    doc.LoadXml(ProdutoJsonString);
+                    doc.LoadXml(JsonString);
 
                     XmlNodeList node = doc.GetElementsByTagName("dados");
-                    var veiculo = new veiculo();
+                    var veiculo = new VeiculoDetran();
 
 
                     veiculo.placa = node[0]["placa"].InnerText.Trim();

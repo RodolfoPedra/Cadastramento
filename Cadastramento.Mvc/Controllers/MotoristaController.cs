@@ -7,12 +7,15 @@ using Cadastramento.Util;
 using Cadastramento.Util.DataTables;
 using Cadastramento.Util.DataTables.DataTables.AspNet.Core;
 using Cadastramento.Util.DataTables.DataTables.AspNet.Mvc5;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Cadastramento.Mvc.Controllers
 {
@@ -149,7 +152,7 @@ namespace Cadastramento.Mvc.Controllers
             var srv = new detranService();
             var obj = srv.GetDadosCNH(cpf, cnh);
 
-            if(obj == null) {
+            if (obj == null) {
                 return Json(new { Result = "Error"}, JsonRequestBehavior.AllowGet);
             }
 
