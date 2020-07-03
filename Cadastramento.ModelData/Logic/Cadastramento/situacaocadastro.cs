@@ -18,9 +18,9 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public situacaocadastro()
         {
             this.analise = new HashSet<analise>();
+            this.carroceria = new HashSet<carroceria>();
             this.motorista = new HashSet<motorista>();
             this.veiculo = new HashSet<veiculo>();
-            this.carroceria = new HashSet<carroceria>();
         }
     
         public int situacaocadastroid { get; set; }
@@ -34,10 +34,10 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<analise> analise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<carroceria> carroceria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<motorista> motorista { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<veiculo> veiculo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<carroceria> carroceria { get; set; }
     }
 }

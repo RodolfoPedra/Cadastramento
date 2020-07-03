@@ -36,7 +36,6 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public virtual DbSet<empresa> empresa { get; set; }
         public virtual DbSet<empresaprojeto> empresaprojeto { get; set; }
         public virtual DbSet<logacesso> logacesso { get; set; }
-        public virtual DbSet<motorista> motorista { get; set; }
         public virtual DbSet<municipio> municipio { get; set; }
         public virtual DbSet<perfil> perfil { get; set; }
         public virtual DbSet<processo> processo { get; set; }
@@ -54,7 +53,8 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public virtual DbSet<usuariomenuacaoperfilpermissao> usuariomenuacaoperfilpermissao { get; set; }
         public virtual DbSet<usuariomenuperfilpermissao> usuariomenuperfilpermissao { get; set; }
         public virtual DbSet<usuarioperfil> usuarioperfil { get; set; }
-        public virtual DbSet<veiculo> veiculo { get; set; }
         public virtual DbSet<carroceria> carroceria { get; set; }
+        public virtual DbSet<motorista> motorista { get; set; }
+        public virtual DbSet<veiculo> veiculo { get; set; }
     }
 }

@@ -1,0 +1,73 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script>
+    $(document).ready(function () {
+        $("#btnSalvarModalMedia").unbind("click").click(function (e) {
+            e.preventDefault();
+
+            var situacaoid = $("#formAnalisar #situacaocadastroid").val();
+            var observacao = $("#formAnalisar #observacao").val();
+            var motoristaid = $("#formAnalisar #motoristaid").val();
+            var veiculoid = $("#formAnalisar #veiculoid").val();
+            var carroceriaid = $("#formAnalisar #carroceriaid").val();
+            var usuarioidinclusao = $("#formAnalisar #usuarioidinclusao").val();
+
+            if (!verificaValor(situacaoid)) {
+                mensagemAviso("Informe a Situação");
+                return;
+            }
+            if (!verificaValor(observacao)) {
+                mensagemAviso("Informe o Motivo");
+                return;
+            }
+
+            var obj = {
+                situacao: situacaoid,
+                observacao: observacao,
+                usuarioid: usuarioidinclusao,
+                motoristaid: motoristaid,
+                veiculoid: veiculoid,
+                carroceriaid: carroceriaid
+            };
+
+            $.post(content + "Analise/FinalizarAnalise", obj, function (data) {
+                if (data.Mensagem == "OK") {
+                    mensagemSucesso("Operação realizada com sucesso");
+                    $("#modalMedia").modal('hide');
+                }                
+                else {
+                    mensagemErro("Ocorreu um erro ao tentar realizar a operação desejada.");
+                }
+            });
+        });
+    });
+</script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "formAnalisar" }))
+{
+    @Html.Hidden("motoristaid")
+    @Html.Hidden("veiculoid")
+    @Html.Hidden("carroceriaid")
+    @Html.Hidden("usuarioidinclusao")
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.Label("situacao", "Situação")
+                @Html.DropDownList("situacaocadastroid", ViewBag.SituacaoLista as SelectList, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.Label("observacao", "Motivo")
+                @Html.TextArea("observacao", null, new { @class = "form-control", @type = "text" })
+
+            </div>
+        </div>
+    </div>
+}

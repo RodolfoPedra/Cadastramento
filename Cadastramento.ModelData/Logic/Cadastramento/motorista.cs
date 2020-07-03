@@ -37,7 +37,6 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public string email { get; set; }
         public Nullable<System.DateTime> datavalidadecadastro { get; set; }
         public int situacaocadastroid { get; set; }
-        public string documentourl { get; set; }
         public Nullable<int> usuarioidalteracao { get; set; }
         public Nullable<System.DateTime> datahoraalteracao { get; set; }
         public Nullable<int> usuarioidinclusao { get; set; }

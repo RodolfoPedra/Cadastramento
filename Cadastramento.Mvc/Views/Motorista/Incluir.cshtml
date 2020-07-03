@@ -33,11 +33,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         @Html.Label("cpf", "CPF")
-                        @Html.EditorFor(model => model.cpf, "CPF", new { @class = "form-control", @placeholder = "CPF" })
+                        @Html.EditorFor(model => model.cpf, "CPF", new { @class = "form-control" })
                     </div>
                     <div class="form-group col-md-3">
                         @Html.Label("cnh", "CNH")
-                        @Html.TextBoxFor(model => model.cnh, new { @class = "form-control", @placeholder = "CNH" })
+                        @Html.TextBoxFor(model => model.cnh, new { @class = "form-control"})
                     </div>
                 </div>
                 <hr />
@@ -52,37 +52,37 @@
                 <div class="form-row">
                     <div class="form-group col-md-8">
                         @Html.Label("nome", "Nome")
-                        @Html.TextBoxFor(model => model.nome, new { @class = "form-control", @placeholder = "Nome" })
+                        @Html.TextBoxFor(model => model.nome, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         @Html.Label("telefone", "Telefone")
-                        @Html.EditorFor(model => model.telefone,"Telefone9Digitos", new { @class = "form-control", @placeholder = "Telefone" })
+                        @Html.EditorFor(model => model.telefone,"Telefone9Digitos", new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-3">
-                        @Html.Label("rg", "RG")
-                        @Html.TextBoxFor(model => model.rg, new { @class = "form-control", @placeholder = "RG" })
+                        @Html.Label("rg", "Rg")
+                        @Html.TextBoxFor(model => model.rg, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-3">
-                        @Html.Label("rguf", "RG UF")
-                        @Html.TextBoxFor(model => model.rguf, new { @class = "form-control", @placeholder = "RG UF" })
+                        @Html.Label("rguf", "Rg UF")
+                        @Html.TextBoxFor(model => model.rguf, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-3">
                         @Html.Label("rgorgaoexpedidor", "Órgão Expedidor")
-                        @Html.TextBoxFor(model => model.rgorgaoexpedidor, new { @class = "form-control", @placeholder = "Órgão Expedidor" })
+                        @Html.TextBoxFor(model => model.rgorgaoexpedidor, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-8">
                         @Html.Label("email", "E-mail")
-                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "E-mail" })
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control"})
                     </div>
                 </div>
                 <hr />
                 <div class="col-md-12 section-buttons">
                     <button type="button" class="btn btn-danger" data-back="btnBack">Voltar</button>
-                    <button type="button" class="btn btn-success" data-next="btnNext">Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
+                    <button type="button" class="btn btn-success" data-next="btnNext" >Proximo <span class="glyphicon glyphicon-arrow-right"></span></button>
                 </div>
             </section>
 
@@ -91,37 +91,37 @@
                 <div class="form-row">
                     <div class="form-group col-md-8">
                         @Html.Label("cep", "CEP")
-                        @Html.TextBoxFor(model => model.cep, new { @class = "form-control", @placeholder = "CEP" })
+                        @Html.TextBoxFor(model => model.cep, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.Label("logradouro", "Logradouro")
-                        @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control", @placeholder = "Logradouro" })
+                        @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-2">
                         @Html.Label("numero", "Nº")
-                        @Html.TextBoxFor(model => model.numero, new { @class = "form-control", @placeholder = "Nº" })
+                        @Html.TextBoxFor(model => model.numero, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.Label("complemento", "Complemento")
-                        @Html.TextBoxFor(model => model.complemento, new { @class = "form-control", @placeholder = "Complemento" })
+                        @Html.TextBoxFor(model => model.complemento, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-4">
                         @Html.Label("bairro", "Bairro")
-                        @Html.TextBoxFor(model => model.bairro, new { @class = "form-control", @placeholder = "Bairro" })
+                        @Html.TextBoxFor(model => model.bairro, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.Label("cidade", "Cidade")
-                        @Html.TextBoxFor(model => model.cidade, new { @class = "form-control", @placeholder = "Cidade" })
+                        @Html.TextBoxFor(model => model.cidade, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-2">
                         @Html.Label("uf", "UF")
-                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
+                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control"})
                     </div>
                 </div>
                 <hr />
@@ -139,22 +139,22 @@
                     <div class="col-md-6">
                         <div class="form-row">
                             <div class="form-group col-md-5">
-                                @Html.Label("datavalidadecnh", "Validade CNH")
-                                @Html.EditorFor(model => model.datavalidadecnh,"DataOnly")
+                                @Html.Label("dataemissaocnh", "Emissão CNH")
+                                @Html.EditorFor(model => model.dataemissaocnh, "Data", new { @class = "form-control" })
                             </div>
                             <div class="form-group col-md-5">
-                                @Html.Label("dataemissaocnh", "Emissão CNH")
-                                @Html.EditorFor(model => model.dataemissaocnh, "DataOnly")
+                                @Html.Label("datavalidadecnh", "Validade CNH")
+                                @Html.EditorFor(model => model.datavalidadecnh, "Data", new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-5">
                                 @Html.Label("categoriacnh", "Categoria CNH")
-                                @Html.TextBoxFor(model => model.categoriacnh, new { @class = "form-control", @placeholder = "Categoria" })
+                                @Html.TextBoxFor(model => model.categoriacnh, new { @class = "form-control"})
                             </div>
                             <div class="form-group col-md-5">
                                 @Html.Label("ufcnh", "UF CNH")
-                                @Html.TextBoxFor(model => model.ufcnh, new { @class = "form-control", @placeholder = "UF CNH" })
+                                @Html.TextBoxFor(model => model.ufcnh, new { @class = "form-control"})
                             </div>
                         </div>
                         <div class="row">
@@ -185,20 +185,93 @@
 
 @section Scripts{
     <script>
-        function Salvar_Click() {
-            //if (!verificaValor($("#descricao").val())) {
-            //    mensagemAviso("O campo Descrição é obrigatório");
-            //    return;
-            //}
-            //if (!verificaValor($("#situacao").val())) {
-            //    mensagemAviso("O campo Situação é obrigatório");
-            //    return;
-            //}
 
+        function Proximo_Click() {
+
+          
+        }
+        function Salvar_Click() {    
+
+           
+            if (!verificaValor($("#nome").val())) {
+                mensagemAviso("O campo Nome é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#telefone").val())) {
+                mensagemAviso("O campo Telefone é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#rg").val())) {
+                mensagemAviso("O campo Rg é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#rguf").val())) {
+                mensagemAviso("O campo Uf Rg é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#rgorgaoexpedidor").val())) {
+                mensagemAviso("O Órgão Expedidor é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#email").val())) {
+                mensagemAviso("O campo E-mail é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#cep").val())) {
+                mensagemAviso("O campo Cep é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#logradouro").val())) {
+                mensagemAviso("O campo Logradouro é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#numero").val())) {
+                mensagemAviso("O campo Número é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#bairro").val())) {
+                mensagemAviso("O campo Bairro é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#cidade").val())) {
+                mensagemAviso("O campo Cidade é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#uf").val())) {
+                mensagemAviso("O campo UF é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#datavalidadecnh").val())) {
+                mensagemAviso("O campo Data de Validade da CNH é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#dataemissaocnh").val())) {
+                mensagemAviso("O campo Data de Emissão da CNH é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#categoriacnh").val())) {
+                mensagemAviso("O campo Categoria da CNH é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#ufcnh").val())) {
+                mensagemAviso("O campo UF da CNH é obrigatório");
+                return;
+            }      
+            
             $("#form").submit();
         }
 
-        function Obter_Dados_Click() {
+        function Obter_Dados_Click() {   
+
+            //wizardComponent();
+            if (!verificaValor($("#cpf").val())) {
+                mensagemAviso("O campo CPF é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#cnh").val())) {
+                mensagemAviso("O campo CNH é obrigatório");
+                return;
+            }
 
             var cpf = $("#cpf").val();
             var cnh = $("#cnh").val();
@@ -206,13 +279,13 @@
             $.post('@Url.Action("ObterDetran", "Motorista")', { "cpf": cpf, "cnh": cnh },
                 function (data) {                    
                     if (data.Result == "OK" && data.Record.length != 0) {
-                        $("#cpf").val(data.Record.cpf);
-                        $("#cnh").val(data.Record.cnh);
-                        $("#nome").val(data.Record.nome);
+                        $("#cpf").val(data.Record.cpf).attr('readonly', true);
+                        $("#cnh").val(data.Record.cnh).attr('readonly', true);
+                        $("#nome").val(data.Record.nome).attr('readonly', true);
                         $("#telefone").val(data.Record.telefone);
-                        $("#rg").val(data.Record.rg);
-                        $("#rguf").val(data.Record.rguf);
-                        $("#rgorgaoexpedidor").val(data.Record.rgorgaoexpedidor);
+                        $("#rg").val(data.Record.rg).attr('readonly', true);
+                        $("#rguf").val(data.Record.rguf).attr('readonly', true);
+                        $("#rgorgaoexpedidor").val(data.Record.rgorgaoexpedidor).attr('readonly', true);
                         $("#email").val(data.Record.email);
                         $("#cep").val(data.Record.cep);
                         $("#logradouro").val(data.Record.logradouro);
@@ -221,17 +294,17 @@
                         $("#bairro").val(data.Record.bairro);
                         $("#cidade").val(data.Record.cidade);
                         $("#uf").val(data.Record.uf);
-                        $("#datavalidadecnh").val(data.Record.datavalidadecnh);
-                        $("#dataemissaocnh").val(data.Record.dataemissaocnh);
-                        $("#categoriacnh").val(data.Record.categoriacnh);
+                        $("#datavalidadecnh").val(data.Record.datavalidadecnh).attr('readonly', true);
+                        $("#dataemissaocnh").val(data.Record.dataemissaocnh).attr('readonly', true);
+                        $("#categoriacnh").val(data.Record.categoriacnh).attr('readonly', true);
                         $("#ufcnh").val(data.Record.ufcnh);
                         $("#situacaocadastroid").val(data.Record.situacaocadastroid);
                     }
                     else {
 
                         $("#cpf").val(cpf);
-                        $("#cnh").val(cnh);
-                        mensagemAviso("Favor preencher todos dados manualmente.");                                               
+                        $("#cnh").val(cnh);                        
+                        mensagemAviso("Cadastro não encontrado. Favor preencher todos dados manualmente.");                                               
                     }
                 });
         }

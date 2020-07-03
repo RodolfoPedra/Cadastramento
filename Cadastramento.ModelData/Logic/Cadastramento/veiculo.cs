@@ -30,6 +30,11 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public string cidadelicenciamento { get; set; }
         public string marca { get; set; }
         public string categoriaantt { get; set; }
+        public string tipo { get; set; }
+        public string especie { get; set; }
+        public string combustivel { get; set; }
+        public string categoria { get; set; }
+        public Nullable<int> capacidadepassageiro { get; set; }
         public string corpredominante { get; set; }
         public string anofabricacao { get; set; }
         public string anomodelo { get; set; }
@@ -50,7 +55,6 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public string statusveiculo { get; set; }
         public System.DateTime datavalidadecadastro { get; set; }
         public int situacaocadastroid { get; set; }
-        public string documentourl { get; set; }
         public Nullable<int> usuarioidalteracao { get; set; }
         public Nullable<System.DateTime> datahoraalteracao { get; set; }
         public Nullable<int> usuarioidinclusao { get; set; }
@@ -59,10 +63,10 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public string nomearquivo { get; set; }
         public string contenttype { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<carroceria> carroceria { get; set; }
         public virtual situacaocadastro situacaocadastro { get; set; }
         public virtual tipocarga tipocarga { get; set; }
         public virtual tipoveiculo tipoveiculo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<carroceria> carroceria { get; set; }
     }
 }

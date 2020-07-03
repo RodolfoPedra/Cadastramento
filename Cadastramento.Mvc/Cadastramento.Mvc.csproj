@@ -3705,6 +3705,7 @@
     <Content Include="Views\Analise\AnalisarCarroceria.cshtml" />
     <Content Include="Views\Veiculo\Incluir.cshtml" />
     <Content Include="Views\Carroceria\Incluir.cshtml" />
+    <Content Include="Views\Analise\ModalAnalisar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadastramento.Core\Cadastramento.Core.csproj">

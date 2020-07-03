@@ -39,7 +39,7 @@ namespace Cadastramento.Mvc.Controllers
                 foreach (var filter in request.AdditionalParameters)
                 {
                     switch (filter.Key)
-                    {                       
+                    {
                         //case "datahorainclusao":
                         //    var datahorainclusao = request.Get<string>(filter.Key);
                         //    if (!string.IsNullOrEmpty(datahorainclusao))
@@ -75,7 +75,7 @@ namespace Cadastramento.Mvc.Controllers
                 u.cpf,
                 u.cnh,
                 u.datahorainclusao,
-                u.situacaocadastro.descricao                
+                u.situacaocadastro.descricao
             });
 
             var response = DataTablesResponse.Create(request, data.Count(), filteredData.Count(), lista);
@@ -98,7 +98,7 @@ namespace Cadastramento.Mvc.Controllers
                 foreach (var filter in request.AdditionalParameters)
                 {
                     switch (filter.Key)
-                    {                        
+                    {
                         //case "datahorainclusao":
                         //    var datahorainclusao = request.Get<string>(filter.Key);
                         //    if (!string.IsNullOrEmpty(datahorainclusao))
@@ -131,7 +131,7 @@ namespace Cadastramento.Mvc.Controllers
                 u.veiculoid,
                 u.protocolo,
                 u.placa,
-                u.renavam,                
+                u.renavam,
                 u.datahorainclusao,
                 u.situacaocadastro.descricao
             });
@@ -156,7 +156,7 @@ namespace Cadastramento.Mvc.Controllers
                 foreach (var filter in request.AdditionalParameters)
                 {
                     switch (filter.Key)
-                    {                        
+                    {
                         //case "datahorainclusao":
                         //    var datahorainclusao = request.Get<string>(filter.Key);
                         //    if (!string.IsNullOrEmpty(datahorainclusao))
@@ -203,7 +203,63 @@ namespace Cadastramento.Mvc.Controllers
         {
             ViewBag.SituacaoLista = ListaSituacao();
         }
-               
+
+        public ActionResult ModalAnalisar()
+        {
+            PreparaViewBag();
+            return View();
+        }
+
+
+        public ActionResult FinalizarAnalise(int situacaoid, string observacao, int usuarioidinclusao, int motoristaid = 0, int veiculoid = 0, int carroceriaid = 0)
+        {
+
+            if (motoristaid > 0)
+            {
+                var svrMotorista = new BaseService<motorista>();
+                var objmotorista = svrMotorista.Obter(motoristaid);
+                objmotorista.situacaocadastroid = situacaoid;
+                svrMotorista.Alterar(objmotorista);
+                svrMotorista.Salvar(SessaoUsuario.Sessao.login);
+            }
+            if (veiculoid > 0)
+            {
+                var svrVeiculo = new BaseService<veiculo>();
+                var objveiculo = svrVeiculo.Obter(veiculoid);
+                objveiculo.situacaocadastroid = situacaoid;
+                svrVeiculo.Alterar(objveiculo);
+                svrVeiculo.Salvar(SessaoUsuario.Sessao.login);
+            }
+            if (carroceriaid > 0)
+            {
+                var svrCarroceria = new BaseService<carroceria>();
+                var objcarroceria = svrCarroceria.Obter(carroceriaid);
+                objcarroceria.situacaocadastroid = situacaoid;
+                svrCarroceria.Alterar(objcarroceria);
+                svrCarroceria.Salvar(SessaoUsuario.Sessao.login);
+            }
+
+            var srv = new BaseService<analise>();
+            var obj = srv.Obter(situacaoid);
+
+            try
+            {
+              //  obj.situacaocadastroid = situacao;
+                srv.Alterar(obj);
+                srv.Salvar(SessaoUsuario.Sessao.login);
+                EnviarMensagem("Operação realizada com sucesso.", TipoMensagem.Verde);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                EnviarMensagem("Ocorreu um erro ao tentar realizar a operação desejada.", TipoMensagem.Vermelho);
+
+                return View();
+            }
+        }
+
+
         public ActionResult FinalizarAnaliseMotorista(int id, int situacao)
         {
             var srv = new BaseService<motorista>();
@@ -225,7 +281,6 @@ namespace Cadastramento.Mvc.Controllers
                 return View();
             }
         }
-
         public ActionResult AnalisarMotorista(int id)
         {
             var srv = new BaseService<motorista>();
@@ -235,8 +290,6 @@ namespace Cadastramento.Mvc.Controllers
 
             return View(obj);
         }
-
-
         public ActionResult FinalizarAnaliseVeiculo(int id, int situacao)
         {
             var srv = new BaseService<veiculo>();
@@ -267,7 +320,6 @@ namespace Cadastramento.Mvc.Controllers
 
             return View(obj);
         }
-
         public ActionResult FinalizarAnaliseCarroceria(int id, int situacao)
         {
             var srv = new BaseService<carroceria>();
@@ -298,7 +350,6 @@ namespace Cadastramento.Mvc.Controllers
 
             return View(obj);
         }
-
         public FileResult DownloadArquivoMotorista(int id)
         {
             var arq = new BaseService<motorista>().Obter(id);
@@ -314,7 +365,7 @@ namespace Cadastramento.Mvc.Controllers
             var arq = new BaseService<motorista>().Obter(id);
             return File(arq.arquivo, arq.contenttype.ToLower(), arq.nomearquivo.ToLower());
         }
-        
+
 
     }
 }

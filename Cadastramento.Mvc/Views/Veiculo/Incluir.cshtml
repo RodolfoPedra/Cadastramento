@@ -36,17 +36,13 @@
             <section data-anime="sectionDatas">
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        @Html.Label("renavan", "RENAVAN")
-                        @Html.TextBoxFor(model => model.renavam, new { @class = "form-control", @placeholder = "RENAVAN" })
+                        @Html.Label("placa", "Placa")
+                        @Html.TextBoxFor(model => model.placa, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-3">
-                        @Html.Label("placa", "PLACA")
-                        @Html.TextBoxFor(model => model.placa, new { @class = "form-control", @placeholder = "PLACA" })
-                    </div>
-                    <div class="form-group col-md-3">
-                        @Html.Label("ufPlaca", "UF DA PLACA")
-                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
-                    </div>
+                        @Html.Label("renavan", "Renavam")
+                        @Html.TextBoxFor(model => model.renavam, new { @class = "form-control"})
+                    </div>                  
                 </div>
                 <hr />
                 <div class="col-md-12 section-buttons">
@@ -60,59 +56,81 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         @Html.Label("tipoveiculo", "Tipo de Veículo")
-                        @Html.DropDownListFor(model => model.tipoveiculoid, ViewBag.ListaTipoVeiculo as SelectList, new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.tipoveiculoid, ViewBag.ListaTipoVeiculo as SelectList, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        @Html.Label("chassi", "CHASSI")
-                        @Html.TextBoxFor(model => model.chassi, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("chassi", "Chassi")
+                        @Html.TextBoxFor(model => model.chassi, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-3">
-                        @Html.Label("cidadelicenciamento", "CIDADE DE LICENCIAMENTO")
-                        @Html.TextBoxFor(model => model.cidadelicenciamento, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("cidadelicenciamento", "Cidade Licenciamento")
+                        @Html.TextBoxFor(model => model.cidadelicenciamento, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-3">
-                        @Html.Label("categoriaantt", "CATEGORIA ANTT")
-                        @Html.TextBoxFor(model => model.categoriaantt, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("categoriaantt", "Categoria ANTT")
+                        @Html.TextBoxFor(model => model.categoriaantt, new { @class = "form-control"})
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("corpredominante", "Cor")
+                        @Html.TextBoxFor(model => model.corpredominante, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        @Html.Label("corpredominante", "COR PREDOMINANTE")
-                        @Html.TextBoxFor(model => model.corpredominante, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("marca", "Marca")
+                        @Html.TextBoxFor(model => model.marca, new { @class = "form-control"})
                     </div>
-                    <div class="form-group col-md-2">
-                        @Html.Label("marca", "MARCA")
-                        @Html.TextBoxFor(model => model.marca, new { @class = "form-control", @placeholder = "" })
+                    <div class="form-group col-md-3">
+                        @Html.Label("anofabricacao", "Ano Fabricação")
+                        @Html.TextBoxFor(model => model.anofabricacao, new { @class = "form-control"})
                     </div>
-                    <div class="form-group col-md-2">
-                        @Html.Label("anofabricacao", "ANO FABRICAÇÃO")
-                        @Html.TextBoxFor(model => model.anofabricacao, new { @class = "form-control", @placeholder = "" })
+                    <div class="form-group col-md-3">
+                        @Html.Label("anomodelo", "Ano Modelo")
+                        @Html.TextBoxFor(model => model.anomodelo, new { @class = "form-control"})
                     </div>
-                    <div class="form-group col-md-2">
-                        @Html.Label("anomodelo", "ANO MODELO")
-                        @Html.TextBoxFor(model => model.anomodelo, new { @class = "form-control", @placeholder = "" })
+                    <div class="form-group col-md-3">
+                        @Html.Label("combustivel", "Combustível")
+                        @Html.TextBoxFor(model => model.combustivel, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        @Html.Label("tipocarga", "TIPO DE CARGA")
-                        @Html.DropDownListFor(model => model.tipocarga, ViewBag.ListaTipoCarga as SelectList, new { @class = "form-control" })
+                        @Html.Label("tipo", "Tipo")
+                        @Html.TextBoxFor(model => model.tipo, new { @class = "form-control"})
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("especie", "Espécie")
+                        @Html.TextBoxFor(model => model.especie, new { @class = "form-control"})
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("categoria", "Categoria")
+                        @Html.TextBoxFor(model => model.categoria, new { @class = "form-control"})
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.Label("capacidadepassageiro", "Capacidade Passageiros")
+                        @Html.TextBoxFor(model => model.capacidadepassageiro, new { @class = "form-control"})
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.Label("tipocarga", "Tipo de Carga")
+                        @Html.DropDownListFor(model => model.tipocarga, ViewBag.ListaTipoCarga as SelectList, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-2">
-                        @Html.Label("lotacaomaxima", "LOTAÇÃO MÁXIMA")
-                        @Html.TextBoxFor(model => model.lotacaomaxima, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("lotacaomaxima", "Lotação Máxima")
+                        @Html.TextBoxFor(model => model.lotacaomaxima, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                        @Html.Label("nomeproprietariotransportadora", "NOME DO PROPRIETÁRIO OU TRANSPORTADORA")
-                        @Html.TextBoxFor(model => model.nomeproprietariotransportadora, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("nomeproprietariotransportadora", "Proprietário")
+                        @Html.TextBoxFor(model => model.nomeproprietariotransportadora, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-4">
-                        @Html.Label("cpfcnpj", "CPF DO PROPRIETÁRIO OU CNPJ DA TRANSPORTADORA")
-                        @Html.TextBoxFor(model => model.cpfcnpj, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("cpfcnpj", "CPF/CNPJ")
+                        @Html.TextBoxFor(model => model.cpfcnpj, new { @class = "form-control"})
                     </div>
                 </div>
                 <hr />
@@ -126,38 +144,38 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-8">
-                        @Html.Label("cep", "CEP")
-                        @Html.TextBoxFor(model => model.cep, new { @class = "form-control", @placeholder = "CEP" })
+                        @Html.Label("cep", "Cep")
+                        @Html.TextBoxFor(model => model.cep, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.Label("logradouro", "Logradouro")
-                        @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control", @placeholder = "Logradouro" })
+                        @Html.TextBoxFor(model => model.logradouro, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-2">
                         @Html.Label("numero", "Nº")
-                        @Html.TextBoxFor(model => model.numero, new { @class = "form-control", @placeholder = "Nº" })
+                        @Html.TextBoxFor(model => model.numero, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.Label("complemento", "Complemento")
-                        @Html.TextBoxFor(model => model.complemento, new { @class = "form-control", @placeholder = "Complemento" })
+                        @Html.TextBoxFor(model => model.complemento, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-4">
                         @Html.Label("bairro", "Bairro")
-                        @Html.TextBoxFor(model => model.bairro, new { @class = "form-control", @placeholder = "Bairro" })
+                        @Html.TextBoxFor(model => model.bairro, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.Label("cidade", "Cidade")
-                        @Html.TextBoxFor(model => model.cidade, new { @class = "form-control", @placeholder = "Cidade" })
+                        @Html.TextBoxFor(model => model.cidade, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-2">
                         @Html.Label("uf", "UF")
-                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control", @placeholder = "UF" })
+                        @Html.TextBoxFor(model => model.uf, new { @class = "form-control"})
                     </div>
                 </div>
                 <hr />
@@ -172,24 +190,24 @@
             <section data-anime="sectionDatas">
                 <div class="form-row">
                     <div class="form-group col-md-5">
-                        @Html.Label("monitorado", "POSSUI MONITORAMENTO ?")
-                        @Html.DropDownListFor(model => model.monitorado, ViewBag.ListaMonitoramento as SelectList, new { @class = "form-control" })
+                        @Html.Label("monitorado", "Possui Monitoramento?")
+                        @Html.DropDownListFor(model => model.monitorado, ViewBag.ListaMonitoramento as SelectList, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-5">
-                        @Html.Label("tipomonitoramento", "TIPO DE MONITORAMENTO")
-                        @Html.TextBoxFor(model => model.tipomonitoramento, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("tipomonitoramento", "Tipo Monitoramento")
+                        @Html.TextBoxFor(model => model.tipomonitoramento, new { @class = "form-control"})
                     </div>
                     <div class="form-group col-md-5">
-                        @Html.Label("empresamonitoramento", "EMPRESA RESPONSÁVEL PELO MONITORAMENTO")
-                        @Html.TextBoxFor(model => model.empresamonitoramento, new { @class = "form-control", @placeholder = "" })
+                        @Html.Label("empresamonitoramento", "Empresa Responsável Monitoramento")
+                        @Html.TextBoxFor(model => model.empresamonitoramento, new { @class = "form-control"})
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Arquivo</label>
+                            <label>Documento do Veículo</label>
                             <div></div>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="file" name="file" data-max-size="15728640">
@@ -214,20 +232,102 @@
 
 @section Scripts{
     <script>
-        function Salvar_Click() {
-            //if (!verificaValor($("#descricao").val())) {
-            //    mensagemAviso("O campo Descrição é obrigatório");
-            //    return;
-            //}
-            //if (!verificaValor($("#situacao").val())) {
-            //    mensagemAviso("O campo Situação é obrigatório");
-            //    return;
-            //}
+        function Salvar_Click() {     
+            if (!verificaValor($("#placa").val())) {
+                mensagemAviso("O campo Placa é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#renavam").val())) {
+                mensagemAviso("O campo Renavam é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#chassi").val())) {
+                mensagemAviso("O campo Chassi é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#cidadelicenciamento").val())) {
+                mensagemAviso("O campo Cidade Licenciamento é obrigatório");
+                return;
+            }            
+            if (!verificaValor($("#marca").val())) {
+                mensagemAviso("O campo Marca é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#corpredominante").val())) {
+                mensagemAviso("O campo Cor é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#combustivel").val())) {
+                mensagemAviso("O campo Combustível é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#tipo").val())) {
+                mensagemAviso("O campo Tipo é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#categoria").val())) {
+                mensagemAviso("O campo Categoria é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#anofabricacao").val())) {
+                mensagemAviso("O campo Ano Fabricação é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#anomodelo").val())) {
+                mensagemAviso("O campo Ano Modelo é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#capacidadepassageiro").val())) {
+                mensagemAviso("O campo Capacidade Passageiros é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#tipocarga").val())) {
+                mensagemAviso("O campo Tipo Carga é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#lotacaomaxima").val())) {
+                mensagemAviso("O campo Lotação Máxima é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#nomeproprietariotransportadora").val())) {
+                mensagemAviso("O campo Proprietário é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#cpfcnpj").val())) {
+                mensagemAviso("O campo CPF/CNPJ é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#cep").val())) {
+                mensagemAviso("O campo CEP é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#logradouro").val())) {
+                mensagemAviso("O campo Logradouro é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#numero").val())) {
+                mensagemAviso("O campo Número é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#bairro").val())) {
+                mensagemAviso("O campo Bairro é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#cidade").val())) {
+                mensagemAviso("O campo Cidade é obrigatório");
+                return;
+            }
+            if (!verificaValor($("#uf").val())) {
+                mensagemAviso("O campo UF é obrigatório");
+                return;
+            }
 
             $("#form").submit();
         }
 
         function Obter_Dados_Click() {
+
+            
 
             var placa = $("#placa").val();
             var renavam = $("#renavam").val();
@@ -235,16 +335,20 @@
             $.post('@Url.Action("ObterDetran", "Veiculo")', { "placa": placa, "renavam": renavam },
                 function (data) {
                     if (data.Result == "OK" && data.Record.length != 0) {
-                        $("#renavan").val(data.Record.renavam);
-                        $("#placa").val(data.Record.placa);
-                        $("#ufPlaca").val(data.Record.uf);
-                        $("#chassi").val(data.Record.chassi);
+                        $("#placa").val(data.Record.placa).attr('readonly', true);
+                        $("#renavan").val(data.Record.renavam).attr('readonly', true);                       
                         $("#cidadelicenciamento").val(data.Record.cidadelicenciamento);
-                        $("#corpredominante").val(data.Record.corpredominante);
-                        $("#marca").val(data.Record.marca);
-                        $("#anofabricacao").val(data.Record.anofabricacao);
-                        $("#anomodelo").val(data.Record.anomodelo);
-                        $("#nomeproprietariotransportadora").val(data.Record.nomeproprietariotransportadora);                                                                                                                
+                        $("#chassi").val(data.Record.chassi).attr('readonly', true);
+                        $("#marca").val(data.Record.marca).attr('readonly', true);
+                        $("#corpredominante").val(data.Record.cor).attr('readonly', true);
+                        $("#combustivel").val(data.Record.combustivel).attr('readonly', true);
+                        $("#tipo").val(data.Record.tipo).attr('readonly', true);
+                        $("#especie").val(data.Record.especie).attr('readonly', true);
+                        $("#categoria").val(data.Record.categoria).attr('readonly', true);
+                        $("#anofabricacao").val(data.Record.anofabricacao).attr('readonly', true);
+                        $("#anomodelo").val(data.Record.anomodelo).attr('readonly', true);
+                        $("#capacidadepassageiro").val(data.Record.capacidadepassageiro).attr('readonly', true);
+                        $("#nomeproprietariotransportadora").val(data.Record.nomeproprietariotransportadora).attr('readonly', true);
                         $("#cep").val(data.Record.cep);
                         $("#logradouro").val(data.Record.logradouro);
                         $("#numero").val(data.Record.numero);
@@ -258,7 +362,7 @@
 
                         $("#placa").val(placa);
                         $("#renavam").val(renavam);
-                        mensagemAviso("Favor preencher todos dados manualmente.");
+                        mensagemAviso("Cadastro não encontrado. Favor preencher todos dados manualmente.");                                               
                     }
                 });
         }

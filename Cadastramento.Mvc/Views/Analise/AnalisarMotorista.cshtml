@@ -152,7 +152,7 @@
             </div>
             <div class="kt-portlet__foot">
                 <div class="kt-form__actions">
-                    <button type="button" class="btn btn-dark" onclick="Finalizar();"><i class="fa fa-save"></i> Finalizar</button>
+                    <button type="button" class="btn btn-dark" onclick="AbrirModalAnalisar_Click();"><i class="fa fa-save"></i> Finalizar</button>
                     <button type="button" class="btn btn-secondary" onclick="window.location='@Url.Content("~/Analise/")'; return false;"><i class="fa fa-arrow-left"></i> Voltar</button>
                 </div>
             </div>
@@ -186,6 +186,19 @@
         function Finalizar() {
 
             window.location.href = content + "Analise/FinalizarAnaliseMotorista?id=" + $("#motoristaid").val() + "&situacao=" + $("#situacaocadastroid").val();
+        }
+
+        function AbrirModalAnalisar_Click() {
+            //Recarrega o body
+            $.get(content + "Analise/ModalAnalisar",
+                null,
+                (data) => {
+                    $("#modalMedia .modal-title").text("Realizar Análise");
+                    $("#modalMedia .modal-body").html(data);
+                });
+
+            //Abre a modal
+            $("#modalMedia").modal('show');
         }
 
     </script>

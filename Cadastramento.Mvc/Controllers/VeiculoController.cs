@@ -40,9 +40,9 @@ namespace Cadastramento.Mvc.Controllers
                 model.contenttype = file.ContentType;
                 model.nomearquivo = file.FileName;
 
-                model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;
-                model.datavalidadecadastro = DateTime.Now;
+                model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;                
                 model.datahorainclusao = DateTime.Now;
+                model.datavalidadecadastro = DateTime.Now.AddYears(1);
                 if (model.situacaocadastroid != 2)
                 {
                     model.situacaocadastroid = 1;
@@ -72,6 +72,11 @@ namespace Cadastramento.Mvc.Controllers
         {
             var srv = new detranService();
             var obj = srv.GetDadosVeiculo(placa, renavam);
+
+            if (obj == null)
+            {
+                return Json(new { Result = "Error" }, JsonRequestBehavior.AllowGet);
+            }
 
             return Json(new { Result = "OK", Record = obj }, JsonRequestBehavior.AllowGet);
         }

@@ -87,7 +87,6 @@
     <Property Name="statuscarroceria" Type="varchar" MaxLength="1" />
     <Property Name="datavalidadecadastro" Type="datetime" Nullable="false" />
     <Property Name="situacaocadastroid" Type="int" Nullable="false" />
-    <Property Name="documentourl" Type="nvarchar(max)" />
     <Property Name="veiculoid" Type="int" />
     <Property Name="compartimentoid" Type="int" />
     <Property Name="numerocompartimento" Type="int" />
@@ -264,7 +263,6 @@
     <Property Name="email" Type="varchar" MaxLength="50" />
     <Property Name="datavalidadecadastro" Type="datetime" />
     <Property Name="situacaocadastroid" Type="int" Nullable="false" />
-    <Property Name="documentourl" Type="nvarchar(max)" />
     <Property Name="usuarioidalteracao" Type="int" />
     <Property Name="datahoraalteracao" Type="datetime" />
     <Property Name="usuarioidinclusao" Type="int" />
@@ -562,6 +560,11 @@
     <Property Name="cidadelicenciamento" Type="varchar" MaxLength="50" />
     <Property Name="marca" Type="varchar" MaxLength="50" />
     <Property Name="categoriaantt" Type="varchar" MaxLength="50" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="especie" Type="varchar" MaxLength="50" />
+    <Property Name="combustivel" Type="varchar" MaxLength="50" />
+    <Property Name="categoria" Type="varchar" MaxLength="50" />
+    <Property Name="capacidadepassageiro" Type="int" />
     <Property Name="corpredominante" Type="varchar" MaxLength="50" />
     <Property Name="anofabricacao" Type="varchar" MaxLength="4" />
     <Property Name="anomodelo" Type="varchar" MaxLength="4" />
@@ -582,7 +585,6 @@
     <Property Name="statusveiculo" Type="varchar" MaxLength="1" />
     <Property Name="datavalidadecadastro" Type="datetime" Nullable="false" />
     <Property Name="situacaocadastroid" Type="int" Nullable="false" />
-    <Property Name="documentourl" Type="nvarchar(max)" />
     <Property Name="usuarioidalteracao" Type="int" />
     <Property Name="datahoraalteracao" Type="datetime" />
     <Property Name="usuarioidinclusao" Type="int" />

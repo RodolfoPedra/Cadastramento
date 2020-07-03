@@ -15,10 +15,11 @@
 
     htmlAttributes["style"] = "width: 100%;";
     htmlAttributes["class"] = htmlAttributes["class"] ?? "form-control";
+    
 }
 <script>
     jQuery(document).ready(function () {
-        jQuery('#@id').mask("(00) 0000-000090")
+        jQuery('#@id').mask("(00) 0000-00000")
             .focusout(function (event) {
                 var target, phone, element;
                 target = (event.currentTarget) ? event.currentTarget : event.srcElement;
@@ -26,9 +27,9 @@
                 element = $(target);
                 element.unmask();
                 if(phone.length > 10) {
-                    element.mask("(00) 00000-00090");
+                    element.mask("(00) 00000-0000");
                 } else {
-                    element.mask("(00) 0000-000090");
+                    element.mask("(00) 0000-00000");
                 }
             }).trigger('focusout');
     });

@@ -50,7 +50,6 @@ namespace Cadastramento.ModelData.Logic.Cadastramento
         public string statuscarroceria { get; set; }
         public System.DateTime datavalidadecadastro { get; set; }
         public int situacaocadastroid { get; set; }
-        public string documentourl { get; set; }
         public Nullable<int> veiculoid { get; set; }
         public Nullable<int> compartimentoid { get; set; }
         public Nullable<int> numerocompartimento { get; set; }

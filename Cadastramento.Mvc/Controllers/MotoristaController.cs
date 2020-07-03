@@ -46,14 +46,14 @@ namespace Cadastramento.Mvc.Controllers
                 model.contenttype = file.ContentType;
                 model.nomearquivo = file.FileName;
 
+                model.telefone = Extensao.RemoveMascara(model.telefone);
                 model.usuarioidinclusao = SessaoUsuario.Sessao.usuarioid;
                 model.datahorainclusao = DateTime.Now;
+                model.datavalidadecadastro = DateTime.Now.AddYears(1); 
                 if(model.situacaocadastroid != 2)
                 {
                     model.situacaocadastroid = 1;
-                }                
-                model.datavalidadecnh = DateTime.Now;
-                model.dataemissaocnh = DateTime.Now;
+                }                                
 
                 srv.Incluir(model);
                 srv.Salvar(SessaoUsuario.Sessao.login);
@@ -62,7 +62,15 @@ namespace Cadastramento.Mvc.Controllers
                 
                 srv.Salvar(SessaoUsuario.Sessao.login);
 
-                EnviarMensagem("Operação realizada com sucesso. Protocolo Nº: "+ model.protocolo, TipoMensagem.Verde);
+
+                if(model.situacaocadastroid == 1)
+                {
+                    EnviarMensagem("Cadastro em análise. Protocolo Nº: " + model.protocolo, TipoMensagem.Verde);
+                }
+                else 
+                {
+                    EnviarMensagem("Cadastro realizado com sucesso. Protocolo Nº: " + model.protocolo, TipoMensagem.Verde);
+                }               
 
                 return RedirectToAction("Incluir");
             }
@@ -150,9 +158,10 @@ namespace Cadastramento.Mvc.Controllers
         public JsonResult ObterDetran(string cpf, string cnh)
         {
             var srv = new detranService();
-            var obj = srv.GetDadosCNH(cpf, cnh);
+            var obj = srv.GetDadosCNH(Extensao.RemoveMascara(cpf), cnh);
 
-            if (obj == null) {
+            if (obj == null) 
+            {
                 return Json(new { Result = "Error"}, JsonRequestBehavior.AllowGet);
             }
 

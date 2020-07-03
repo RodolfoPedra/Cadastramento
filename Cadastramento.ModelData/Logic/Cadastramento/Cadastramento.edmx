@@ -92,7 +92,6 @@
           <Property Name="statuscarroceria" Type="varchar" MaxLength="1" />
           <Property Name="datavalidadecadastro" Type="datetime" Nullable="false" />
           <Property Name="situacaocadastroid" Type="int" Nullable="false" />
-          <Property Name="documentourl" Type="nvarchar(max)" />
           <Property Name="veiculoid" Type="int" />
           <Property Name="compartimentoid" Type="int" />
           <Property Name="numerocompartimento" Type="int" />
@@ -269,7 +268,6 @@
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="datavalidadecadastro" Type="datetime" />
           <Property Name="situacaocadastroid" Type="int" Nullable="false" />
-          <Property Name="documentourl" Type="nvarchar(max)" />
           <Property Name="usuarioidalteracao" Type="int" />
           <Property Name="datahoraalteracao" Type="datetime" />
           <Property Name="usuarioidinclusao" Type="int" />
@@ -567,6 +565,11 @@
           <Property Name="cidadelicenciamento" Type="varchar" MaxLength="50" />
           <Property Name="marca" Type="varchar" MaxLength="50" />
           <Property Name="categoriaantt" Type="varchar" MaxLength="50" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" />
+          <Property Name="especie" Type="varchar" MaxLength="50" />
+          <Property Name="combustivel" Type="varchar" MaxLength="50" />
+          <Property Name="categoria" Type="varchar" MaxLength="50" />
+          <Property Name="capacidadepassageiro" Type="int" />
           <Property Name="corpredominante" Type="varchar" MaxLength="50" />
           <Property Name="anofabricacao" Type="varchar" MaxLength="4" />
           <Property Name="anomodelo" Type="varchar" MaxLength="4" />
@@ -587,7 +590,6 @@
           <Property Name="statusveiculo" Type="varchar" MaxLength="1" />
           <Property Name="datavalidadecadastro" Type="datetime" Nullable="false" />
           <Property Name="situacaocadastroid" Type="int" Nullable="false" />
-          <Property Name="documentourl" Type="nvarchar(max)" />
           <Property Name="usuarioidalteracao" Type="int" />
           <Property Name="datahoraalteracao" Type="datetime" />
           <Property Name="usuarioidinclusao" Type="int" />
@@ -1150,7 +1152,6 @@
           <EntitySet Name="empresa" EntityType="CadastramentoModel.empresa" />
           <EntitySet Name="empresaprojeto" EntityType="CadastramentoModel.empresaprojeto" />
           <EntitySet Name="logacesso" EntityType="CadastramentoModel.logacesso" />
-          <EntitySet Name="motorista" EntityType="CadastramentoModel.motorista" />
           <EntitySet Name="municipio" EntityType="CadastramentoModel.municipio" />
           <EntitySet Name="perfil" EntityType="CadastramentoModel.perfil" />
           <EntitySet Name="processo" EntityType="CadastramentoModel.processo" />
@@ -1208,10 +1209,6 @@
             <End Role="menuacao" EntitySet="menuacao" />
             <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
           </AssociationSet>
-          <AssociationSet Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId">
-            <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-            <End Role="motorista" EntitySet="motorista" />
-          </AssociationSet>
           <AssociationSet Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil" Association="CadastramentoModel.usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil">
             <End Role="perfil" EntitySet="perfil" />
             <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
@@ -1256,20 +1253,9 @@
             <End Role="usuariomenuacao" EntitySet="usuariomenuacao" />
             <End Role="usuariomenuacaoperfilpermissao" EntitySet="usuariomenuacaoperfilpermissao" />
           </AssociationSet>
-          <EntitySet Name="veiculo" EntityType="CadastramentoModel.veiculo" />
-          <AssociationSet Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
-            <End Role="situacaocadastro" EntitySet="situacaocadastro" />
-            <End Role="veiculo" EntitySet="veiculo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_veiculo_TiposCargas_TipoCargaId" Association="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId">
-            <End Role="tipocarga" EntitySet="tipocarga" />
-            <End Role="veiculo" EntitySet="veiculo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_veiculo_Tiposveiculo_TipoVeiculoId" Association="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId">
-            <End Role="tipoveiculo" EntitySet="tipoveiculo" />
-            <End Role="veiculo" EntitySet="veiculo" />
-          </AssociationSet>
           <EntitySet Name="carroceria" EntityType="CadastramentoModel.carroceria" />
+          <EntitySet Name="motorista" EntityType="CadastramentoModel.motorista" />
+          <EntitySet Name="veiculo" EntityType="CadastramentoModel.veiculo" />
           <AssociationSet Name="FK_carroceria_carroceria_CompartimentoId" Association="CadastramentoModel.FK_carroceria_carroceria_CompartimentoId">
             <End Role="carroceria" EntitySet="carroceria" />
             <End Role="carroceria1" EntitySet="carroceria" />
@@ -1289,6 +1275,22 @@
           <AssociationSet Name="FK_carroceria_Veiculos_VeiculoId" Association="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId">
             <End Role="veiculo" EntitySet="veiculo" />
             <End Role="carroceria" EntitySet="carroceria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId">
+            <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+            <End Role="motorista" EntitySet="motorista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId" Association="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
+            <End Role="situacaocadastro" EntitySet="situacaocadastro" />
+            <End Role="veiculo" EntitySet="veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_veiculo_TiposCargas_TipoCargaId" Association="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId">
+            <End Role="tipocarga" EntitySet="tipocarga" />
+            <End Role="veiculo" EntitySet="veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_veiculo_Tiposveiculo_TipoVeiculoId" Association="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId">
+            <End Role="tipoveiculo" EntitySet="tipoveiculo" />
+            <End Role="veiculo" EntitySet="veiculo" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="analise">
@@ -1479,43 +1481,6 @@
           <Property Name="municipio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="browser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="motorista">
-          <Key>
-            <PropertyRef Name="motoristaid" />
-          </Key>
-          <Property Name="motoristaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="rguf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="rgorgaoexpedidor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="cnh" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="ufcnh" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="categoriacnh" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="dataemissaocnh" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="datavalidadecnh" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="datavalidadecadastro" Type="DateTime" Precision="3" />
-          <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
-          <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="usuarioidalteracao" Type="Int32" />
-          <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-          <Property Name="usuarioidinclusao" Type="Int32" />
-          <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
-          <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="motorista" ToRole="situacaocadastro" />
-        </EntityType>
         <EntityType Name="municipio">
           <Key>
             <PropertyRef Name="municipioid" />
@@ -1674,9 +1639,9 @@
           <Property Name="usuarioidinclusao" Type="Int32" />
           <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="analise" Relationship="CadastramentoModel.FK_analise_situacaocadastro" FromRole="situacaocadastro" ToRole="analise" />
+          <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="carroceria" />
           <NavigationProperty Name="motorista" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="motorista" />
           <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="veiculo" />
-          <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_SituacaoCadastros_SituacaoCadastroId" FromRole="situacaocadastro" ToRole="carroceria" />
         </EntityType>
         <EntityType Name="tipocarga">
           <Key>
@@ -1689,8 +1654,8 @@
           <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
           <Property Name="usuarioidinclusao" Type="Int32" />
           <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="veiculo" />
           <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="carroceria" />
+          <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="tipocarga" ToRole="veiculo" />
         </EntityType>
         <EntityType Name="tipocarroceria">
           <Key>
@@ -1948,20 +1913,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId">
-          <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="CadastramentoModel.motorista" Role="motorista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="situacaocadastro">
-              <PropertyRef Name="situacaocadastroid" />
-            </Principal>
-            <Dependent Role="motorista">
-              <PropertyRef Name="situacaocadastroid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="usuariomenuacaoperfilpermissao_fk_usuariomenuacaoperfilpermissao_perfil">
           <End Type="CadastramentoModel.perfil" Role="perfil" Multiplicity="1" />
           <End Type="CadastramentoModel.usuariomenuacaoperfilpermissao" Role="usuariomenuacaoperfilpermissao" Multiplicity="*" />
@@ -2094,91 +2045,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="veiculo">
-          <Key>
-            <PropertyRef Name="veiculoid" />
-          </Key>
-          <Property Name="veiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="renavam" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="tipoveiculoid" Type="Int32" />
-          <Property Name="placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="ufplaca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="chassi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cidadelicenciamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="categoriaantt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="corpredominante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="anofabricacao" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="anomodelo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="nomeproprietariotransportadora" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="cpfcnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="tipocargaid" Type="Int32" />
-          <Property Name="lotacaomaxima" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="monitorado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="tipomonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="empresamonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="statusveiculo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="datavalidadecadastro" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
-          <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="usuarioidalteracao" Type="Int32" />
-          <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
-          <Property Name="usuarioidinclusao" Type="Int32" />
-          <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="veiculo" ToRole="situacaocadastro" />
-          <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="veiculo" ToRole="tipocarga" />
-          <NavigationProperty Name="tipoveiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="veiculo" ToRole="tipoveiculo" />
-          <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="veiculo" ToRole="carroceria" />
-        </EntityType>
-        <Association Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
-          <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="situacaocadastro">
-              <PropertyRef Name="situacaocadastroid" />
-            </Principal>
-            <Dependent Role="veiculo">
-              <PropertyRef Name="situacaocadastroid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_veiculo_TiposCargas_TipoCargaId">
-          <End Type="CadastramentoModel.tipocarga" Role="tipocarga" Multiplicity="0..1" />
-          <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipocarga">
-              <PropertyRef Name="tipocargaid" />
-            </Principal>
-            <Dependent Role="veiculo">
-              <PropertyRef Name="tipocargaid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_veiculo_Tiposveiculo_TipoVeiculoId">
-          <End Type="CadastramentoModel.tipoveiculo" Role="tipoveiculo" Multiplicity="0..1" />
-          <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipoveiculo">
-              <PropertyRef Name="tipoveiculoid" />
-            </Principal>
-            <Dependent Role="veiculo">
-              <PropertyRef Name="tipoveiculoid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="carroceria">
           <Key>
             <PropertyRef Name="carroceriaid" />
@@ -2213,7 +2079,6 @@
           <Property Name="statuscarroceria" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="datavalidadecadastro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
-          <Property Name="documentourl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="veiculoid" Type="Int32" />
           <Property Name="compartimentoid" Type="Int32" />
           <Property Name="numerocompartimento" Type="Int32" />
@@ -2230,6 +2095,93 @@
           <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_carroceria_TiposCargas_TipoCargaId" FromRole="carroceria" ToRole="tipocarga" />
           <NavigationProperty Name="tipocarroceria" Relationship="CadastramentoModel.FK_carroceria_Tiposcarroceria_TipoCarroceriaId" FromRole="carroceria" ToRole="tipocarroceria" />
           <NavigationProperty Name="veiculo" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="carroceria" ToRole="veiculo" />
+        </EntityType>
+        <EntityType Name="motorista">
+          <Key>
+            <PropertyRef Name="motoristaid" />
+          </Key>
+          <Property Name="motoristaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rguf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="rgorgaoexpedidor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="cnh" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="ufcnh" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="categoriacnh" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="dataemissaocnh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="datavalidadecnh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="telefone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="datavalidadecadastro" Type="DateTime" Precision="3" />
+          <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
+          <Property Name="usuarioidalteracao" Type="Int32" />
+          <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+          <Property Name="usuarioidinclusao" Type="Int32" />
+          <Property Name="datahorainclusao" Type="DateTime" Precision="3" />
+          <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_motorista_SituacaoCadastros_SituacaoCadastroId" FromRole="motorista" ToRole="situacaocadastro" />
+        </EntityType>
+        <EntityType Name="veiculo">
+          <Key>
+            <PropertyRef Name="veiculoid" />
+          </Key>
+          <Property Name="veiculoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="protocolo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="renavam" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="tipoveiculoid" Type="Int32" />
+          <Property Name="placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ufplaca" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="chassi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cidadelicenciamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="categoriaantt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="especie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="combustivel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="capacidadepassageiro" Type="Int32" />
+          <Property Name="corpredominante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="anofabricacao" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="anomodelo" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="nomeproprietariotransportadora" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cpfcnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="logradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="tipocargaid" Type="Int32" />
+          <Property Name="lotacaomaxima" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="monitorado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="tipomonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="empresamonitoramento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="statusveiculo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="datavalidadecadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="situacaocadastroid" Type="Int32" Nullable="false" />
+          <Property Name="usuarioidalteracao" Type="Int32" />
+          <Property Name="datahoraalteracao" Type="DateTime" Precision="3" />
+          <Property Name="usuarioidinclusao" Type="Int32" />
+          <Property Name="datahorainclusao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="arquivo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="nomearquivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="contenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="carroceria" Relationship="CadastramentoModel.FK_carroceria_Veiculos_VeiculoId" FromRole="veiculo" ToRole="carroceria" />
+          <NavigationProperty Name="situacaocadastro" Relationship="CadastramentoModel.FK_veiculo_SituacaoCadastros_SituacaoCadastroId" FromRole="veiculo" ToRole="situacaocadastro" />
+          <NavigationProperty Name="tipocarga" Relationship="CadastramentoModel.FK_veiculo_TiposCargas_TipoCargaId" FromRole="veiculo" ToRole="tipocarga" />
+          <NavigationProperty Name="tipoveiculo" Relationship="CadastramentoModel.FK_veiculo_Tiposveiculo_TipoVeiculoId" FromRole="veiculo" ToRole="tipoveiculo" />
         </EntityType>
         <Association Name="FK_carroceria_carroceria_CompartimentoId">
           <End Type="CadastramentoModel.carroceria" Role="carroceria" Multiplicity="0..1" />
@@ -2294,6 +2246,58 @@
             </Principal>
             <Dependent Role="carroceria">
               <PropertyRef Name="veiculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_motorista_SituacaoCadastros_SituacaoCadastroId">
+          <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CadastramentoModel.motorista" Role="motorista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="situacaocadastro">
+              <PropertyRef Name="situacaocadastroid" />
+            </Principal>
+            <Dependent Role="motorista">
+              <PropertyRef Name="situacaocadastroid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_veiculo_SituacaoCadastros_SituacaoCadastroId">
+          <End Type="CadastramentoModel.situacaocadastro" Role="situacaocadastro" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="situacaocadastro">
+              <PropertyRef Name="situacaocadastroid" />
+            </Principal>
+            <Dependent Role="veiculo">
+              <PropertyRef Name="situacaocadastroid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_veiculo_TiposCargas_TipoCargaId">
+          <End Type="CadastramentoModel.tipocarga" Role="tipocarga" Multiplicity="0..1" />
+          <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipocarga">
+              <PropertyRef Name="tipocargaid" />
+            </Principal>
+            <Dependent Role="veiculo">
+              <PropertyRef Name="tipocargaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_veiculo_Tiposveiculo_TipoVeiculoId">
+          <End Type="CadastramentoModel.tipoveiculo" Role="tipoveiculo" Multiplicity="0..1" />
+          <End Type="CadastramentoModel.veiculo" Role="veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoveiculo">
+              <PropertyRef Name="tipoveiculoid" />
+            </Principal>
+            <Dependent Role="veiculo">
+              <PropertyRef Name="tipoveiculoid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2502,43 +2506,6 @@
                 <ScalarProperty Name="usuarioid" ColumnName="usuarioid" />
                 <ScalarProperty Name="sistema" ColumnName="sistema" />
                 <ScalarProperty Name="logacessoid" ColumnName="logacessoid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="motorista">
-            <EntityTypeMapping TypeName="CadastramentoModel.motorista">
-              <MappingFragment StoreEntitySet="motorista">
-                <ScalarProperty Name="contenttype" ColumnName="contenttype" />
-                <ScalarProperty Name="nomearquivo" ColumnName="nomearquivo" />
-                <ScalarProperty Name="arquivo" ColumnName="arquivo" />
-                <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
-                <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
-                <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
-                <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
-                <ScalarProperty Name="documentourl" ColumnName="documentourl" />
-                <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
-                <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="datavalidadecnh" ColumnName="datavalidadecnh" />
-                <ScalarProperty Name="dataemissaocnh" ColumnName="dataemissaocnh" />
-                <ScalarProperty Name="categoriacnh" ColumnName="categoriacnh" />
-                <ScalarProperty Name="ufcnh" ColumnName="ufcnh" />
-                <ScalarProperty Name="cnh" ColumnName="cnh" />
-                <ScalarProperty Name="cpf" ColumnName="cpf" />
-                <ScalarProperty Name="rgorgaoexpedidor" ColumnName="rgorgaoexpedidor" />
-                <ScalarProperty Name="rguf" ColumnName="rguf" />
-                <ScalarProperty Name="rg" ColumnName="rg" />
-                <ScalarProperty Name="uf" ColumnName="uf" />
-                <ScalarProperty Name="cidade" ColumnName="cidade" />
-                <ScalarProperty Name="cep" ColumnName="cep" />
-                <ScalarProperty Name="bairro" ColumnName="bairro" />
-                <ScalarProperty Name="complemento" ColumnName="complemento" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="protocolo" ColumnName="protocolo" />
-                <ScalarProperty Name="motoristaid" ColumnName="motoristaid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2834,50 +2801,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="veiculo">
-            <EntityTypeMapping TypeName="CadastramentoModel.veiculo">
-              <MappingFragment StoreEntitySet="veiculo">
-                <ScalarProperty Name="contenttype" ColumnName="contenttype" />
-                <ScalarProperty Name="nomearquivo" ColumnName="nomearquivo" />
-                <ScalarProperty Name="arquivo" ColumnName="arquivo" />
-                <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
-                <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
-                <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
-                <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
-                <ScalarProperty Name="documentourl" ColumnName="documentourl" />
-                <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
-                <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
-                <ScalarProperty Name="statusveiculo" ColumnName="statusveiculo" />
-                <ScalarProperty Name="empresamonitoramento" ColumnName="empresamonitoramento" />
-                <ScalarProperty Name="tipomonitoramento" ColumnName="tipomonitoramento" />
-                <ScalarProperty Name="monitorado" ColumnName="monitorado" />
-                <ScalarProperty Name="lotacaomaxima" ColumnName="lotacaomaxima" />
-                <ScalarProperty Name="tipocargaid" ColumnName="tipocargaid" />
-                <ScalarProperty Name="uf" ColumnName="uf" />
-                <ScalarProperty Name="cidade" ColumnName="cidade" />
-                <ScalarProperty Name="cep" ColumnName="cep" />
-                <ScalarProperty Name="bairro" ColumnName="bairro" />
-                <ScalarProperty Name="complemento" ColumnName="complemento" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
-                <ScalarProperty Name="cpfcnpj" ColumnName="cpfcnpj" />
-                <ScalarProperty Name="nomeproprietariotransportadora" ColumnName="nomeproprietariotransportadora" />
-                <ScalarProperty Name="anomodelo" ColumnName="anomodelo" />
-                <ScalarProperty Name="anofabricacao" ColumnName="anofabricacao" />
-                <ScalarProperty Name="corpredominante" ColumnName="corpredominante" />
-                <ScalarProperty Name="categoriaantt" ColumnName="categoriaantt" />
-                <ScalarProperty Name="marca" ColumnName="marca" />
-                <ScalarProperty Name="cidadelicenciamento" ColumnName="cidadelicenciamento" />
-                <ScalarProperty Name="chassi" ColumnName="chassi" />
-                <ScalarProperty Name="ufplaca" ColumnName="ufplaca" />
-                <ScalarProperty Name="placa" ColumnName="placa" />
-                <ScalarProperty Name="tipoveiculoid" ColumnName="tipoveiculoid" />
-                <ScalarProperty Name="renavam" ColumnName="renavam" />
-                <ScalarProperty Name="protocolo" ColumnName="protocolo" />
-                <ScalarProperty Name="veiculoid" ColumnName="veiculoid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="carroceria">
             <EntityTypeMapping TypeName="CadastramentoModel.carroceria">
               <MappingFragment StoreEntitySet="carroceria">
@@ -2891,7 +2814,6 @@
                 <ScalarProperty Name="numerocompartimento" ColumnName="numerocompartimento" />
                 <ScalarProperty Name="compartimentoid" ColumnName="compartimentoid" />
                 <ScalarProperty Name="veiculoid" ColumnName="veiculoid" />
-                <ScalarProperty Name="documentourl" ColumnName="documentourl" />
                 <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
                 <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
                 <ScalarProperty Name="statuscarroceria" ColumnName="statuscarroceria" />
@@ -2922,6 +2844,90 @@
                 <ScalarProperty Name="renavam" ColumnName="renavam" />
                 <ScalarProperty Name="protocolo" ColumnName="protocolo" />
                 <ScalarProperty Name="carroceriaid" ColumnName="carroceriaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="motorista">
+            <EntityTypeMapping TypeName="CadastramentoModel.motorista">
+              <MappingFragment StoreEntitySet="motorista">
+                <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+                <ScalarProperty Name="nomearquivo" ColumnName="nomearquivo" />
+                <ScalarProperty Name="arquivo" ColumnName="arquivo" />
+                <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+                <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+                <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+                <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+                <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
+                <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="datavalidadecnh" ColumnName="datavalidadecnh" />
+                <ScalarProperty Name="dataemissaocnh" ColumnName="dataemissaocnh" />
+                <ScalarProperty Name="categoriacnh" ColumnName="categoriacnh" />
+                <ScalarProperty Name="ufcnh" ColumnName="ufcnh" />
+                <ScalarProperty Name="cnh" ColumnName="cnh" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="rgorgaoexpedidor" ColumnName="rgorgaoexpedidor" />
+                <ScalarProperty Name="rguf" ColumnName="rguf" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="protocolo" ColumnName="protocolo" />
+                <ScalarProperty Name="motoristaid" ColumnName="motoristaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="veiculo">
+            <EntityTypeMapping TypeName="CadastramentoModel.veiculo">
+              <MappingFragment StoreEntitySet="veiculo">
+                <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+                <ScalarProperty Name="nomearquivo" ColumnName="nomearquivo" />
+                <ScalarProperty Name="arquivo" ColumnName="arquivo" />
+                <ScalarProperty Name="datahorainclusao" ColumnName="datahorainclusao" />
+                <ScalarProperty Name="usuarioidinclusao" ColumnName="usuarioidinclusao" />
+                <ScalarProperty Name="datahoraalteracao" ColumnName="datahoraalteracao" />
+                <ScalarProperty Name="usuarioidalteracao" ColumnName="usuarioidalteracao" />
+                <ScalarProperty Name="situacaocadastroid" ColumnName="situacaocadastroid" />
+                <ScalarProperty Name="datavalidadecadastro" ColumnName="datavalidadecadastro" />
+                <ScalarProperty Name="statusveiculo" ColumnName="statusveiculo" />
+                <ScalarProperty Name="empresamonitoramento" ColumnName="empresamonitoramento" />
+                <ScalarProperty Name="tipomonitoramento" ColumnName="tipomonitoramento" />
+                <ScalarProperty Name="monitorado" ColumnName="monitorado" />
+                <ScalarProperty Name="lotacaomaxima" ColumnName="lotacaomaxima" />
+                <ScalarProperty Name="tipocargaid" ColumnName="tipocargaid" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="cpfcnpj" ColumnName="cpfcnpj" />
+                <ScalarProperty Name="nomeproprietariotransportadora" ColumnName="nomeproprietariotransportadora" />
+                <ScalarProperty Name="anomodelo" ColumnName="anomodelo" />
+                <ScalarProperty Name="anofabricacao" ColumnName="anofabricacao" />
+                <ScalarProperty Name="corpredominante" ColumnName="corpredominante" />
+                <ScalarProperty Name="capacidadepassageiro" ColumnName="capacidadepassageiro" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="combustivel" ColumnName="combustivel" />
+                <ScalarProperty Name="especie" ColumnName="especie" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="categoriaantt" ColumnName="categoriaantt" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="cidadelicenciamento" ColumnName="cidadelicenciamento" />
+                <ScalarProperty Name="chassi" ColumnName="chassi" />
+                <ScalarProperty Name="ufplaca" ColumnName="ufplaca" />
+                <ScalarProperty Name="placa" ColumnName="placa" />
+                <ScalarProperty Name="tipoveiculoid" ColumnName="tipoveiculoid" />
+                <ScalarProperty Name="renavam" ColumnName="renavam" />
+                <ScalarProperty Name="protocolo" ColumnName="protocolo" />
+                <ScalarProperty Name="veiculoid" ColumnName="veiculoid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
